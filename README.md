@@ -30,3 +30,16 @@ le 2026-11-05.
 
 Aucune recommandation anonyme ou écrite par soi-même, aucun chiffre sans source,
 aucune photo générique présentée comme une capture d'un projet.
+
+## Publication (SFB)
+
+Le portfolio en ligne est servi par SFB à partir de la table `project_files` de Supabase
+(projet `portfolio-herman-robe`) : https://sites-sfb.ea-services.net/portfolio-herman-robe
+
+Pour publier une modification : pousser sur GitHub, puis lancer `python3 outils/publier-sfb.py`
+sur le serveur. Le script met à jour (ou crée) les fichiers de ce projet seulement, avec la clé
+lue dans `/opt/sfb/api/.env`. Une copie physique existe aussi dans
+`/opt/sfb/php-sites/portfolio-herman-robe/public/`.
+
+Historique : publication de la version alignée sur le CV le 2026-11-05. L'état précédent
+est dans le commit `cf2cb47`.
