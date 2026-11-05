@@ -9,6 +9,8 @@ message: Bonjour Herman, j'ai suivi votre mini-formation et j'aimerais être acc
 ---
 Cette mini-formation s'adresse à quelqu'un qui n'a **jamais écrit une page web**. Elle reprend les bases que j'enseignais en tant que formateur (HTML, CSS, JavaScript). Il vous faut un ordinateur, un éditeur de texte (le Bloc-notes suffit, **Visual Studio Code** est mieux) et un navigateur. Comptez environ deux heures, avec les exercices. À la fin, vous aurez une page personnelle prête à être mise en ligne.
 
+![Le parcours en cinq leçons : HTML, CSS, mobile, WhatsApp, JavaScript](assets/blog/schema-formation-parcours.svg)
+
 ## Leçon 1 : la structure d'une page (HTML)
 
 Une page web est un fichier texte avec des **balises**. Créez un dossier `ma-page` et, dedans, un fichier `index.html` :

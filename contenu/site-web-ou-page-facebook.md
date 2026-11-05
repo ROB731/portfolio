@@ -29,6 +29,10 @@ message: Bonjour Herman, je me demande si j'ai besoin d'un site en plus de ma pa
 - **Une information claire** : ce que vous faites, vos tarifs ou vos conditions, comment vous joindre, tout au même endroit.
 - **Des demandes qualifiées** : un formulaire, un bouton WhatsApp, un devis à demander.
 
+Pour résumer la comparaison :
+
+![Comparaison entre une page Facebook et un site web : rapidité, présence sur Google, contrôle](assets/blog/schema-facebook-vs-site.svg)
+
 ## Comment choisir
 
 - **Vous démarrez, avec peu de moyens** : commencez par une page Facebook et un compte **WhatsApp Business** (catalogue, message d'accueil, réponses rapides, étiquettes pour suivre les commandes). Réservez dès maintenant le nom de domaine de votre entreprise, même sans site.

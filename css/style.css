@@ -1773,3 +1773,11 @@ ul { list-style: none; }
 .post-cta p { margin: 0 auto 18px; max-width: 520px; color: var(--text-secondary); }
 .a-lire { margin: 48px 0 18px; font-size: 1.3rem; }
 @media (prefers-reduced-motion: reduce) { .post-card { transition: none; } }
+
+/* Illustrations du blog */
+.post-cover { display: block; width: calc(100% + 48px); max-width: none; height: auto; aspect-ratio: 1200 / 630; margin: -24px -24px 6px; border-radius: var(--radius) var(--radius) 0 0; object-fit: cover; }
+.post-hero { margin: 28px 0 8px; }
+.post-hero img { display: block; width: 100%; height: auto; border-radius: var(--radius); border: 1px solid var(--border); }
+.post-figure { margin: 28px 0; }
+.post-figure img { display: block; width: 100%; max-width: 640px; height: auto; margin: 0 auto; border-radius: var(--radius-sm); border: 1px solid var(--border); }
+.post-figure figcaption { margin-top: 10px; text-align: center; font-size: .85rem; color: var(--text-muted); }

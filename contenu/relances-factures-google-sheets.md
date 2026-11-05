@@ -15,6 +15,8 @@ Relancer les clients qui n'ont pas payé est utile, mais personne n'aime le fair
 - Un e-mail de rappel envoyé automatiquement quand une facture est en retard, puis répété tous les 7 jours tant qu'elle n'est pas payée.
 - Un bouton « Relancer sur WhatsApp » dans chaque ligne, avec le message déjà écrit.
 
+![Le tableau, le script du matin, puis l'e-mail et le lien WhatsApp](assets/blog/schema-relances-flux.svg)
+
 ## 1. Préparer le tableau
 
 Dans Google Sheets, créez un tableau, et renommez l'onglet en bas **Factures**. Écrivez ces en-têtes dans la première ligne, de la colonne A à la colonne H :

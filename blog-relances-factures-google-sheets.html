@@ -10,7 +10,10 @@
     <meta property="og:url" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-relances-factures-google-sheets.html">
     <meta property="og:title" content="Relances de factures avec Google Sheets | Herman Robe">
     <meta property="og:description" content="Tuto pas à pas : un tableau Google Sheets et dix lignes de code envoient chaque matin les relances de factures en retard, par e-mail et WhatsApp.">
-    <meta property="og:image" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/photo-profil.jpg">
+    <meta property="og:image" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/blog/couverture-relances-factures-google-sheets.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:image" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/blog/couverture-relances-factures-google-sheets.png">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:site_name" content="Herman Robe Portfolio">
     <meta name="twitter:card" content="summary_large_image">
@@ -31,7 +34,7 @@
     "inLanguage": "fr",
     "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-relances-factures-google-sheets.html",
     "mainEntityOfPage": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-relances-factures-google-sheets.html",
-    "image": "https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/photo-profil.jpg",
+    "image": "https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/blog/couverture-relances-factures-google-sheets.png",
     "author": {
       "@type": "Person",
       "name": "Herman Robe",
@@ -45,7 +48,7 @@
       "jobTitle": "Concepteur-Développeur Full-Stack"
     },
     "articleSection": "Tutos",
-    "wordCount": 769
+    "wordCount": 789
   },
   {
     "@context": "https://schema.org",
@@ -98,11 +101,13 @@
             <span class="post-tag"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-code"/></svg> Tutos</span>
             <h1 class="post-title">Relancer automatiquement les factures impayées avec Google Sheets</h1>
             <p class="post-meta">Par Herman Robe · 5 novembre 2026 · 4 min de lecture</p>
+            <figure class="post-hero"><img src="assets/blog/couverture-relances-factures-google-sheets.svg" alt="Illustration : Relancer automatiquement les factures impayées avec Google Sheets" width="1200" height="630"></figure>
             <nav class="toc" aria-label="Sommaire"><strong>Dans cet article</strong><ol><li><a href="#ce-que-vous-allez-obtenir">Ce que vous allez obtenir</a></li><li><a href="#1-preparer-le-tableau">1. Préparer le tableau</a></li><li><a href="#2-ajouter-le-code">2. Ajouter le code</a></li><li><a href="#3-autoriser-et-tester">3. Autoriser et tester</a></li><li><a href="#4-le-faire-tourner-tout-seul">4. Le faire tourner tout seul</a></li><li><a href="#5-le-bouton-whatsapp">5. Le bouton WhatsApp</a></li><li><a href="#les-limites-a-connaitre">Les limites à connaître</a></li></ol></nav>
             <div class="prose">
 <p>Relancer les clients qui n&#x27;ont pas payé est utile, mais personne n&#x27;aime le faire, alors on le repousse. Ce tuto met en place un tableau qui <strong>le fait à votre place</strong> : chaque matin, il repère les factures en retard et envoie un rappel poli. Il faut un compte Google, un tableau, et dix minutes. Aucune connaissance en programmation n&#x27;est nécessaire : vous copiez le code.</p>
 <h2 id="ce-que-vous-allez-obtenir">Ce que vous allez obtenir</h2>
 <ul><li>Un tableau de suivi de vos factures.</li><li>Un e-mail de rappel envoyé automatiquement quand une facture est en retard, puis répété tous les 7 jours tant qu&#x27;elle n&#x27;est pas payée.</li><li>Un bouton « Relancer sur WhatsApp » dans chaque ligne, avec le message déjà écrit.</li></ul>
+<figure class="post-figure"><img src="assets/blog/schema-relances-flux.svg" alt="Le tableau, le script du matin, puis l&#x27;e-mail et le lien WhatsApp" width="640" height="330" loading="lazy"><figcaption>Le tableau, le script du matin, puis l&#x27;e-mail et le lien WhatsApp</figcaption></figure>
 <h2 id="1-preparer-le-tableau">1. Préparer le tableau</h2>
 <p>Dans Google Sheets, créez un tableau, et renommez l&#x27;onglet en bas <strong>Factures</strong>. Écrivez ces en-têtes dans la première ligne, de la colonne A à la colonne H :</p>
 <pre class="code" data-langue="texte"><code>Client | Email | Téléphone | Montant | Échéance | Statut | Dernière relance | WhatsApp</code></pre>
@@ -176,11 +181,13 @@ function relancerFactures() {
             </aside>
             <h2 class="a-lire">À lire aussi</h2>
             <div class="post-grid"><article class="post-card" data-categorie="tuto">
+                    <img class="post-cover" src="assets/blog/couverture-commandes-whatsapp-google-sheets.svg" alt="" width="1200" height="630" loading="lazy">
                     <span class="post-tag"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-code"/></svg> Tutos</span>
                     <h3><a href="blog-commandes-whatsapp-google-sheets.html">Recevoir des commandes par WhatsApp sans perdre un seul message</a></h3>
                     <p>Tuto : un formulaire sur votre site enregistre chaque commande dans Google Sheets et ouvre WhatsApp avec le résumé prêt. Code complet à copier.</p>
-                    <span class="post-meta">3 min de lecture · 5 novembre 2026</span>
+                    <span class="post-meta">4 min de lecture · 5 novembre 2026</span>
                 </article><article class="post-card" data-categorie="cas">
+                    <img class="post-cover" src="assets/blog/couverture-cas-retrait-cheques-pwa.svg" alt="" width="1200" height="630" loading="lazy">
                     <span class="post-tag"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-briefcase"/></svg> Cas pratiques</span>
                     <h3><a href="blog-cas-retrait-cheques-pwa.html">Cas pratique : suivre un retrait de chèque de bout en bout</a></h3>
                     <p>Retour d&#x27;expérience : comment une application installable sur téléphone remplace les échanges dispersés pour suivre un retrait de chèque jusqu&#x27;à la preuve.</p>

@@ -20,6 +20,12 @@ C'est la question qu'on me pose en premier, et la réponse honnête est : **il n
 
 ## Les questions à poser avant d'accepter un devis
 
+Un devis sérieux détaille au minimum ces postes, chacun avec son prix :
+
+![Les postes d'un devis détaillé : conception, développement, contenu, hébergement, formation, maintenance](assets/blog/schema-devis-postes.svg)
+
+Puis posez ces questions :
+
 - Le devis détaille-t-il chaque poste (conception, développement, hébergement, formation) ou affiche-t-il un seul total ?
 - Le nom de domaine sera-t-il **à votre nom** ? Aurez-vous les accès à l'hébergement ?
 - Le site sera-t-il utilisable sur téléphone ? C'est là que se trouvent la plupart de vos clients.

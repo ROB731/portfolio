@@ -40,6 +40,8 @@ Le client comme le coursier sont en déplacement. L'écran est conçu pour un po
 4. **La remise** : le coursier ajoute une **preuve de remise**, en photo ou en document PDF.
 5. **La trace** : tout reste consultable, avec la date de chaque étape.
 
+![Le parcours d'un retrait de chèque en cinq étapes](assets/blog/schema-cas-parcours.svg)
+
 ### WhatsApp pour rester dans les habitudes
 
 Les clients utilisent déjà WhatsApp au quotidien. L'application s'appuie donc dessus pour le contact, au lieu de leur imposer un nouvel outil de messagerie.

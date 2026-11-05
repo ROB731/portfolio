@@ -94,6 +94,9 @@ def convertir(corps):
                 bloc.append(lignes[i])
                 i += 1
             sortie.append(f'<pre class="code" data-langue="{e(langue)}"><code>{e(chr(10).join(bloc))}</code></pre>')
+        elif re.match(r'^!\[[^\]]*\]\([^)]+\)\s*$', l):
+            alt, src = re.match(r'^!\[([^\]]*)\]\(([^)]+)\)', l).groups()
+            sortie.append(figure(src, alt))
         elif l.startswith('## '):
             t = l[3:].strip()
             titres.append((slugifier(t), t))
@@ -131,6 +134,27 @@ def convertir(corps):
     return '\n'.join(sortie), titres
 
 
+def dimensions(src):
+    """Largeur et hauteur lues dans le viewBox du SVG (évite le décalage de mise en page)."""
+    try:
+        s = open(os.path.join(RACINE, src), encoding='utf-8').read(2000)
+        m = re.search(r'viewBox="0 0 (\d+) (\d+)"', s)
+        return int(m.group(1)), int(m.group(2))
+    except (OSError, AttributeError):
+        return 640, 360
+
+
+def figure(src, alt, lazy=True):
+    w, h = dimensions(src)
+    return (f'<figure class="post-figure"><img src="{e(src)}" alt="{e(alt)}" width="{w}" height="{h}"'
+            + (' loading="lazy"' if lazy else '') + f'><figcaption>{e(alt)}</figcaption></figure>')
+
+
+def couverture(p):
+    base = f"assets/blog/couverture-{p['slug']}"
+    return base + '.svg' if os.path.exists(os.path.join(RACINE, base + '.svg')) else None
+
+
 def lire_articles():
     posts = []
     for f in sorted(glob.glob(os.path.join(RACINE, 'contenu', '*.md'))):
@@ -151,7 +175,9 @@ def lire_articles():
     return sorted(posts, key=lambda p: (-int(p['date'].replace('-', '')), int(p['ordre'])))
 
 
-def entete(titre, description, canonique, jsonld, og_type='article'):
+def entete(titre, description, canonique, jsonld, og_type='article', og_image=None):
+    og_image = og_image or SITE + 'assets/photo-profil.jpg'
+    dims = '<meta property="og:image:width" content="1200">\n    <meta property="og:image:height" content="630">\n    ' if 'couverture-' in og_image else ''
     return f'''<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -164,7 +190,8 @@ def entete(titre, description, canonique, jsonld, og_type='article'):
     <meta property="og:url" content="{canonique}">
     <meta property="og:title" content="{e(titre)}">
     <meta property="og:description" content="{e(description)}">
-    <meta property="og:image" content="{SITE}assets/photo-profil.jpg">
+    <meta property="og:image" content="{og_image}">
+    {dims}<meta name="twitter:image" content="{og_image}">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:site_name" content="Herman Robe Portfolio">
     <meta name="twitter:card" content="summary_large_image">
@@ -223,7 +250,10 @@ def pied():
 
 def carte(p):
     nom, ico, _ = CATS[p['categorie']]
+    cv = couverture(p)
+    img = f'<img class="post-cover" src="{cv}" alt="" width="1200" height="630" loading="lazy">' if cv else ''
     return f'''<article class="post-card" data-categorie="{p['categorie']}">
+                    {img}
                     <span class="post-tag">{icone(ico)} {nom}</span>
                     <h3><a href="blog-{p['slug']}.html">{e(p['titre'])}</a></h3>
                     <p>{e(p['description'])}</p>
@@ -239,13 +269,15 @@ def page_article(p, posts):
     jsonld = [{
         '@context': 'https://schema.org', '@type': 'BlogPosting', 'headline': p['titre'], 'description': p['description'],
         'datePublished': p['date'], 'dateModified': p['date'], 'inLanguage': 'fr', 'url': url,
-        'mainEntityOfPage': url, 'image': SITE + 'assets/photo-profil.jpg', 'author': auteur,
+        'mainEntityOfPage': url, 'image': (SITE + couverture(p)[:-4] + '.png') if couverture(p) else SITE + 'assets/photo-profil.jpg', 'author': auteur,
         'publisher': auteur, 'articleSection': nom, 'wordCount': p['mots'],
     }, {
         '@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': [
             {'@type': 'ListItem', 'position': 1, 'name': 'Accueil', 'item': SITE},
             {'@type': 'ListItem', 'position': 2, 'name': 'Blog', 'item': SITE + 'blog.html'},
             {'@type': 'ListItem', 'position': 3, 'name': p['titre'], 'item': url}]}]
+    cv = couverture(p)
+    hero = f'<figure class="post-hero"><img src="{cv}" alt="Illustration : {e(p["titre"])}" width="1200" height="630"></figure>' if cv else ''
     toc = ''
     if len(p['titres']) >= 3:
         toc = '<nav class="toc" aria-label="Sommaire"><strong>Dans cet article</strong><ol>' + ''.join(
@@ -261,6 +293,7 @@ def page_article(p, posts):
             <span class="post-tag">{icone(ico)} {nom}</span>
             <h1 class="post-title">{e(p['titre'])}</h1>
             <p class="post-meta">Par Herman Robe · {date_fr(p['date'])} · {p['minutes']} min de lecture</p>
+            {hero}
             {toc}
             <div class="prose">
 {p['html']}
@@ -276,7 +309,8 @@ def page_article(p, posts):
     </article>
     </main>
 '''
-    return entete(titre, p['description'], url, jsonld) + corps + pied()
+    og = (SITE + cv[:-4] + '.png') if cv else None
+    return entete(titre, p['description'], url, jsonld, og_image=og) + corps + pied()
 
 
 def page_liste(posts):

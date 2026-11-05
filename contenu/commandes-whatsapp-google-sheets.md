@@ -24,6 +24,8 @@ Prenez dix minutes pour créer ces quatre éléments : c'est la base.
 
 L'idée : le client remplit un petit formulaire sur votre site. En un clic, deux choses se passent : **la commande est enregistrée dans un tableau Google Sheets**, et **WhatsApp s'ouvre avec le résumé prêt à envoyer**. Vous avez une trace écrite, même si le client oublie d'envoyer le message.
 
+![Le formulaire alimente le tableau Google Sheets et ouvre WhatsApp](assets/blog/schema-commandes-flux.svg)
+
 ### Le tableau
 
 Créez un Google Sheets avec un onglet **Commandes** et ces en-têtes en ligne 1 :

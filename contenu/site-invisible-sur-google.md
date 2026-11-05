@@ -9,6 +9,8 @@ message: Bonjour Herman, mon site n'apparaît pas sur Google. Voici son adresse 
 ---
 Vous avez un site, vous le cherchez sur Google, et il n'y est pas. Avant de payer un « référencement », faites ces sept vérifications. Les trois premières règlent la plupart des cas.
 
+![Les 7 vérifications dans l'ordre](assets/blog/schema-google-7-verifications.svg)
+
 ## 1. Vérifier si le site est connu de Google
 
 Dans Google, tapez `site:votredomaine.com` (en remplaçant par votre adresse). Si Google affiche des pages, votre site est indexé : le problème est ailleurs (point 4 et suivants). Si Google n'affiche **rien**, il ne connaît pas votre site : passez aux points 2 et 3.
