@@ -224,5 +224,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     skillFills.forEach(fill => skillObserver.observe(fill));
 
-    console.log('🚀 Portfolio Herman Robe — Initialisé avec succès');
+    console.log('Portfolio Herman Robe : initialisé');
 });
