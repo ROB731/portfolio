@@ -266,6 +266,11 @@ def entete(titre, description, canonique, jsonld, og_type='article', og_image=No
                 <li><a href="index.html#projects" class="nav-link">Projets</a></li>
                 <li><a href="blog.html" class="nav-link active">Blog</a></li>
                 <li><a href="index.html#contact" class="nav-link contact-link">Contact</a></li>
+                <li class="nav-extras">
+                        <a class="btn btn-primary btn-full" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20je%20souhaite%20prendre%20rendez-vous.%20Mes%20disponibilit%C3%A9s%20%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-calendar"/></svg> Prendre rendez-vous</a>
+                        <a class="btn btn-outline btn-full" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg> Écrire sur WhatsApp</a>
+                        <p class="nav-extras-info">Abidjan, Marcory · 01 72 52 77 65</p>
+                    </li>
             </ul>
         </div>
     </nav>
@@ -291,6 +296,7 @@ def pied():
     </footer>
 
     <a class="fab-whatsapp" href="{wa('Bonjour Herman, ')}" target="_blank" rel="noopener" aria-label="Écrire à Herman sur WhatsApp">{icone('whatsapp')}</a>
+    <script src="js/menu.js" defer></script>
     <script src="js/blog.js" defer></script>
 </body>
 </html>

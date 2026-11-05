@@ -19,25 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================
-    // 2. MOBILE NAV TOGGLE
-    // ==========================================
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-
-    navToggle.addEventListener('click', () => {
-        navToggle.classList.toggle('active');
-        navLinks.classList.toggle('open');
-    });
-
-    // Close nav on link click
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            navToggle.classList.remove('active');
-            navLinks.classList.remove('open');
-        });
-    });
-
-    // ==========================================
     // 3. ACTIVE NAV LINK (scroll spy)
     // ==========================================
     const sections = document.querySelectorAll('section[id]');
@@ -161,6 +142,10 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.classList.add('active');
 
             const filter = btn.getAttribute('data-filter');
+            const grille = document.querySelector('.projects-grid');
+            if (grille) grille.classList.add('tout');
+            const plus = document.getElementById('projectsMore');
+            if (plus) plus.hidden = true;
 
             projectCards.forEach(card => {
                 const categories = card.getAttribute('data-category');
@@ -225,4 +210,18 @@ document.addEventListener('DOMContentLoaded', () => {
     skillFills.forEach(fill => skillObserver.observe(fill));
 
     console.log('Portfolio Herman Robe : initialisé');
+});
+
+
+// Projets : sur téléphone, on en montre quatre ; le bouton affiche le reste
+document.addEventListener('DOMContentLoaded', () => {
+    const plus = document.getElementById('projectsMore');
+    const grille = document.querySelector('.projects-grid');
+    if (plus && grille) {
+        plus.addEventListener('click', () => { grille.classList.add('tout'); plus.hidden = true; });
+    }
+    // Expérience : détail ouvert d'office sur grand écran, replié sur téléphone
+    if (window.matchMedia && window.matchMedia('(min-width: 769px)').matches) {
+        document.querySelectorAll('details[data-bureau-ouvert]').forEach((d) => { d.open = true; });
+    }
 });

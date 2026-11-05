@@ -1,14 +1,5 @@
 /* Blog : menu mobile et filtre par catégorie. Aucune dépendance. */
 document.addEventListener('DOMContentLoaded', () => {
-    const toggle = document.getElementById('navToggle');
-    const liens = document.getElementById('navLinks');
-    if (toggle && liens) {
-        toggle.addEventListener('click', () => {
-            toggle.classList.toggle('active');
-            liens.classList.toggle('open');
-        });
-    }
-
     const boutons = document.querySelectorAll('[data-filtre]');
     const blocs = document.querySelectorAll('.blog-categorie');
     boutons.forEach((b) => {

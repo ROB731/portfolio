@@ -13,7 +13,7 @@
     --bg-card-hover: #222240;
     --text-primary: #f0f0f5;
     --text-secondary: #a0a0b8;
-    --text-muted: #6b6b80;
+    --text-muted: #9a9ab8;
     --accent: #6C63FF;
     --accent-light: #8B83FF;
     --accent-glow: rgba(108, 99, 255, 0.25);
@@ -1804,3 +1804,73 @@ ul { list-style: none; }
 .suite-texte em .icon { width: 16px; height: 16px; }
 @media (min-width: 40rem) { .suite-carte { flex-direction: row; } .suite-carte img { width: 42%; aspect-ratio: auto; } }
 @media (prefers-reduced-motion: reduce) { .suite-carte { transition: none; } }
+
+
+/* ===== Réforme du 2026-11-05 : menu plein écran, accueil compact, page plus courte ===== */
+.progression { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 1100; background: var(--accent-gradient); transform: scaleX(0); transform-origin: left; pointer-events: none; }
+.nav-extras { display: none; }
+.projects-more { display: none; }
+.timeline-more summary { display: none; }
+
+@media (max-width: 768px) {
+    .navbar, .navbar.scrolled { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(10, 10, 15, .96); }
+    body.menu-ouvert { overflow: hidden; }
+    body.menu-ouvert .fab-whatsapp { display: none; }
+
+    /* Le menu : un écran entier, de grands liens numérotés, deux boutons d'action */
+    .navbar .nav-links {
+        position: fixed; top: var(--nav-height); left: 0; right: 0;
+        height: calc(100vh - var(--nav-height)); height: calc(100dvh - var(--nav-height));
+        display: flex; flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 0;
+        padding: 8px 24px calc(28px + env(safe-area-inset-bottom));
+        overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
+        background: radial-gradient(ellipse at 90% 0%, rgba(108, 99, 255, .24), transparent 55%), radial-gradient(ellipse at 0% 100%, rgba(255, 101, 132, .16), transparent 55%), #0a0a0f;
+        border-bottom: 0; backdrop-filter: none; counter-reset: nav;
+        opacity: 0; visibility: hidden; transform: translateY(-12px);
+        transition: opacity .25s ease, transform .25s ease, visibility 0s linear .25s;
+    }
+    .navbar .nav-links.open { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+    .navbar .nav-links > li { list-style: none; width: 100%; }
+    .navbar .nav-link, .navbar .nav-link.contact-link {
+        display: flex; align-items: center; gap: 16px; width: 100%; min-height: 54px; padding: 0 4px;
+        font-size: 1.3rem; font-weight: 600; text-align: left; color: var(--text-primary) !important;
+        background: none !important; border-radius: 0; border-bottom: 1px solid rgba(255, 255, 255, .08); box-shadow: none; transform: none;
+    }
+    .navbar .nav-link::before { counter-increment: nav; content: counter(nav, decimal-leading-zero); min-width: 26px; font-family: var(--font-mono); font-size: .78rem; font-weight: 500; color: var(--accent-light); }
+    .navbar .nav-link.active { color: var(--accent-light) !important; }
+    .navbar .nav-links.open .nav-link { animation: nav-entree .45s cubic-bezier(.2, .8, .2, 1) both; }
+    .navbar .nav-links.open > li:nth-child(1) .nav-link { animation-delay: .03s; }
+    .navbar .nav-links.open > li:nth-child(2) .nav-link { animation-delay: .06s; }
+    .navbar .nav-links.open > li:nth-child(3) .nav-link { animation-delay: .09s; }
+    .navbar .nav-links.open > li:nth-child(4) .nav-link { animation-delay: .12s; }
+    .navbar .nav-links.open > li:nth-child(5) .nav-link { animation-delay: .15s; }
+    .navbar .nav-links.open > li:nth-child(6) .nav-link { animation-delay: .18s; }
+    .navbar .nav-links.open > li:nth-child(7) .nav-link { animation-delay: .21s; }
+    .navbar .nav-links.open > li:nth-child(8) .nav-link { animation-delay: .24s; }
+    @keyframes nav-entree { from { opacity: 0; transform: translateX(-14px); } to { opacity: 1; transform: none; } }
+    .nav-extras { display: flex; flex-direction: column; gap: 12px; margin-top: auto; padding-top: 28px; }
+    .nav-extras .btn { justify-content: center; min-height: 52px; }
+    .nav-extras-info { margin: 4px 0 0; text-align: center; font-size: .85rem; color: var(--text-muted); }
+    .nav-toggle { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin-right: -8px; }
+
+    /* Accueil : le message et le bouton d'action tiennent dans le premier écran */
+    .hero { min-height: auto; padding-bottom: 40px; }
+    .hero-container { gap: 18px; }
+    .hero-visual { gap: 12px; }
+    .hero-img-wrapper { width: 124px; height: 124px; }
+    .hero-tech-badges { display: none; }
+    .hero-status { display: none; }
+    .scroll-indicator { display: none; }
+
+    /* Projets : quatre d'abord, le reste sur demande */
+    .projects-grid:not(.tout) .project-card:nth-of-type(n+5) { display: none; }
+    .projects-more { display: block; margin-top: 24px; text-align: center; }
+    .projects-more .btn { width: 100%; justify-content: center; min-height: 52px; }
+
+    /* Expérience : le poste actuel est détaillé, les autres se déplient */
+    .timeline-more summary { display: inline-flex; align-items: center; min-height: 44px; color: var(--accent-light); font-weight: 600; cursor: pointer; list-style: none; }
+    .timeline-more summary::-webkit-details-marker { display: none; }
+    .timeline-more summary::after { content: ""; width: 8px; height: 8px; margin-left: 10px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); transition: transform .2s; }
+    .timeline-more[open] summary::after { transform: rotate(-135deg); }
+}
+@media (prefers-reduced-motion: reduce) { .navbar .nav-links, .navbar .nav-links.open .nav-link { animation: none; transition: none; } }

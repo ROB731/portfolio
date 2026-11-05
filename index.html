@@ -80,6 +80,11 @@
                 <li><a href="#experience" class="nav-link">Expérience</a></li>
                 <li><a href="blog.html" class="nav-link">Blog</a></li>
                 <li><a href="#contact" class="nav-link contact-link">Contact</a></li>
+            <li class="nav-extras">
+                    <a class="btn btn-primary btn-full" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20je%20souhaite%20prendre%20rendez-vous.%20Mes%20disponibilit%C3%A9s%20%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-calendar"/></svg> Prendre rendez-vous</a>
+                    <a class="btn btn-outline btn-full" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg> Écrire sur WhatsApp</a>
+                    <p class="nav-extras-info">Abidjan, Marcory · 01 72 52 77 65</p>
+                </li>
             </ul>
         </div>
     </nav>
@@ -108,8 +113,8 @@
                         Voir mes projets
                     </a>
                     <a href="#contact" class="btn btn-outline">
-                        <svg class="icon"><use href="assets/icons.svg#icon-mail"/></svg>
-                        Me contacter
+                        <svg class="icon"><use href="assets/icons.svg#icon-calendar"/></svg>
+                        Prendre rendez-vous
                     </a>
                 </div>
                 <div class="hero-stats">
@@ -428,6 +433,7 @@
                     </div>
                 </div>
             </div>
+            <p class="projects-more"><button type="button" class="btn btn-outline" id="projectsMore">Voir les 10 projets</button></p>
         </div>
     </section>
 
@@ -487,7 +493,7 @@
                         <div class="timeline-header"><span class="timeline-date">Aujourd'hui</span></div>
                         <h3 class="timeline-title">Fondateur · Agents IA, plateformes web et support IT</h3>
                         <h4 class="timeline-company"><a href="https://ea-services.net" target="_blank" rel="noopener">EA-SERVICES</a> · Abidjan</h4>
-                        <ul class="timeline-desc"><li>Conception d'<strong>agents IA</strong> et de plateformes hébergés sur mon propre <strong>VPS</strong> : <strong>SFB</strong> (prospection commerciale, gestion de pages Facebook, rôle de community manager) et <strong>EMPLOI.EA</strong> (CV, lettres, offres, candidatures).</li><li>Sites vitrines et sites web pour des clients (ex. Hôtel Hibiscus Marcory).</li><li><strong>Support IT</strong> : installation de systèmes, d'Office et de logiciels, dépannage réseau (LAN), scripts CMD/Batch.</li></ul>
+                        <details class="timeline-more" data-bureau-ouvert><summary>Voir le détail</summary><ul class="timeline-desc"><li>Conception d'<strong>agents IA</strong> et de plateformes hébergés sur mon propre <strong>VPS</strong> : <strong>SFB</strong> (prospection commerciale, gestion de pages Facebook, rôle de community manager) et <strong>EMPLOI.EA</strong> (CV, lettres, offres, candidatures).</li><li>Sites vitrines et sites web pour des clients (ex. Hôtel Hibiscus Marcory).</li><li><strong>Support IT</strong> : installation de systèmes, d'Office et de logiciels, dépannage réseau (LAN), scripts CMD/Batch.</li></ul></details>
                     </div>
                 </div>
                 <div class="timeline-item" data-reveal>
@@ -496,7 +502,7 @@
                         <div class="timeline-header"><span class="timeline-date">2023 — 2024</span></div>
                         <h3 class="timeline-title">Formateur en développement web &amp; applications web</h3>
                         <h4 class="timeline-company">DKER Technology · Abidjan, Angré Star 5</h4>
-                        <ul class="timeline-desc"><li>Formation d'étudiants de deuxième année à la conception de sites et d'applications web (<strong>HTML5, CSS3, JavaScript, PHP</strong>).</li><li>Formation de professionnels aux outils bureautiques et au numérique.</li><li>Exercices pratiques, évaluation par projets, suivi personnalisé, débogage.</li></ul>
+                        <details class="timeline-more" data-bureau-ouvert><summary>Voir le détail</summary><ul class="timeline-desc"><li>Formation d'étudiants de deuxième année à la conception de sites et d'applications web (<strong>HTML5, CSS3, JavaScript, PHP</strong>).</li><li>Formation de professionnels aux outils bureautiques et au numérique.</li><li>Exercices pratiques, évaluation par projets, suivi personnalisé, débogage.</li></ul></details>
                     </div>
                 </div>
                 <div class="timeline-item" data-reveal>
@@ -505,7 +511,7 @@
                         <div class="timeline-header"><span class="timeline-date">2021 — 2022</span></div>
                         <h3 class="timeline-title">Gérant de centre de services numériques</h3>
                         <h4 class="timeline-company">Santa Maria · Abidjan, Angré Extension</h4>
-                        <ul class="timeline-desc"><li>Gestion du cybercafé : accueil, postes informatiques, connexion Internet, paiements, recettes et consommables ; fidélisation de la clientèle.</li><li>Saisie, impression, numérisation, reliure ; démarches en ligne ; installation de logiciels, dépannage des postes et du réseau local (LAN).</li></ul>
+                        <details class="timeline-more" data-bureau-ouvert><summary>Voir le détail</summary><ul class="timeline-desc"><li>Gestion du cybercafé : accueil, postes informatiques, connexion Internet, paiements, recettes et consommables ; fidélisation de la clientèle.</li><li>Saisie, impression, numérisation, reliure ; démarches en ligne ; installation de logiciels, dépannage des postes et du réseau local (LAN).</li></ul></details>
                     </div>
                 </div>
                 </div>
@@ -653,6 +659,7 @@
 
     <script src="js/lib/reveal.js" defer></script>
     <script src="js/lib/carousel.js" defer></script>
+    <script src="js/menu.js" defer></script>
     <script src="js/main.js" defer></script>
 </body>
 </html>
