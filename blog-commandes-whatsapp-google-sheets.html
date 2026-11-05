@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commandes par WhatsApp sans rien perdre | Herman Robe</title>
+    <meta name="description" content="Tuto : un formulaire sur votre site enregistre chaque commande dans Google Sheets et ouvre WhatsApp avec le résumé prêt. Code complet à copier.">
+    <link rel="canonical" href="https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-commandes-whatsapp-google-sheets.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-commandes-whatsapp-google-sheets.html">
+    <meta property="og:title" content="Commandes par WhatsApp sans rien perdre | Herman Robe">
+    <meta property="og:description" content="Tuto : un formulaire sur votre site enregistre chaque commande dans Google Sheets et ouvre WhatsApp avec le résumé prêt. Code complet à copier.">
+    <meta property="og:image" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/photo-profil.jpg">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Herman Robe Portfolio">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="assets/photo-profil.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Recevoir des commandes par WhatsApp sans perdre un seul message",
+    "description": "Tuto : un formulaire sur votre site enregistre chaque commande dans Google Sheets et ouvre WhatsApp avec le résumé prêt. Code complet à copier.",
+    "datePublished": "2026-11-05",
+    "dateModified": "2026-11-05",
+    "inLanguage": "fr",
+    "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-commandes-whatsapp-google-sheets.html",
+    "mainEntityOfPage": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-commandes-whatsapp-google-sheets.html",
+    "image": "https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/photo-profil.jpg",
+    "author": {
+      "@type": "Person",
+      "name": "Herman Robe",
+      "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe",
+      "jobTitle": "Concepteur-Développeur Full-Stack"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Herman Robe",
+      "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe",
+      "jobTitle": "Concepteur-Développeur Full-Stack"
+    },
+    "articleSection": "Tutos",
+    "wordCount": 616
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": "https://sites-sfb.ea-services.net/portfolio-herman-robe/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Recevoir des commandes par WhatsApp sans perdre un seul message",
+        "item": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-commandes-whatsapp-google-sheets.html"
+      }
+    ]
+  }
+]
+    </script>
+</head>
+<body class="page-blog">
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo" aria-label="Accueil du portfolio">
+                <span class="logo-bracket">&lt;</span><span class="logo-name">HR</span><span class="logo-bracket"> /&gt;</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projets</a></li>
+                <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-link contact-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+    <article class="post section">
+        <div class="container post-container">
+            <p class="fil-ariane"><a href="index.html">Accueil</a> / <a href="blog.html">Blog</a> / Tutos</p>
+            <span class="post-tag"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-code"/></svg> Tutos</span>
+            <h1 class="post-title">Recevoir des commandes par WhatsApp sans perdre un seul message</h1>
+            <p class="post-meta">Par Herman Robe · 5 novembre 2026 · 3 min de lecture</p>
+            <nav class="toc" aria-label="Sommaire"><strong>Dans cet article</strong><ol><li><a href="#1-organiser-whatsapp-business">1. Organiser WhatsApp Business</a></li><li><a href="#2-un-formulaire-qui-garde-la-trace">2. Un formulaire qui garde la trace</a></li><li><a href="#3-suivre-les-commandes">3. Suivre les commandes</a></li><li><a href="#les-limites-a-connaitre">Les limites à connaître</a></li></ol></nav>
+            <div class="prose">
+<p>Beaucoup de commerces vendent par WhatsApp : le client écrit, on répond, on note la commande quelque part. Puis les messages s&#x27;accumulent, une commande se perd, un client attend. Voici une méthode en deux temps : <strong>organiser WhatsApp Business</strong>, puis <strong>garder une trace de chaque commande</strong> dans un tableau.</p>
+<h2 id="1-organiser-whatsapp-business">1. Organiser WhatsApp Business</h2>
+<p>L&#x27;application WhatsApp Business (gratuite) propose des outils qui évitent déjà beaucoup d&#x27;erreurs :</p>
+<ul><li><strong>Catalogue</strong> : vos produits avec photo, prix et description. Le client les voit sans vous demander.</li><li><strong>Message d&#x27;accueil et d&#x27;absence</strong> : une réponse automatique en dehors de vos horaires.</li><li><strong>Réponses rapides</strong> : vous tapez un raccourci, le message complet apparaît (adresse, horaires, modes de paiement).</li><li><strong>Étiquettes</strong> : par exemple « Nouvelle commande », « À livrer », « Livré ». Une conversation = une étiquette, et vous voyez en un coup d&#x27;œil ce qui reste à faire.</li></ul>
+<p>Prenez dix minutes pour créer ces quatre éléments : c&#x27;est la base.</p>
+<h2 id="2-un-formulaire-qui-garde-la-trace">2. Un formulaire qui garde la trace</h2>
+<p>L&#x27;idée : le client remplit un petit formulaire sur votre site. En un clic, deux choses se passent : <strong>la commande est enregistrée dans un tableau Google Sheets</strong>, et <strong>WhatsApp s&#x27;ouvre avec le résumé prêt à envoyer</strong>. Vous avez une trace écrite, même si le client oublie d&#x27;envoyer le message.</p>
+<h3>Le tableau</h3>
+<p>Créez un Google Sheets avec un onglet <strong>Commandes</strong> et ces en-têtes en ligne 1 :</p>
+<pre class="code" data-langue="texte"><code>Date | Nom | Produit | Quantité | Quartier | Statut</code></pre>
+<h3>Le code côté Google</h3>
+<p>Dans le tableau : <strong>Extensions &gt; Apps Script</strong>. Collez :</p>
+<pre class="code" data-langue="javascript"><code>function doPost(e) {
+  const feuille = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(&#x27;Commandes&#x27;);
+  const d = JSON.parse(e.postData.contents);
+  feuille.appendRow([new Date(), d.nom, d.produit, d.quantite, d.quartier, &#x27;Nouvelle&#x27;]);
+  return ContentService.createTextOutput(&#x27;ok&#x27;);
+}</code></pre>
+<p>Cliquez sur <strong>Déployer &gt; Nouveau déploiement</strong>, type <strong>Application Web</strong>. Réglez « Exécuter en tant que » sur <strong>Moi</strong> et « Qui a accès » sur <strong>Tout le monde</strong>. Copiez l&#x27;adresse (URL) qui se termine par <code>/exec</code>.</p>
+<h3>Le formulaire sur votre site</h3>
+<pre class="code" data-langue="html"><code>&lt;form id=&quot;commande&quot;&gt;
+  &lt;input name=&quot;nom&quot; placeholder=&quot;Votre nom&quot; required&gt;
+  &lt;input name=&quot;produit&quot; placeholder=&quot;Produit&quot; required&gt;
+  &lt;input name=&quot;quantite&quot; type=&quot;number&quot; min=&quot;1&quot; value=&quot;1&quot; required&gt;
+  &lt;input name=&quot;quartier&quot; placeholder=&quot;Quartier de livraison&quot; required&gt;
+  &lt;button type=&quot;submit&quot;&gt;Commander sur WhatsApp&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+  const URL_TABLEAU = &#x27;COLLEZ_ICI_VOTRE_ADRESSE_EXEC&#x27;;
+  const NUMERO = &#x27;2250172527765&#x27;; // votre numéro, sans + ni espace
+
+  document.getElementById(&#x27;commande&#x27;).addEventListener(&#x27;submit&#x27;, (e) =&gt; {
+    e.preventDefault();
+    const d = Object.fromEntries(new FormData(e.target));
+
+    // 1. on garde la trace dans le tableau
+    fetch(URL_TABLEAU, { method: &#x27;POST&#x27;, mode: &#x27;no-cors&#x27;, body: JSON.stringify(d) });
+
+    // 2. on ouvre WhatsApp avec le résumé
+    const texte = &#x27;Bonjour, je commande : &#x27; + d.produit + &#x27; x&#x27; + d.quantite
+      + &#x27;\nNom : &#x27; + d.nom + &#x27;\nQuartier : &#x27; + d.quartier;
+    window.open(&#x27;https://wa.me/&#x27; + NUMERO + &#x27;?text=&#x27; + encodeURIComponent(texte), &#x27;_blank&#x27;);
+  });
+&lt;/script&gt;</code></pre>
+<p>Remplacez <code>COLLEZ_ICI_VOTRE_ADRESSE_EXEC</code> par l&#x27;adresse copiée plus haut, et le numéro par le vôtre (avec le 225 devant, et les 10 chiffres).</p>
+<h2 id="3-suivre-les-commandes">3. Suivre les commandes</h2>
+<p>Chaque ligne arrive avec le statut <strong>Nouvelle</strong>. Quand vous avez livré, changez-le en <strong>Livrée</strong>. Un filtre sur la colonne Statut vous montre ce qui reste à faire. Vous pouvez aussi ajouter une colonne Téléphone ou Montant selon vos besoins.</p>
+<h2 id="les-limites-a-connaitre">Les limites à connaître</h2>
+<ul><li>Le formulaire est <strong>public</strong> : n&#x27;importe qui peut y écrire. Pour un petit commerce, c&#x27;est suffisant, mais surveillez le tableau.</li><li><strong>Aucune donnée sensible</strong> ne doit y passer : pas de numéro de carte, pas de code Mobile Money.</li><li>Cette méthode convient aux volumes modestes. Quand les commandes deviennent nombreuses, ou qu&#x27;il faut gérer le stock et les paiements, un vrai outil de commande devient plus sûr.</li></ul>
+<aside class="callout"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-lightbulb"/></svg><p>Le but n&#x27;est pas de remplacer WhatsApp, que vos clients aiment, mais de ne plus dépendre de votre mémoire pour savoir qui a commandé quoi.</p></aside>
+<p>Si vous voulez cette solution adaptée à votre commerce, avec votre catalogue et votre façon de livrer, écrivez-moi.</p>
+            </div>
+            <aside class="post-cta">
+                <h2>Une question sur ce sujet ?</h2>
+                <p>Écrivez-moi : je réponds sur WhatsApp. Dites-moi où vous en êtes, je vous dirai ce que je ferais à votre place.</p>
+                <a class="btn btn-primary" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20je%20voudrais%20mieux%20g%C3%A9rer%20les%20commandes%20re%C3%A7ues%20par%20WhatsApp.%20Mon%20activit%C3%A9%20%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg> Écrire sur WhatsApp</a>
+            </aside>
+            <h2 class="a-lire">À lire aussi</h2>
+            <div class="post-grid"><article class="post-card" data-categorie="tuto">
+                    <span class="post-tag"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-code"/></svg> Tutos</span>
+                    <h3><a href="blog-relances-factures-google-sheets.html">Relancer automatiquement les factures impayées avec Google Sheets</a></h3>
+                    <p>Tuto pas à pas : un tableau Google Sheets et dix lignes de code envoient chaque matin les relances de factures en retard, par e-mail et WhatsApp.</p>
+                    <span class="post-meta">4 min de lecture · 5 novembre 2026</span>
+                </article><article class="post-card" data-categorie="cas">
+                    <span class="post-tag"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-briefcase"/></svg> Cas pratiques</span>
+                    <h3><a href="blog-cas-retrait-cheques-pwa.html">Cas pratique : suivre un retrait de chèque de bout en bout</a></h3>
+                    <p>Retour d&#x27;expérience : comment une application installable sur téléphone remplace les échanges dispersés pour suivre un retrait de chèque jusqu&#x27;à la preuve.</p>
+                    <span class="post-meta">3 min de lecture · 5 novembre 2026</span>
+                </article></div>
+        </div>
+    </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand"><span class="logo-bracket">&lt;</span><span class="logo-name">HR</span><span class="logo-bracket"> /&gt;</span></div>
+                <p class="footer-tagline">Concepteur-Développeur Full-Stack — Abidjan · <a href="https://ea-services.net">EA-SERVICES</a></p>
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="index.html#projects">Projets</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                <p class="footer-copy">© 2026 Herman Robe. Conçu à Abidjan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a class="fab-whatsapp" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20" target="_blank" rel="noopener" aria-label="Écrire à Herman sur WhatsApp"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg></a>
+    <script src="js/blog.js" defer></script>
+</body>
+</html>

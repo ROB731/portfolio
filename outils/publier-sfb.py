@@ -15,7 +15,14 @@ def call(method,path,body=None):
         with urllib.request.urlopen(r,timeout=60) as x: return x.status,x.read()
     except urllib.error.HTTPError as e: return e.code,e.read()[:200]
 R='/opt/portfolio/'
-chemins=['index.html','css/style.css','js/main.js','js/lib/reveal.js','js/lib/carousel.js','assets/icons.svg','assets/photo-profil.jpg','assets/Logo_IRN.png']+sorted('assets/projets/'+f for f in os.listdir(R+'assets/projets'))
+EXCLUS = ('.git', 'outils', 'contenu', 'README.md', '.gitignore')
+chemins = sorted(
+    os.path.relpath(os.path.join(d, f), R).replace(os.sep, '/')
+    for d, dossiers, fichiers in os.walk(R)
+    if not any(x in os.path.relpath(d, R).split(os.sep) for x in EXCLUS)
+    for f in fichiers
+    if f not in EXCLUS and os.path.splitext(f)[1] in ('.html', '.css', '.js', '.svg', '.jpg', '.png')
+)
 mimes={'.html':'text/html','.css':'text/css','.js':'application/javascript','.svg':'image/svg+xml','.jpg':'image/jpeg','.png':'image/png'}
 st,b=call('GET','project_files?project_id=eq.%s&select=id,path'%PID); existants={x['path']:x['id'] for x in json.loads(b)}
 now=datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None).isoformat()+'+00:00'; total=0

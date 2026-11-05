@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relances de factures avec Google Sheets | Herman Robe</title>
+    <meta name="description" content="Tuto pas à pas : un tableau Google Sheets et dix lignes de code envoient chaque matin les relances de factures en retard, par e-mail et WhatsApp.">
+    <link rel="canonical" href="https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-relances-factures-google-sheets.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-relances-factures-google-sheets.html">
+    <meta property="og:title" content="Relances de factures avec Google Sheets | Herman Robe">
+    <meta property="og:description" content="Tuto pas à pas : un tableau Google Sheets et dix lignes de code envoient chaque matin les relances de factures en retard, par e-mail et WhatsApp.">
+    <meta property="og:image" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/photo-profil.jpg">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Herman Robe Portfolio">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="assets/photo-profil.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Relancer automatiquement les factures impayées avec Google Sheets",
+    "description": "Tuto pas à pas : un tableau Google Sheets et dix lignes de code envoient chaque matin les relances de factures en retard, par e-mail et WhatsApp.",
+    "datePublished": "2026-11-05",
+    "dateModified": "2026-11-05",
+    "inLanguage": "fr",
+    "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-relances-factures-google-sheets.html",
+    "mainEntityOfPage": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-relances-factures-google-sheets.html",
+    "image": "https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/photo-profil.jpg",
+    "author": {
+      "@type": "Person",
+      "name": "Herman Robe",
+      "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe",
+      "jobTitle": "Concepteur-Développeur Full-Stack"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Herman Robe",
+      "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe",
+      "jobTitle": "Concepteur-Développeur Full-Stack"
+    },
+    "articleSection": "Tutos",
+    "wordCount": 769
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": "https://sites-sfb.ea-services.net/portfolio-herman-robe/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Relancer automatiquement les factures impayées avec Google Sheets",
+        "item": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-relances-factures-google-sheets.html"
+      }
+    ]
+  }
+]
+    </script>
+</head>
+<body class="page-blog">
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo" aria-label="Accueil du portfolio">
+                <span class="logo-bracket">&lt;</span><span class="logo-name">HR</span><span class="logo-bracket"> /&gt;</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projets</a></li>
+                <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-link contact-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+    <article class="post section">
+        <div class="container post-container">
+            <p class="fil-ariane"><a href="index.html">Accueil</a> / <a href="blog.html">Blog</a> / Tutos</p>
+            <span class="post-tag"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-code"/></svg> Tutos</span>
+            <h1 class="post-title">Relancer automatiquement les factures impayées avec Google Sheets</h1>
+            <p class="post-meta">Par Herman Robe · 5 novembre 2026 · 4 min de lecture</p>
+            <nav class="toc" aria-label="Sommaire"><strong>Dans cet article</strong><ol><li><a href="#ce-que-vous-allez-obtenir">Ce que vous allez obtenir</a></li><li><a href="#1-preparer-le-tableau">1. Préparer le tableau</a></li><li><a href="#2-ajouter-le-code">2. Ajouter le code</a></li><li><a href="#3-autoriser-et-tester">3. Autoriser et tester</a></li><li><a href="#4-le-faire-tourner-tout-seul">4. Le faire tourner tout seul</a></li><li><a href="#5-le-bouton-whatsapp">5. Le bouton WhatsApp</a></li><li><a href="#les-limites-a-connaitre">Les limites à connaître</a></li></ol></nav>
+            <div class="prose">
+<p>Relancer les clients qui n&#x27;ont pas payé est utile, mais personne n&#x27;aime le faire, alors on le repousse. Ce tuto met en place un tableau qui <strong>le fait à votre place</strong> : chaque matin, il repère les factures en retard et envoie un rappel poli. Il faut un compte Google, un tableau, et dix minutes. Aucune connaissance en programmation n&#x27;est nécessaire : vous copiez le code.</p>
+<h2 id="ce-que-vous-allez-obtenir">Ce que vous allez obtenir</h2>
+<ul><li>Un tableau de suivi de vos factures.</li><li>Un e-mail de rappel envoyé automatiquement quand une facture est en retard, puis répété tous les 7 jours tant qu&#x27;elle n&#x27;est pas payée.</li><li>Un bouton « Relancer sur WhatsApp » dans chaque ligne, avec le message déjà écrit.</li></ul>
+<h2 id="1-preparer-le-tableau">1. Préparer le tableau</h2>
+<p>Dans Google Sheets, créez un tableau, et renommez l&#x27;onglet en bas <strong>Factures</strong>. Écrivez ces en-têtes dans la première ligne, de la colonne A à la colonne H :</p>
+<pre class="code" data-langue="texte"><code>Client | Email | Téléphone | Montant | Échéance | Statut | Dernière relance | WhatsApp</code></pre>
+<p>Remplissez ensuite une ligne par facture. Pour la colonne <strong>Statut</strong>, écrivez <code>À payer</code> ou <code>Payée</code>. Pour <strong>Échéance</strong>, saisissez une vraie date (jj/mm/aaaa). Pour <strong>Téléphone</strong>, écrivez les 10 chiffres sans espace (par exemple <code>0172527765</code>).</p>
+<h2 id="2-ajouter-le-code">2. Ajouter le code</h2>
+<p>Dans le menu, cliquez sur <strong>Extensions &gt; Apps Script</strong>. Effacez ce qui s&#x27;y trouve et collez :</p>
+<pre class="code" data-langue="javascript"><code>const FEUILLE = &#x27;Factures&#x27;;
+const JOURS_ENTRE_RELANCES = 7;
+
+function relancerFactures() {
+  const feuille = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(FEUILLE);
+  const lignes = feuille.getDataRange().getValues();
+  const aujourdhui = new Date();
+  aujourdhui.setHours(0, 0, 0, 0);
+  let envoyees = 0;
+
+  for (let i = 1; i &lt; lignes.length; i++) {
+    const [client, email, , montant, echeance, statut, derniere] = lignes[i];
+
+    if (!email || statut === &#x27;Payée&#x27;) continue;     // rien à relancer
+    if (!(echeance instanceof Date)) continue;       // date invalide
+    if (echeance &gt;= aujourdhui) continue;            // pas encore en retard
+
+    if (derniere instanceof Date) {
+      const jours = (aujourdhui - derniere) / (1000 * 60 * 60 * 24);
+      if (jours &lt; JOURS_ENTRE_RELANCES) continue;    // relancé récemment
+    }
+
+    MailApp.sendEmail({
+      to: email,
+      subject: &#x27;Rappel : facture en attente de règlement&#x27;,
+      body: &#x27;Bonjour &#x27; + client + &#x27;,\n\n&#x27;
+          + &#x27;Sauf erreur de notre part, votre facture de &#x27; + montant + &#x27; FCFA, &#x27;
+          + &#x27;échue le &#x27; + Utilities.formatDate(echeance, &#x27;Africa/Abidjan&#x27;, &#x27;dd/MM/yyyy&#x27;)
+          + &#x27;, est toujours en attente de règlement.\n\n&#x27;
+          + &#x27;Si le paiement est déjà parti, merci de ne pas tenir compte de ce message.\n\n&#x27;
+          + &#x27;Cordialement&#x27;
+    });
+
+    feuille.getRange(i + 1, 7).setValue(new Date());  // colonne G : dernière relance
+    envoyees++;
+  }
+  Logger.log(envoyees + &#x27; relance(s) envoyée(s)&#x27;);
+}</code></pre>
+<p>Enregistrez (icône disquette). <strong>Avant le premier essai, mettez votre propre adresse e-mail dans la colonne Email d&#x27;une ligne de test</strong>, avec une échéance passée : vous recevrez le message vous-même, et aucun client ne recevra rien par erreur.</p>
+<h2 id="3-autoriser-et-tester">3. Autoriser et tester</h2>
+<p>Choisissez la fonction <code>relancerFactures</code> dans la liste en haut, puis cliquez sur <strong>Exécuter</strong>. Google demande l&#x27;autorisation d&#x27;envoyer des e-mails en votre nom : acceptez. Vérifiez votre boîte de réception, puis la colonne G de la ligne de test : la date du jour doit apparaître.</p>
+<h2 id="4-le-faire-tourner-tout-seul">4. Le faire tourner tout seul</h2>
+<p>Ajoutez cette fonction sous la première, puis exécutez-la <strong>une seule fois</strong> :</p>
+<pre class="code" data-langue="javascript"><code>function creerDeclencheur() {
+  ScriptApp.newTrigger(&#x27;relancerFactures&#x27;)
+    .timeBased()
+    .everyDays(1)
+    .atHour(8)
+    .create();
+}</code></pre>
+<p>Chaque jour, entre 8 h et 9 h, le tableau vérifie les factures et envoie les relances qui s&#x27;imposent. Pour l&#x27;arrêter, ouvrez le menu <strong>Déclencheurs</strong> (icône horloge) et supprimez-le.</p>
+<h2 id="5-le-bouton-whatsapp">5. Le bouton WhatsApp</h2>
+<p>Dans la cellule <strong>H2</strong>, collez cette formule, puis tirez-la vers le bas :</p>
+<pre class="code" data-langue="texte"><code>=IF(C2=&quot;&quot;;&quot;&quot;;HYPERLINK(&quot;https://wa.me/225&quot;&amp;C2&amp;&quot;?text=&quot;&amp;ENCODEURL(&quot;Bonjour &quot;&amp;A2&amp;&quot;, sauf erreur de ma part, votre facture de &quot;&amp;D2&amp;&quot; FCFA est en attente de règlement. Merci !&quot;);&quot;Relancer sur WhatsApp&quot;))</code></pre>
+<p>Un clic ouvre WhatsApp avec le message prêt : il ne reste qu&#x27;à l&#x27;envoyer. Si Sheets affiche une erreur, c&#x27;est souvent la langue du tableau : remplacez les <code>;</code> par des <code>,</code>, ou utilisez les noms français des fonctions (<code>SI</code> et <code>LIEN_HYPERTEXTE</code> à la place de <code>IF</code> et <code>HYPERLINK</code>).</p>
+<aside class="callout"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-lightbulb"/></svg><p>WhatsApp ne permet pas l&#x27;envoi totalement automatique sans passer par une solution professionnelle dédiée. Le bouton garde donc votre contrôle sur chaque message, ce qui est souvent préférable pour une relance.</p></aside>
+<h2 id="les-limites-a-connaitre">Les limites à connaître</h2>
+<ul><li>Google limite le nombre d&#x27;e-mails envoyés par jour depuis un compte. Pour quelques dizaines de factures, c&#x27;est largement suffisant : consultez la page « Quotas Google Apps Script » avant de dépasser.</li><li>Le message est poli et neutre. Pour une facture très en retard, appelez : aucun automatisme ne remplace une conversation.</li><li>Un tableau n&#x27;est pas un logiciel de facturation. Si vous gérez beaucoup de clients, un outil sur mesure sera plus sûr.</li></ul>
+<p>Si vous voulez que je mette cela en place sur vos propres factures, avec votre papier à en-tête et votre ton, écrivez-moi.</p>
+            </div>
+            <aside class="post-cta">
+                <h2>Une question sur ce sujet ?</h2>
+                <p>Écrivez-moi : je réponds sur WhatsApp. Dites-moi où vous en êtes, je vous dirai ce que je ferais à votre place.</p>
+                <a class="btn btn-primary" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20je%20voudrais%20automatiser%20les%20relances%20de%20mes%20factures.%20Mon%20activit%C3%A9%20%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg> Écrire sur WhatsApp</a>
+            </aside>
+            <h2 class="a-lire">À lire aussi</h2>
+            <div class="post-grid"><article class="post-card" data-categorie="tuto">
+                    <span class="post-tag"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-code"/></svg> Tutos</span>
+                    <h3><a href="blog-commandes-whatsapp-google-sheets.html">Recevoir des commandes par WhatsApp sans perdre un seul message</a></h3>
+                    <p>Tuto : un formulaire sur votre site enregistre chaque commande dans Google Sheets et ouvre WhatsApp avec le résumé prêt. Code complet à copier.</p>
+                    <span class="post-meta">3 min de lecture · 5 novembre 2026</span>
+                </article><article class="post-card" data-categorie="cas">
+                    <span class="post-tag"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-briefcase"/></svg> Cas pratiques</span>
+                    <h3><a href="blog-cas-retrait-cheques-pwa.html">Cas pratique : suivre un retrait de chèque de bout en bout</a></h3>
+                    <p>Retour d&#x27;expérience : comment une application installable sur téléphone remplace les échanges dispersés pour suivre un retrait de chèque jusqu&#x27;à la preuve.</p>
+                    <span class="post-meta">3 min de lecture · 5 novembre 2026</span>
+                </article></div>
+        </div>
+    </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand"><span class="logo-bracket">&lt;</span><span class="logo-name">HR</span><span class="logo-bracket"> /&gt;</span></div>
+                <p class="footer-tagline">Concepteur-Développeur Full-Stack — Abidjan · <a href="https://ea-services.net">EA-SERVICES</a></p>
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="index.html#projects">Projets</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                <p class="footer-copy">© 2026 Herman Robe. Conçu à Abidjan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a class="fab-whatsapp" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20" target="_blank" rel="noopener" aria-label="Écrire à Herman sur WhatsApp"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg></a>
+    <script src="js/blog.js" defer></script>
+</body>
+</html>

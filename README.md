@@ -43,3 +43,16 @@ lue dans `/opt/sfb/api/.env`. Une copie physique existe aussi dans
 
 Historique : publication de la version alignée sur le CV le 2026-11-05. L'état précédent
 est dans le commit `cf2cb47`.
+
+## Blog
+
+Les articles sont des fichiers texte dans `contenu/` (un par article, avec un en-tête : titre, description,
+catégorie, date, message WhatsApp). Le générateur produit les pages HTML :
+
+```
+python3 outils/generer-blog.py     # écrit blog.html, blog-<slug>.html et le bloc « Blog » de index.html
+python3 outils/publier-sfb.py      # publie tous les fichiers du site dans SFB
+```
+
+Quatre catégories : réponses, tutos, mini-formations, cas pratiques. Règles : pas de prix ni de chiffre
+inventés, pas de résultat de client sans accord, un cas pratique tiré d'un vrai projet le dit.
