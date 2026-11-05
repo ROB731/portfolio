@@ -1669,3 +1669,10 @@ ul { list-style: none; }
 /* Formulaire de contact : message préparé vers WhatsApp */
 .form-note { margin: 0 0 1rem; font-size: .9rem; line-height: 1.5; color: var(--text-secondary); }
 .form-note a { color: var(--accent-light); }
+
+/* Compétences : liste de mots-clés, sans pourcentage (aucune mesure n'en justifie) */
+.skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1rem; }
+.skill-tags span { font-size: .85rem; padding: 5px 12px; border-radius: 50px; background: rgba(255,255,255,.04); border: 1px solid var(--border); color: var(--text-secondary); }
+.skill-note { margin: .875rem 0 0; font-size: .85rem; color: var(--text-muted); }
+.stat-number[data-plus]::after { content: "+"; }
+.footer-tagline a { color: var(--accent-light); }

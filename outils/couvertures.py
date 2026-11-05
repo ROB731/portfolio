@@ -47,6 +47,21 @@ C['voice-data'] = ('VOICE DATA', 'De la voix aux données structurées',
     + bloc(150,262,300,10,TXT,.2,5))
 C['serveur-vps'] = ('Configuration serveur VPS', 'Déploiement, sécurité, mise en production',
     ''.join(bloc(170,60+i*74,260,60,'#2a2a40',1,10) + f'<circle cx="198" cy="{90+i*74}" r="7" fill="{c}"/>' + bloc(224,84+i*74,140,12,TXT,.3,6) for i,c in enumerate(['#4CAF50','#4CAF50','#febc2e'])))
+
+C['retrait-cheques'] = ('Retrait de chèques', 'Demande, rendez-vous et preuve de remise',
+    bloc(200,40,200,250,'#2a2a40',1,26) + bloc(262,54,76,8,TXT,.3,4)
+    + bloc(222,86,156,50,'#33335a',1,10) + trait(236,102,90,.6) + trait(236,118,60,.35)
+    + bloc(222,148,156,50,'#33335a',1,10) + trait(236,164,100,.6) + trait(236,180,70,.35)
+    + '<circle cx="258" cy="246" r="22" fill="url(#a)"/><path d="M247 246l8 8 14-16" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' + trait(292,240,64,.5))
+C['reservation-hotel'] = ('Site de réservation', 'Chambres, tarifs, disponibilité',
+    bloc(110,50,380,250,'#2a2a40',1,14) + bloc(110,50,380,34,'#33335a',1,14)
+    + bloc(134,104,130,90,ACC,.35,10) + bloc(274,104,100,90,ACC2,.3,10) + bloc(384,104,82,90,ACC,.2,10)
+    + trait(134,214,200,.5) + trait(134,234,150,.3)
+    + ''.join(bloc(350+i*30,222,22,22,'url(#a)' if i==2 else '#33335a',1,6) for i in range(4)) + bloc(134,260,120,24,ACC,1,12))
+C['publipostage'] = ('Publipostage automatisé', 'Un modèle, un fichier Excel, des courriers',
+    bloc(110,70,150,190,'#2a2a40',1,12) + ''.join(trait(126,92+i*28,118,.3) for i in range(6))
+    + '<path d="M276 165h50m-14-14l14 14-14 14" stroke="url(#a)" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'
+    + ''.join(bloc(350+i*14,80+i*26,130,100,'#33335a',1,10) + trait(364+i*14,104+i*26,80,.4) for i in range(3)))
 for slug,(t,s,corps) in C.items():
     open(os.path.join(OUT, slug+'.svg'),'w',encoding='utf-8').write(cadre(t,s,corps))
     print('ok', slug)

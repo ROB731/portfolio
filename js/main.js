@@ -70,11 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const typingElement = document.getElementById('typingText');
     if (typingElement) {
         const phrases = [
-            'Développeur Web Full Stack',
-            'Créateur d\u0027applications Laravel',
-            'Architecte de solutions digitales',
-            'Formateur & Pédagogue',
-            'Innovateur IA & Vibe Coding'
+            'Concepteur-Développeur Full-Stack',
+            'Applications web et mobiles, PWA',
+            'API REST et automatisations',
+            'Agents IA',
+            'Support IT et formation'
         ];
         let phraseIndex = 0;
         let charIndex = 0;

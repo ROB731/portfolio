@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-label="Retrait de chèques">
+<defs><linearGradient id="f" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a1a2e"/><stop offset="1" stop-color="#222240"/></linearGradient>
+<linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6C63FF"/><stop offset="1" stop-color="#FF6584"/></linearGradient></defs>
+<rect width="600" height="400" fill="url(#f)"/>
+<circle cx="520" cy="60" r="150" fill="#6C63FF" opacity=".10"/><circle cx="60" cy="360" r="120" fill="#FF6584" opacity=".08"/>
+<rect x="200" y="40" width="200" height="250" rx="26" fill="#2a2a40" opacity="1"/><rect x="262" y="54" width="76" height="8" rx="4" fill="#f0f0f5" opacity="0.3"/><rect x="222" y="86" width="156" height="50" rx="10" fill="#33335a" opacity="1"/><rect x="236" y="102" width="90" height="8" rx="4" fill="#f0f0f5" opacity="0.6"/><rect x="236" y="118" width="60" height="8" rx="4" fill="#f0f0f5" opacity="0.35"/><rect x="222" y="148" width="156" height="50" rx="10" fill="#33335a" opacity="1"/><rect x="236" y="164" width="100" height="8" rx="4" fill="#f0f0f5" opacity="0.6"/><rect x="236" y="180" width="70" height="8" rx="4" fill="#f0f0f5" opacity="0.35"/><circle cx="258" cy="246" r="22" fill="url(#a)"/><path d="M247 246l8 8 14-16" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="292" y="240" width="64" height="8" rx="4" fill="#f0f0f5" opacity="0.5"/>
+<text x="36" y="352" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="700" fill="#f0f0f5">Retrait de chèques</text>
+<text x="36" y="378" font-family="Inter,Arial,sans-serif" font-size="15" fill="#a0a0b8">Demande, rendez-vous et preuve de remise</text>
+</svg>
