@@ -48,7 +48,14 @@
       "jobTitle": "Concepteur-Développeur Full-Stack"
     },
     "articleSection": "Tutos",
-    "wordCount": 632
+    "wordCount": 652,
+    "audio": {
+      "@type": "AudioObject",
+      "contentUrl": "https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/audio/commandes-whatsapp-google-sheets.mp3",
+      "encodingFormat": "audio/mpeg",
+      "duration": "PT3M",
+      "inLanguage": "fr"
+    }
   },
   {
     "@context": "https://schema.org",
@@ -102,6 +109,7 @@
             <h1 class="post-title">Recevoir des commandes par WhatsApp sans perdre un seul message</h1>
             <p class="post-meta">Par Herman Robe · 5 novembre 2026 · 4 min de lecture</p>
             <figure class="post-hero"><img src="assets/blog/couverture-commandes-whatsapp-google-sheets.svg" alt="Illustration : Recevoir des commandes par WhatsApp sans perdre un seul message" width="1200" height="630"></figure>
+            <div class="ecoute" data-ecoute><p class="ecoute-titre"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-headset"/></svg> <strong>Écouter cet article</strong> · environ 3 min</p><audio controls preload="none" src="assets/audio/commandes-whatsapp-google-sheets.mp3">Votre navigateur ne sait pas lire l'audio.</audio><button type="button" class="ecoute-secours" data-lecture-appareil hidden>Le son ne démarre pas ? Lecture par votre appareil</button></div>
             <nav class="toc" aria-label="Sommaire"><strong>Dans cet article</strong><ol><li><a href="#1-organiser-whatsapp-business">1. Organiser WhatsApp Business</a></li><li><a href="#2-un-formulaire-qui-garde-la-trace">2. Un formulaire qui garde la trace</a></li><li><a href="#3-suivre-les-commandes">3. Suivre les commandes</a></li><li><a href="#les-limites-a-connaitre">Les limites à connaître</a></li></ol></nav>
             <div class="prose">
 <p>Beaucoup de commerces vendent par WhatsApp : le client écrit, on répond, on note la commande quelque part. Puis les messages s&#x27;accumulent, une commande se perd, un client attend. Voici une méthode en deux temps : <strong>organiser WhatsApp Business</strong>, puis <strong>garder une trace de chaque commande</strong> dans un tableau.</p>
@@ -109,6 +117,7 @@
 <p>L&#x27;application WhatsApp Business (gratuite) propose des outils qui évitent déjà beaucoup d&#x27;erreurs :</p>
 <ul><li><strong>Catalogue</strong> : vos produits avec photo, prix et description. Le client les voit sans vous demander.</li><li><strong>Message d&#x27;accueil et d&#x27;absence</strong> : une réponse automatique en dehors de vos horaires.</li><li><strong>Réponses rapides</strong> : vous tapez un raccourci, le message complet apparaît (adresse, horaires, modes de paiement).</li><li><strong>Étiquettes</strong> : par exemple « Nouvelle commande », « À livrer », « Livré ». Une conversation = une étiquette, et vous voyez en un coup d&#x27;œil ce qui reste à faire.</li></ul>
 <p>Prenez dix minutes pour créer ces quatre éléments : c&#x27;est la base.</p>
+<figure class="post-figure"><img src="assets/blog/schema-whatsapp-business-outils.svg" alt="Les quatre outils de WhatsApp Business : catalogue, message d&#x27;accueil, réponses rapides, étiquettes" width="640" height="320" loading="lazy"><figcaption>Les quatre outils de WhatsApp Business : catalogue, message d&#x27;accueil, réponses rapides, étiquettes</figcaption></figure>
 <h2 id="2-un-formulaire-qui-garde-la-trace">2. Un formulaire qui garde la trace</h2>
 <p>L&#x27;idée : le client remplit un petit formulaire sur votre site. En un clic, deux choses se passent : <strong>la commande est enregistrée dans un tableau Google Sheets</strong>, et <strong>WhatsApp s&#x27;ouvre avec le résumé prêt à envoyer</strong>. Vous avez une trace écrite, même si le client oublie d&#x27;envoyer le message.</p>
 <figure class="post-figure"><img src="assets/blog/schema-commandes-flux.svg" alt="Le formulaire alimente le tableau Google Sheets et ouvre WhatsApp" width="640" height="360" loading="lazy"><figcaption>Le formulaire alimente le tableau Google Sheets et ouvre WhatsApp</figcaption></figure>
@@ -158,25 +167,16 @@
 <aside class="callout"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-lightbulb"/></svg><p>Le but n&#x27;est pas de remplacer WhatsApp, que vos clients aiment, mais de ne plus dépendre de votre mémoire pour savoir qui a commandé quoi.</p></aside>
 <p>Si vous voulez cette solution adaptée à votre commerce, avec votre catalogue et votre façon de livrer, écrivez-moi.</p>
             </div>
+            <aside class="suite" aria-labelledby="suite-titre">
+                <p class="suite-kicker" id="suite-titre">À lire ensuite</p>
+                <p class="suite-ouverture">Les commandes sont enregistrées et livrées. Reste le moment le moins agréable : se faire payer. Voici comment relancer vos factures sans passer vos soirées au téléphone.</p>
+                <a class="suite-carte" href="blog-relances-factures-google-sheets.html"><img src="assets/blog/couverture-relances-factures-google-sheets.svg" alt="" width="1200" height="630" loading="lazy"><span class="suite-texte"><strong>Relancer automatiquement les factures impayées avec Google Sheets</strong><span>Tuto pas à pas : un tableau Google Sheets et dix lignes de code envoient chaque matin les relances de factures en retard, par e-mail et WhatsApp.</span><em>Lire la suite <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-arrow-right"/></svg></em></span></a>
+            </aside>
             <aside class="post-cta">
                 <h2>Une question sur ce sujet ?</h2>
                 <p>Écrivez-moi : je réponds sur WhatsApp. Dites-moi où vous en êtes, je vous dirai ce que je ferais à votre place.</p>
                 <a class="btn btn-primary" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20je%20voudrais%20mieux%20g%C3%A9rer%20les%20commandes%20re%C3%A7ues%20par%20WhatsApp.%20Mon%20activit%C3%A9%20%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg> Écrire sur WhatsApp</a>
             </aside>
-            <h2 class="a-lire">À lire aussi</h2>
-            <div class="post-grid"><article class="post-card" data-categorie="tuto">
-                    <img class="post-cover" src="assets/blog/couverture-relances-factures-google-sheets.svg" alt="" width="1200" height="630" loading="lazy">
-                    <span class="post-tag"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-code"/></svg> Tutos</span>
-                    <h3><a href="blog-relances-factures-google-sheets.html">Relancer automatiquement les factures impayées avec Google Sheets</a></h3>
-                    <p>Tuto pas à pas : un tableau Google Sheets et dix lignes de code envoient chaque matin les relances de factures en retard, par e-mail et WhatsApp.</p>
-                    <span class="post-meta">4 min de lecture · 5 novembre 2026</span>
-                </article><article class="post-card" data-categorie="cas">
-                    <img class="post-cover" src="assets/blog/couverture-cas-retrait-cheques-pwa.svg" alt="" width="1200" height="630" loading="lazy">
-                    <span class="post-tag"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-briefcase"/></svg> Cas pratiques</span>
-                    <h3><a href="blog-cas-retrait-cheques-pwa.html">Cas pratique : suivre un retrait de chèque de bout en bout</a></h3>
-                    <p>Retour d&#x27;expérience : comment une application installable sur téléphone remplace les échanges dispersés pour suivre un retrait de chèque jusqu&#x27;à la preuve.</p>
-                    <span class="post-meta">3 min de lecture · 5 novembre 2026</span>
-                </article></div>
         </div>
     </article>
     </main>

@@ -6,6 +6,8 @@ categorie: reponse
 date: 2026-11-05
 ordre: 1
 message: Bonjour Herman, je voudrais un devis pour un site web. Mon activité : 
+suite: site-web-ou-page-facebook
+ouverture: Vous avez maintenant une idée du budget. Une autre question se pose avant de payer un site : une simple page Facebook ne suffirait-elle pas ? Voici comment décider.
 ---
 C'est la question qu'on me pose en premier, et la réponse honnête est : **il n'existe pas de prix unique**. Un site de trois pages et une boutique avec paiement ne demandent pas le même travail. Je ne vais donc pas publier une grille de prix inventée. Je vais plutôt vous montrer ce qui fait monter ou baisser un devis, pour que vous puissiez comparer deux propositions sans vous faire surprendre.
 
@@ -39,6 +41,8 @@ Puis posez ces questions :
 - **Un nom de domaine ou un hébergement au nom du prestataire.** Si la relation s'arrête, vous pouvez perdre votre site.
 - **Aucun accès remis à la livraison.** Le site doit être le vôtre.
 - **Une promesse de « première place sur Google ».** Personne ne peut la garantir. Un site bien fait augmente vos chances d'être trouvé, rien de plus.
+
+![Un devis à éviter et un bon devis](assets/blog/schema-devis-bon-mauvais.svg)
 
 > Un bon devis se lit comme une facture à l'avance : poste par poste, avec ce qui est compris et ce qui ne l'est pas.
 

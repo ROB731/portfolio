@@ -48,7 +48,14 @@
       "jobTitle": "Concepteur-Développeur Full-Stack"
     },
     "articleSection": "Tutos",
-    "wordCount": 789
+    "wordCount": 814,
+    "audio": {
+      "@type": "AudioObject",
+      "contentUrl": "https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/audio/relances-factures-google-sheets.mp3",
+      "encodingFormat": "audio/mpeg",
+      "duration": "PT4M",
+      "inLanguage": "fr"
+    }
   },
   {
     "@context": "https://schema.org",
@@ -100,8 +107,9 @@
             <p class="fil-ariane"><a href="index.html">Accueil</a> / <a href="blog.html">Blog</a> / Tutos</p>
             <span class="post-tag"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-code"/></svg> Tutos</span>
             <h1 class="post-title">Relancer automatiquement les factures impayées avec Google Sheets</h1>
-            <p class="post-meta">Par Herman Robe · 5 novembre 2026 · 4 min de lecture</p>
+            <p class="post-meta">Par Herman Robe · 5 novembre 2026 · 5 min de lecture</p>
             <figure class="post-hero"><img src="assets/blog/couverture-relances-factures-google-sheets.svg" alt="Illustration : Relancer automatiquement les factures impayées avec Google Sheets" width="1200" height="630"></figure>
+            <div class="ecoute" data-ecoute><p class="ecoute-titre"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-headset"/></svg> <strong>Écouter cet article</strong> · environ 4 min</p><audio controls preload="none" src="assets/audio/relances-factures-google-sheets.mp3">Votre navigateur ne sait pas lire l'audio.</audio><button type="button" class="ecoute-secours" data-lecture-appareil hidden>Le son ne démarre pas ? Lecture par votre appareil</button></div>
             <nav class="toc" aria-label="Sommaire"><strong>Dans cet article</strong><ol><li><a href="#ce-que-vous-allez-obtenir">Ce que vous allez obtenir</a></li><li><a href="#1-preparer-le-tableau">1. Préparer le tableau</a></li><li><a href="#2-ajouter-le-code">2. Ajouter le code</a></li><li><a href="#3-autoriser-et-tester">3. Autoriser et tester</a></li><li><a href="#4-le-faire-tourner-tout-seul">4. Le faire tourner tout seul</a></li><li><a href="#5-le-bouton-whatsapp">5. Le bouton WhatsApp</a></li><li><a href="#les-limites-a-connaitre">Les limites à connaître</a></li></ol></nav>
             <div class="prose">
 <p>Relancer les clients qui n&#x27;ont pas payé est utile, mais personne n&#x27;aime le faire, alors on le repousse. Ce tuto met en place un tableau qui <strong>le fait à votre place</strong> : chaque matin, il repère les factures en retard et envoie un rappel poli. Il faut un compte Google, un tableau, et dix minutes. Aucune connaissance en programmation n&#x27;est nécessaire : vous copiez le code.</p>
@@ -112,6 +120,8 @@
 <p>Dans Google Sheets, créez un tableau, et renommez l&#x27;onglet en bas <strong>Factures</strong>. Écrivez ces en-têtes dans la première ligne, de la colonne A à la colonne H :</p>
 <pre class="code" data-langue="texte"><code>Client | Email | Téléphone | Montant | Échéance | Statut | Dernière relance | WhatsApp</code></pre>
 <p>Remplissez ensuite une ligne par facture. Pour la colonne <strong>Statut</strong>, écrivez <code>À payer</code> ou <code>Payée</code>. Pour <strong>Échéance</strong>, saisissez une vraie date (jj/mm/aaaa). Pour <strong>Téléphone</strong>, écrivez les 10 chiffres sans espace (par exemple <code>0172527765</code>).</p>
+<p>Voici à quoi ressemble le tableau une fois rempli :</p>
+<figure class="post-figure"><img src="assets/blog/schema-feuille-exemple.svg" alt="Exemple de tableau de factures : payée, en retard, à payer" width="640" height="316" loading="lazy"><figcaption>Exemple de tableau de factures : payée, en retard, à payer</figcaption></figure>
 <h2 id="2-ajouter-le-code">2. Ajouter le code</h2>
 <p>Dans le menu, cliquez sur <strong>Extensions &gt; Apps Script</strong>. Effacez ce qui s&#x27;y trouve et collez :</p>
 <pre class="code" data-langue="javascript"><code>const FEUILLE = &#x27;Factures&#x27;;
@@ -174,25 +184,16 @@ function relancerFactures() {
 <ul><li>Google limite le nombre d&#x27;e-mails envoyés par jour depuis un compte. Pour quelques dizaines de factures, c&#x27;est largement suffisant : consultez la page « Quotas Google Apps Script » avant de dépasser.</li><li>Le message est poli et neutre. Pour une facture très en retard, appelez : aucun automatisme ne remplace une conversation.</li><li>Un tableau n&#x27;est pas un logiciel de facturation. Si vous gérez beaucoup de clients, un outil sur mesure sera plus sûr.</li></ul>
 <p>Si vous voulez que je mette cela en place sur vos propres factures, avec votre papier à en-tête et votre ton, écrivez-moi.</p>
             </div>
+            <aside class="suite" aria-labelledby="suite-titre">
+                <p class="suite-kicker" id="suite-titre">À lire ensuite</p>
+                <p class="suite-ouverture">Une facture se suit avec un tableau. Et un processus entier, avec une preuve à la clé ? Voici un cas réel, vécu chez IvoirRapid.</p>
+                <a class="suite-carte" href="blog-cas-retrait-cheques-pwa.html"><img src="assets/blog/couverture-cas-retrait-cheques-pwa.svg" alt="" width="1200" height="630" loading="lazy"><span class="suite-texte"><strong>Cas pratique : suivre un retrait de chèque de bout en bout</strong><span>Retour d&#x27;expérience : comment une application installable sur téléphone remplace les échanges dispersés pour suivre un retrait de chèque jusqu&#x27;à la preuve.</span><em>Lire la suite <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-arrow-right"/></svg></em></span></a>
+            </aside>
             <aside class="post-cta">
                 <h2>Une question sur ce sujet ?</h2>
                 <p>Écrivez-moi : je réponds sur WhatsApp. Dites-moi où vous en êtes, je vous dirai ce que je ferais à votre place.</p>
                 <a class="btn btn-primary" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20je%20voudrais%20automatiser%20les%20relances%20de%20mes%20factures.%20Mon%20activit%C3%A9%20%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg> Écrire sur WhatsApp</a>
             </aside>
-            <h2 class="a-lire">À lire aussi</h2>
-            <div class="post-grid"><article class="post-card" data-categorie="tuto">
-                    <img class="post-cover" src="assets/blog/couverture-commandes-whatsapp-google-sheets.svg" alt="" width="1200" height="630" loading="lazy">
-                    <span class="post-tag"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-code"/></svg> Tutos</span>
-                    <h3><a href="blog-commandes-whatsapp-google-sheets.html">Recevoir des commandes par WhatsApp sans perdre un seul message</a></h3>
-                    <p>Tuto : un formulaire sur votre site enregistre chaque commande dans Google Sheets et ouvre WhatsApp avec le résumé prêt. Code complet à copier.</p>
-                    <span class="post-meta">4 min de lecture · 5 novembre 2026</span>
-                </article><article class="post-card" data-categorie="cas">
-                    <img class="post-cover" src="assets/blog/couverture-cas-retrait-cheques-pwa.svg" alt="" width="1200" height="630" loading="lazy">
-                    <span class="post-tag"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-briefcase"/></svg> Cas pratiques</span>
-                    <h3><a href="blog-cas-retrait-cheques-pwa.html">Cas pratique : suivre un retrait de chèque de bout en bout</a></h3>
-                    <p>Retour d&#x27;expérience : comment une application installable sur téléphone remplace les échanges dispersés pour suivre un retrait de chèque jusqu&#x27;à la preuve.</p>
-                    <span class="post-meta">3 min de lecture · 5 novembre 2026</span>
-                </article></div>
         </div>
     </article>
     </main>

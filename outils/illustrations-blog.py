@@ -170,6 +170,124 @@ def dessin_cas():
     return tel + lien + pas + coche(1010, 450, 34)
 
 
+
+# ---------------------------------------------------------------- Schémas génériques (v2)
+def _lignes(v):
+    return [v] if isinstance(v, str) else list(v)
+
+
+def colonnes(nom, alt, titre_g, items_g, titre_d, items_d, ico_g='point', ico_d='coche'):
+    """Deux cartes côte à côte : « avant / après » ou « l'un / l'autre »."""
+    n = max(len(items_g), len(items_d))
+    h = 112 + n * 78
+    g = rect(14, 14, 301, h - 28, CARTE, 18, 'opacity=".85"') + rect(325, 14, 301, h - 28, CARTE, 18, f'stroke="{ACC}" stroke-width="3"')
+    g += texte(36, 62, titre_g, 28, 800, DOUX) + texte(347, 62, titre_d, 28, 800, '#c9c5ff')
+    for i in range(n):
+        y = 90 + i * 78
+        if i < len(items_g):
+            g += rect(28, y, 273, 66, '#33335a', 12)
+            g += (f'<circle cx="52" cy="{y + 33}" r="9" fill="#8a8aa5"/>' if ico_g == 'point' else croix(52, y + 33, 14))
+            L = _lignes(items_g[i])
+            g += texte(74, y + (39 if len(L) == 1 else 29), L, 20, 600, TXT, interligne=1.2)
+        if i < len(items_d):
+            g += rect(339, y, 273, 66, '#33335a', 12)
+            g += (coche(364, y + 33, 14) if ico_d == 'coche' else f'<circle cx="364" cy="{y + 33}" r="9" fill="{ACC2}"/>')
+            L = _lignes(items_d[i])
+            g += texte(388, y + (39 if len(L) == 1 else 29), L, 20, 600, TXT, interligne=1.2)
+    schema(nom, 640, h, g, alt)
+
+
+def chaine(nom, alt, etapes, retour=False):
+    """3 ou 4 cases reliées par des flèches ; titre (et sous-titre si 3 cases) ; flèche de retour optionnelle."""
+    n = len(etapes)
+    gap = 26
+    w = (600 - (n - 1) * gap) / n
+    h_case = 150 if n == 3 else 120
+    g = ''
+    for i, (titre, sous) in enumerate(etapes):
+        x0 = 20 + i * (w + gap)
+        g += rect(x0, 40, w, h_case, CARTE, 16, f'stroke="{ACC if i % 2 == 0 else ACC2}" stroke-width="3"')
+        g += texte(x0 + w / 2, 40 + (58 if sous else 62) - (8 if len(_lignes(titre)) > 1 else 0), _lignes(titre), 26 if n == 3 else 22, 800, TXT, 'middle', 1.2)
+        if sous:
+            g += texte(x0 + w / 2, 40 + 108, _lignes(sous), 19, 500, DOUX, 'middle', 1.2)
+        if i < n - 1:
+            g += fleche(x0 + w + 3, 40 + h_case / 2, x0 + w + gap - 3, 40 + h_case / 2, ACC, 4)
+    hauteur = 40 + h_case + 40
+    if retour:
+        yb = 40 + h_case + 26
+        g += (f'<path d="M{20 + (n - 1) * (w + gap) + w / 2} {40 + h_case + 4}V{yb}H{20 + w / 2}V{40 + h_case + 8}" stroke="{ACC2}" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'
+              f'<path d="M{20 + w / 2 - 9} {40 + h_case + 20}L{20 + w / 2} {40 + h_case + 6}L{20 + w / 2 + 9} {40 + h_case + 20}" stroke="{ACC2}" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>')
+        hauteur += 20
+    schema(nom, 640, hauteur, g, alt)
+
+
+def cycle(nom, alt, quatre):
+    """Quatre cases en boucle (2 x 2) : lecture dans le sens des aiguilles d'une montre."""
+    pos = [(20, 24), (330, 24), (330, 184), (20, 184)]
+    g = ''
+    for (x0, y0), l in zip(pos, quatre):
+        g += rect(x0, y0, 290, 120, CARTE, 16, f'stroke="{ACC}" stroke-width="3"') + texte(x0 + 145, y0 + (50 if len(_lignes(l)) > 1 else 70), _lignes(l), 25, 700, TXT, 'middle', 1.25)
+    g += fleche(314, 84, 328, 84, ACC, 4) + f'<path d="M475 148V182" stroke="{ACC}" stroke-width="4" stroke-linecap="round"/><path d="M466 172L475 184 484 172" stroke="{ACC}" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'
+    g += f'<path d="M324 244H316" stroke="{ACC}" stroke-width="4" stroke-linecap="round"/><path d="M326 236L314 244 326 252" stroke="{ACC}" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'
+    g += f'<path d="M165 182V148" stroke="{ACC}" stroke-width="4" stroke-linecap="round"/><path d="M156 158L165 146 174 158" stroke="{ACC}" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'
+    schema(nom, 640, 328, g, alt)
+
+
+def outils_whatsapp():
+    ic = {
+        'Catalogue': ''.join(rect(40 + (i % 2) * 40, 40 + (i // 2) * 36, 32, 28, ACC if i % 3 else ACC2, 6) for i in range(4)),
+        "Message d'accueil": rect(36, 40, 78, 52, VERT, 14) + f'<path d="M50 90l-6 18 22-14z" fill="{VERT}"/>' + trait(48, 56, 54, .85, 8) + trait(48, 72, 36, .6, 8),
+        'Réponses rapides': f'<path d="M76 36L48 82h24l-8 34 36-50H76z" fill="{ACC2}"/>',
+        'Étiquettes': f'<path d="M40 56h46l24 24-24 24H40z" fill="{ACC}"/><circle cx="56" cy="80" r="7" fill="#fff"/>',
+    }
+    g = ''
+    for i, (nom, dessin) in enumerate(ic.items()):
+        x0, y0 = 20 + (i % 2) * 310, 20 + (i // 2) * 150
+        g += rect(x0, y0, 290, 130, CARTE, 16) + f'<g transform="translate({x0 - 10} {y0 - 14}) scale(.95)">{dessin}</g>' + texte(x0 + 135, y0 + 76, _lignes(nom if len(nom) < 14 else nom.replace(' ', '\n').split('\n', 1)), 24, 700, TXT, 'start', 1.2)
+    schema('whatsapp-business-outils', 640, 320, g, 'Les quatre outils de WhatsApp Business : catalogue, message d\'accueil, réponses rapides, étiquettes')
+
+
+def feuille_exemple():
+    cols = [(26, 'Client'), (208, 'Montant'), (360, 'Statut'), (500, 'Relance')]
+    lignes = [('Client A', '45 000', 'Payée', VERT, '—'), ('Client B', '120 000', 'En retard', ACC2, 'Envoyée'), ('Client C', '80 000', 'À payer', '#8a8aa5', '—')]
+    g = rect(14, 14, 612, 286, CARTE, 16) + rect(14, 14, 612, 54, '#33335a', 16)
+    for x0, t in cols:
+        g += texte(x0, 49, t, 22, 800, '#c9c5ff')
+    for i, (c, m, st, couleur, r) in enumerate(lignes):
+        y = 84 + i * 62
+        g += rect(26, y - 6, 588, 52, ACC if st == 'En retard' else '#2f2f55', 10, f'opacity="{.25 if st == "En retard" else .8}"')
+        g += texte(26 + 8, y + 30, c, 22, 600, TXT) + texte(208, y + 30, m + ' F', 22, 600, TXT) + rect(352, y + 2, 118, 36, couleur, 18) + texte(411, y + 28, st, 20, 700, '#fff', 'middle') + texte(500, y + 30, r, 22, 600, TXT)
+    g += texte(320, 284, 'Exemple fictif : une ligne par facture', 18, 500, DOUX, 'middle')
+    schema('feuille-exemple', 640, 316, g, 'Exemple de tableau de factures : payée, en retard, à payer')
+
+
+def couches_web():
+    tuiles = [('HTML', 'la structure', ACC, rect(34, 48, 56, 44, '#fff', 4, 'opacity=".9"') + f'<path d="M26 52l36-26 36 26z" fill="#fff" opacity=".9"/>'),
+              ('CSS', "l'apparence", ACC2, f'<path d="M62 24c-22 26-26 34-26 46a26 26 0 0 0 52 0c0-12-4-20-26-46z" fill="#fff" opacity=".9"/>'),
+              ('JavaScript', 'le mouvement', VERT, f'<path d="M66 22L34 70h26l-6 32 38-52H68z" fill="#fff" opacity=".9"/>')]
+    g = ''
+    for i, (t, sous, c, d) in enumerate(tuiles):
+        x0 = 20 + i * 206
+        g += rect(x0, 24, 186, 250, CARTE, 18) + rect(x0, 24, 186, 124, c, 18, 'opacity=".95"') + f'<g transform="translate({x0 + 30} {40})">{d}</g>'
+        g += texte(x0 + 93, 196, t, 28, 800, TXT, 'middle') + texte(x0 + 93, 232, sous, 21, 500, DOUX, 'middle')
+    schema('html-css-javascript', 640, 298, g, 'Les trois couches d\'une page web : HTML, CSS et JavaScript')
+
+
+def dessin_ia():
+    tete = rect(620, 190, 190, 150, CARTE, 30, f'stroke="{ACC}" stroke-width="4"') + '<circle cx="680" cy="255" r="16" fill="#c9c5ff"/><circle cx="750" cy="255" r="16" fill="#c9c5ff"/>' + rect(668, 300, 94, 12, ACC2, 6) + rect(703, 150, 8, 40, ACC, 4) + f'<circle cx="707" cy="144" r="12" fill="{ACC2}"/>'
+    dev = '<circle cx="1000" cy="230" r="46" fill="url(#a)"/>' + f'<path d="M920 360c0-52 36-84 80-84s80 32 80 84z" fill="url(#a)"/>'
+    plus = texte(865, 300, '+', 90, 800, '#c9c5ff', 'middle')
+    code = fenetre(740, 400, 330, 120, texte(905, 480, '</>', 44, 800, '#c9c5ff', 'middle')) + coche(1090, 410, 26)
+    return tete + dev + plus + code
+
+
+def dessin_digital():
+    papiers = ''.join(f'<g transform="rotate({r} {x0 + 40} {y0 + 50})">' + rect(x0, y0, 80, 100, '#d8d8ea', 6, 'opacity=".75"') + trait(x0 + 12, y0 + 22, 56, .4, 7) + trait(x0 + 12, y0 + 40, 40, .3, 7) + '</g>' for x0, y0, r in [(610, 300, -14), (660, 360, 9), (700, 290, 20)])
+    tel = rect(880, 130, 190, 340, CARTE, 30, f'stroke="{ACC}" stroke-width="4"') + ''.join(coche(920, 200 + i * 62, 14) + trait(950, 192 + i * 62, 90, .55, 10) for i in range(4))
+    barres = ''.join(rect(960 + i * 40, 520 - h, 28, h, ACC2 if i == 2 else ACC, 6) for i, h in enumerate([30, 60, 100]))
+    return papiers + fleche(792, 360, 868, 320, ACC2, 6) + tel + barres
+
+
 COUVERTURES = [
     ('cout-site-web-abidjan', 'RÉPONSE', ['Combien coûte', 'un site web', 'à Abidjan ?'], dessin_cout),
     ('site-web-ou-page-facebook', 'RÉPONSE', ['Site web ou', 'page Facebook ?'], dessin_facebook),
@@ -178,6 +296,8 @@ COUVERTURES = [
     ('commandes-whatsapp-google-sheets', 'TUTO', ['Commandes', 'WhatsApp sans', 'rien perdre'], dessin_commandes),
     ('premiere-page-web-5-lecons', 'MINI-FORMATION', ['Première page', 'web en', '5 leçons'], dessin_formation),
     ('cas-retrait-cheques-pwa', 'CAS PRATIQUE', ['Suivre un', 'retrait de', 'chèque'], dessin_cas),
+    ('ia-developpeurs-vont-ils-disparaitre', 'RÉPONSE', ['Les développeurs', 'vont-ils', 'disparaître ?'], dessin_ia),
+    ('digitaliser-son-entreprise-ivoirrapid', 'POUR LES DIRIGEANTS', ['Pourquoi', 'digitaliser son', 'entreprise ?'], dessin_digital),
 ]
 
 if __name__ == '__main__':
@@ -217,4 +337,28 @@ if __name__ == '__main__':
         comp += (coche(380, y - 2, 17) if fb else croix(380, y - 2, 17)) + (coche(540, y - 2, 17) if site else croix(540, y - 2, 17))
     comp += texte(320, 392, 'Rapide à créer : la page. Le site demande un peu plus de travail.', 20, 500, DOUX, 'middle')
     schema('facebook-vs-site', 640, 420, comp, 'Comparaison entre une page Facebook et un site web')
+
+    colonnes('digitalisation-avant-apres', 'Avant et après la digitalisation des flux', 'Avant',
+             [['Appels et', 'messages dispersés'], ['Papiers et', 'oublis'], ['Litiges à', 'trancher'], ['Personne ne', 'voit tout']],
+             'Après', [['Demande', 'enregistrée'], ['Étapes', 'suivies'], ['Preuve', 'conservée'], ['Même vue', 'pour tous']])
+    colonnes('cas-avant-apres', 'Le retrait de chèque avant et après l\'application', 'Avant',
+             [['Un appel pour', 'la demande'], ['Des messages', 'pour la date'], ['« Où est le', 'coursier ? »'], ['Aucune preuve', 'claire']],
+             'Après', [['Une demande', 'dans l\'application'], ['Une date', 'choisie'], ['Un suivi', 'visible'], ['Preuve de', 'remise + trace']])
+    colonnes('ia-vs-developpeur', 'Ce que fait l\'IA et ce que fait le développeur', "L'IA",
+             [['Écrit vite du', 'code courant'], ['Propose, explique,', 'traduit'], ['Ne connaît pas', 'votre métier'], ['Peut se tromper', 'sans le dire']],
+             'Le développeur', [['Comprend le', 'vrai besoin'], ['Vérifie, teste,', 'sécurise'], ["Décide de", "l'architecture"], ['Répond du', 'résultat']], 'point', 'point')
+    chaine('boucle-ia', 'La boucle de travail avec l\'IA : décrire, proposer, vérifier, livrer',
+           [(['Je décris', 'le besoin'], None), (['L\'IA', 'propose'], None), (['Je vérifie', 'et je teste'], None), (['Je livre', 'le résultat'], None)], retour=True)
+    chaine('google-fonctionnement', 'Comment Google fonctionne : découvrir, lire, classer, afficher',
+           [(['Google', 'découvre'], None), (['Il lit', 'vos pages'], None), (['Il les', 'classe'], None), (['Il les', 'affiche'], None)])
+    chaine('facebook-site-whatsapp', 'Facebook pour attirer, le site pour convaincre, WhatsApp pour conclure',
+           [('Facebook', ['attirer']), ('Site', ['convaincre,', 'être trouvé']), ('WhatsApp', ['conclure'])])
+    cycle('site-cycle', 'Le cycle d\'un site bien référencé : on vous cherche, il répond, on vous contacte, le suivi est tracé',
+          [['On vous cherche', 'sur Google'], ['Votre site', 'répond'], ['Le client', 'vous contacte'], ['Le suivi', 'est tracé']])
+    colonnes('devis-bon-mauvais', 'Un devis à éviter et un bon devis', 'Devis à éviter',
+             [['Un seul total,', 'sans détail'], ['Domaine au nom', 'du prestataire'], ['Aucun accès', 'remis'], ['« Première place', 'garantie »']],
+             'Bon devis', [['Poste par poste,', 'prix clair'], ['Domaine à', 'votre nom'], ['Accès remis à', 'la livraison'], ['Aucune promesse', 'impossible']], 'croix', 'coche')
+    outils_whatsapp()
+    feuille_exemple()
+    couches_web()
     print('schémas ok')

@@ -21,14 +21,14 @@ chemins = sorted(
     for d, dossiers, fichiers in os.walk(R)
     if not any(x in os.path.relpath(d, R).split(os.sep) for x in EXCLUS)
     for f in fichiers
-    if f not in EXCLUS and os.path.splitext(f)[1] in ('.html', '.css', '.js', '.svg', '.jpg', '.png')
+    if f not in EXCLUS and os.path.splitext(f)[1] in ('.html', '.css', '.js', '.svg', '.jpg', '.png', '.mp3')
 )
-mimes={'.html':'text/html','.css':'text/css','.js':'application/javascript','.svg':'image/svg+xml','.jpg':'image/jpeg','.png':'image/png'}
+mimes={'.html':'text/html','.css':'text/css','.js':'application/javascript','.svg':'image/svg+xml','.jpg':'image/jpeg','.png':'image/png','.mp3':'audio/mpeg'}
 st,b=call('GET','project_files?project_id=eq.%s&select=id,path'%PID); existants={x['path']:x['id'] for x in json.loads(b)}
 now=datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None).isoformat()+'+00:00'; total=0
 for c in chemins:
     raw=open(R+c,'rb').read(); ext=os.path.splitext(c)[1]
-    binaire = ext in ('.jpg','.png')
+    binaire = ext in ('.jpg','.png','.mp3')
     ligne={'content':base64.b64encode(raw).decode() if binaire else raw.decode('utf-8'),'is_binary':binaire,'mime_type':mimes[ext],'size_bytes':len(raw),'updated_at':now}
     if c in existants: st,b=call('PATCH','project_files?id=eq.%s&project_id=eq.%s'%(existants[c],PID),ligne); act='mis à jour'
     else: ligne.update(project_id=PID,path=c); st,b=call('POST','project_files',ligne); act='créé'

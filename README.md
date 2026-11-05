@@ -50,9 +50,14 @@ Les articles sont des fichiers texte dans `contenu/` (un par article, avec un en
 catégorie, date, message WhatsApp). Le générateur produit les pages HTML :
 
 ```
-python3 outils/generer-blog.py     # écrit blog.html, blog-<slug>.html et le bloc « Blog » de index.html
-python3 outils/publier-sfb.py      # publie tous les fichiers du site dans SFB
+python3 outils/illustrations-blog.py   # couvertures et schémas (assets/blog/)
+python3 outils/generer-audio.py        # version audio de chaque article (assets/audio/), voix de synthèse
+python3 outils/generer-blog.py         # écrit blog.html, blog-<slug>.html et le bloc « Blog » de index.html
+python3 outils/publier-sfb.py          # publie tous les fichiers du site dans SFB
 ```
 
-Quatre catégories : réponses, tutos, mini-formations, cas pratiques. Règles : pas de prix ni de chiffre
+Chaque article peut déclarer `suite:` (article suivant) et `ouverture:` (la phrase qui y mène) : le bloc
+« À lire ensuite » en est tiré. Le lecteur audio lit le fichier MP3 et propose, en secours, la voix de l'appareil.
+
+Cinq catégories : pour les dirigeants, réponses, tutos, mini-formations, cas pratiques. Règles : pas de prix ni de chiffre
 inventés, pas de résultat de client sans accord, un cas pratique tiré d'un vrai projet le dit.

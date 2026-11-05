@@ -6,6 +6,8 @@ categorie: cas
 date: 2026-11-05
 ordre: 1
 message: Bonjour Herman, j'ai un processus à suivre de bout en bout, comme dans votre cas pratique. Voici le sujet : 
+suite: ia-developpeurs-vont-ils-disparaitre
+ouverture: Tout ce travail, une intelligence artificielle ne pourrait-elle pas le faire à ma place ? C'est la question que tout le monde se pose en ce moment. Voici ma réponse de développeur.
 ---
 Ce cas est tiré d'un projet réel, réalisé chez **IvoirRapid**, une société de livraison à Abidjan. Je le raconte pour montrer une méthode, pas pour afficher des chiffres : ceux-ci appartiennent à l'entreprise.
 
@@ -14,6 +16,8 @@ Ce cas est tiré d'un projet réel, réalisé chez **IvoirRapid**, une société
 Un client veut qu'on récupère un chèque auprès de lui. Dans la pratique, cela donnait beaucoup d'échanges dispersés : un appel pour la demande, des messages pour fixer le moment, un autre appel pour savoir où en est le coursier, et à la fin, aucune preuve claire que le chèque a bien été remis.
 
 Les conséquences sont connues de toutes les entreprises qui livrent : des allers-retours, des oublis, et des désaccords sur « qui a remis quoi, et quand ».
+
+![Le retrait de chèque avant et après l'application](assets/blog/schema-cas-avant-apres.svg)
 
 ## Ce que l'entreprise attendait
 

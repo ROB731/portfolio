@@ -6,6 +6,8 @@ categorie: tuto
 date: 2026-11-05
 ordre: 2
 message: Bonjour Herman, je voudrais mieux gérer les commandes reçues par WhatsApp. Mon activité : 
+suite: relances-factures-google-sheets
+ouverture: Les commandes sont enregistrées et livrées. Reste le moment le moins agréable : se faire payer. Voici comment relancer vos factures sans passer vos soirées au téléphone.
 ---
 Beaucoup de commerces vendent par WhatsApp : le client écrit, on répond, on note la commande quelque part. Puis les messages s'accumulent, une commande se perd, un client attend. Voici une méthode en deux temps : **organiser WhatsApp Business**, puis **garder une trace de chaque commande** dans un tableau.
 
@@ -19,6 +21,8 @@ L'application WhatsApp Business (gratuite) propose des outils qui évitent déj�
 - **Étiquettes** : par exemple « Nouvelle commande », « À livrer », « Livré ». Une conversation = une étiquette, et vous voyez en un coup d'œil ce qui reste à faire.
 
 Prenez dix minutes pour créer ces quatre éléments : c'est la base.
+
+![Les quatre outils de WhatsApp Business : catalogue, message d'accueil, réponses rapides, étiquettes](assets/blog/schema-whatsapp-business-outils.svg)
 
 ## 2. Un formulaire qui garde la trace
 

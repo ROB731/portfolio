@@ -33,6 +33,7 @@ RACINE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 SITE = 'https://sites-sfb.ea-services.net/portfolio-herman-robe/'
 NUMERO = '2250172527765'
 CATS = {
+    'dirigeant': ('Pour les dirigeants', 'user',      'Pourquoi et comment digitaliser une entreprise, expliqué sans jargon.'),
     'reponse':   ('Réponses',        'lightbulb',  'Les questions qu\'on me pose le plus souvent, avec une réponse franche.'),
     'tuto':      ('Tutos',           'code',       'Pas à pas, avec le code à copier et les pièges à éviter.'),
     'formation': ('Mini-formations', 'graduation', 'Un parcours en plusieurs leçons, avec un exercice à chaque étape.'),
@@ -155,6 +156,52 @@ def couverture(p):
     return base + '.svg' if os.path.exists(os.path.join(RACINE, base + '.svg')) else None
 
 
+def duree_audio(slug):
+    """Durée (minutes) du MP3 s'il existe, sinon None."""
+    chemin = os.path.join(RACINE, 'assets', 'audio', f'{slug}.mp3')
+    if not os.path.exists(chemin):
+        return None
+    import subprocess
+    r = subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', chemin], capture_output=True, text=True)
+    try:
+        return max(1, round(float(r.stdout.strip()) / 60))
+    except ValueError:
+        return None
+
+
+PRONONCIATION = [
+    (r'\bFCFA\b', 'francs CFA'), (r'\bHTML5?\b', 'H T M L'), (r'\bCSS3?\b', 'C S S'), (r'\bPWA\b', 'P W A'),
+    (r'\bSFB\b', 'S F B'), (r'\bPDF\b', 'P D F'), (r'\bURL\b', 'U R L'), (r'\bAPI\b', 'A P I'), (r'\bIA\b', 'I A'),
+    (r'\bSEO\b', 'S E O'), (r'EMPLOI\.EA', 'Emploi point E A'), (r'\brobots\.txt\b', 'le fichier robots'),
+    (r'\bnoindex\b', 'no index'), (r'\bsitemap\b', 'plan du site'),
+]
+
+
+def narration(p, corps_md):
+    """Texte lu à voix haute : pas de code, pas d'image, sigles épelés."""
+    sortie = [p['titre'] + '.', 'Par Herman Robe.']
+    en_code = False
+    for l in corps_md.split('\n'):
+        if l.startswith('```'):
+            en_code = not en_code
+            if en_code:
+                sortie.append("Le code se trouve dans l'article, prêt à copier.")
+            continue
+        if en_code or not l.strip() or re.match(r'^!\[', l):
+            continue
+        l = re.sub(r'^(#{2,3}) ', '', l)
+        l = re.sub(r'^(- |> |\d+\. )', '', l)
+        l = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', l)
+        l = l.replace('**', '').replace('`', '').replace('*', '')
+        if not re.search(r'[.!?:»]$', l):
+            l += '.'
+        sortie.append(l)
+    t = '\n'.join(sortie)
+    for motif, rempl in PRONONCIATION:
+        t = re.sub(motif, rempl, t)
+    return t
+
+
 def lire_articles():
     posts = []
     for f in sorted(glob.glob(os.path.join(RACINE, 'contenu', '*.md'))):
@@ -164,6 +211,8 @@ def lire_articles():
         meta = dict(re.findall(r'^(\w+):\s*(.*)$', m.group(1), re.M))
         meta['slug'] = os.path.splitext(os.path.basename(f))[0]
         meta['html'], meta['titres'] = convertir(m.group(2).strip())
+        meta['corps_md'] = m.group(2).strip()
+        meta['audio'] = duree_audio(os.path.splitext(os.path.basename(f))[0])
         meta['mots'] = len(re.findall(r'\w+', m.group(2)))
         meta['minutes'] = max(2, round(meta['mots'] / 180))
         for cle in ('titre', 'court', 'description', 'categorie', 'date', 'ordre', 'message'):
@@ -282,9 +331,24 @@ def page_article(p, posts):
     if len(p['titres']) >= 3:
         toc = '<nav class="toc" aria-label="Sommaire"><strong>Dans cet article</strong><ol>' + ''.join(
             f'<li><a href="#{a}">{e(t)}</a></li>' for a, t in p['titres']) + '</ol></nav>'
-    liees = [x for x in posts if x['slug'] != p['slug']]
-    liees = sorted(liees, key=lambda x: (x['categorie'] != p['categorie']))[:2]
-    lire = '<div class="post-grid">' + ''.join(carte(x) for x in liees) + '</div>'
+    suivant = next((x for x in posts if x['slug'] == p.get('suite')), None)
+    suite = ''
+    if suivant:
+        cv2 = couverture(suivant)
+        im = f'<img src="{cv2}" alt="" width="1200" height="630" loading="lazy">' if cv2 else ''
+        suite = f'''<aside class="suite" aria-labelledby="suite-titre">
+                <p class="suite-kicker" id="suite-titre">À lire ensuite</p>
+                <p class="suite-ouverture">{e(p.get('ouverture', ''))}</p>
+                <a class="suite-carte" href="blog-{suivant['slug']}.html">{im}<span class="suite-texte"><strong>{e(suivant['titre'])}</strong><span>{e(suivant['description'])}</span><em>Lire la suite {icone('arrow-right')}</em></span></a>
+            </aside>'''
+    if p.get('audio'):
+        mp3 = f"assets/audio/{p['slug']}.mp3"
+        audio = (f'<div class="ecoute" data-ecoute><p class="ecoute-titre">{icone("headset")} <strong>Écouter cet article</strong> · environ {p["audio"]} min</p>'
+                 f'<audio controls preload="none" src="{mp3}">Votre navigateur ne sait pas lire l\'audio.</audio>'
+                 f'<button type="button" class="ecoute-secours" data-lecture-appareil hidden>Le son ne démarre pas ? Lecture par votre appareil</button></div>')
+        jsonld[0]['audio'] = {'@type': 'AudioObject', 'contentUrl': SITE + mp3, 'encodingFormat': 'audio/mpeg', 'duration': f'PT{p["audio"]}M', 'inLanguage': 'fr'}
+    else:
+        audio = ''
     corps = f'''
     <main>
     <article class="post section">
@@ -294,17 +358,17 @@ def page_article(p, posts):
             <h1 class="post-title">{e(p['titre'])}</h1>
             <p class="post-meta">Par Herman Robe · {date_fr(p['date'])} · {p['minutes']} min de lecture</p>
             {hero}
+            {audio}
             {toc}
             <div class="prose">
 {p['html']}
             </div>
+            {suite}
             <aside class="post-cta">
                 <h2>Une question sur ce sujet ?</h2>
                 <p>Écrivez-moi : je réponds sur WhatsApp. Dites-moi où vous en êtes, je vous dirai ce que je ferais à votre place.</p>
                 <a class="btn btn-primary" href="{wa(p['message'])}" target="_blank" rel="noopener">{icone('whatsapp')} Écrire sur WhatsApp</a>
             </aside>
-            <h2 class="a-lire">À lire aussi</h2>
-            {lire}
         </div>
     </article>
     </main>

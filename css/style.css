@@ -1781,3 +1781,26 @@ ul { list-style: none; }
 .post-figure { margin: 28px 0; }
 .post-figure img { display: block; width: 100%; max-width: 640px; height: auto; margin: 0 auto; border-radius: var(--radius-sm); border: 1px solid var(--border); }
 .post-figure figcaption { margin-top: 10px; text-align: center; font-size: .85rem; color: var(--text-muted); }
+
+/* Écoute de l'article */
+.ecoute { margin: 22px 0 6px; padding: 18px 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); }
+.ecoute-titre { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; color: var(--text-primary); }
+.ecoute-titre .icon { width: 22px; height: 22px; color: var(--accent-light); }
+.ecoute audio { display: block; width: 100%; height: 44px; }
+.ecoute-secours { margin-top: 10px; min-height: 44px; padding: 0; background: none; border: 0; color: var(--accent-light); font: inherit; font-size: .88rem; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.ecoute-secours[hidden] { display: none; }
+
+/* « À lire ensuite » : l'ouverture vers l'article suivant */
+.suite { margin: 52px 0 8px; padding: 26px 22px; background: linear-gradient(135deg, rgba(108,99,255,.14), rgba(255,101,132,.10)); border: 1px solid rgba(108,99,255,.35); border-radius: var(--radius); }
+.suite-kicker { margin: 0 0 8px; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-light); }
+.suite-ouverture { margin: 0 0 18px; font-size: 1.08rem; line-height: 1.7; color: var(--text-primary); }
+.suite-carte { display: flex; flex-direction: column; gap: 0; overflow: hidden; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text-primary); transition: var(--transition); }
+.suite-carte:hover, .suite-carte:focus-visible { border-color: var(--accent); transform: translateY(-2px); }
+.suite-carte img { display: block; width: 100%; height: auto; aspect-ratio: 1200 / 630; object-fit: cover; }
+.suite-texte { display: flex; flex-direction: column; gap: 8px; padding: 18px 20px 20px; }
+.suite-texte strong { font-size: 1.1rem; line-height: 1.35; }
+.suite-texte span { color: var(--text-secondary); font-size: .92rem; line-height: 1.6; }
+.suite-texte em { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-style: normal; font-weight: 600; color: var(--accent-light); }
+.suite-texte em .icon { width: 16px; height: 16px; }
+@media (min-width: 40rem) { .suite-carte { flex-direction: row; } .suite-carte img { width: 42%; aspect-ratio: auto; } }
+@media (prefers-reduced-motion: reduce) { .suite-carte { transition: none; } }

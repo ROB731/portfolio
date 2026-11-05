@@ -6,6 +6,8 @@ categorie: reponse
 date: 2026-11-05
 ordre: 3
 message: Bonjour Herman, mon site n'apparaît pas sur Google. Voici son adresse : 
+suite: commandes-whatsapp-google-sheets
+ouverture: Votre site est trouvé et les clients vous écrivent sur WhatsApp. Comment ne perdre aucune commande ? Voici une méthode simple, avec le code à copier.
 ---
 Vous avez un site, vous le cherchez sur Google, et il n'y est pas. Avant de payer un « référencement », faites ces sept vérifications. Les trois premières règlent la plupart des cas.
 
@@ -14,6 +16,8 @@ Vous avez un site, vous le cherchez sur Google, et il n'y est pas. Avant de paye
 ## 1. Vérifier si le site est connu de Google
 
 Dans Google, tapez `site:votredomaine.com` (en remplaçant par votre adresse). Si Google affiche des pages, votre site est indexé : le problème est ailleurs (point 4 et suivants). Si Google n'affiche **rien**, il ne connaît pas votre site : passez aux points 2 et 3.
+
+![Comment Google découvre, lit, classe puis affiche vos pages](assets/blog/schema-google-fonctionnement.svg)
 
 ## 2. Déclarer le site à la Search Console
 

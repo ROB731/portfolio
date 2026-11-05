@@ -6,6 +6,8 @@ categorie: reponse
 date: 2026-11-05
 ordre: 2
 message: Bonjour Herman, je me demande si j'ai besoin d'un site en plus de ma page Facebook. Mon activité : 
+suite: site-invisible-sur-google
+ouverture: Si vous choisissez d'avoir un site, encore faut-il que les gens le trouvent. Que faire quand Google ne le montre pas ? Voici sept vérifications simples, dans l'ordre.
 ---
 « Mes clients sont sur Facebook, pourquoi payer un site ? » C'est une bonne question, et la réponse n'est pas toujours « faites un site ». Voici comment décider.
 
@@ -39,6 +41,8 @@ Pour résumer la comparaison :
 - **Vous recevez déjà des demandes par Facebook et WhatsApp, et vous passez du temps à répéter les mêmes réponses** : un site simple, avec une page par service et un bouton WhatsApp, vous fera gagner ce temps.
 - **Vous visez des entreprises, des administrations ou des clients qui comparent** : le site n'est plus un luxe, c'est une preuve de sérieux.
 - **Vous vendez en ligne régulièrement** : boutique en ligne, avec commande par WhatsApp ou paiement mobile selon vos clients.
+
+![Facebook pour attirer, le site pour convaincre, WhatsApp pour conclure](assets/blog/schema-facebook-site-whatsapp.svg)
 
 > Le meilleur schéma est souvent les deux : Facebook pour attirer et rester en contact, le site pour convaincre et être trouvé sur Google. Les deux se renvoient l'un à l'autre.
 

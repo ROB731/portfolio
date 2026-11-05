@@ -6,6 +6,8 @@ categorie: tuto
 date: 2026-11-05
 ordre: 1
 message: Bonjour Herman, je voudrais automatiser les relances de mes factures. Mon activité : 
+suite: cas-retrait-cheques-pwa
+ouverture: Une facture se suit avec un tableau. Et un processus entier, avec une preuve à la clé ? Voici un cas réel, vécu chez IvoirRapid.
 ---
 Relancer les clients qui n'ont pas payé est utile, mais personne n'aime le faire, alors on le repousse. Ce tuto met en place un tableau qui **le fait à votre place** : chaque matin, il repère les factures en retard et envoie un rappel poli. Il faut un compte Google, un tableau, et dix minutes. Aucune connaissance en programmation n'est nécessaire : vous copiez le code.
 
@@ -26,6 +28,10 @@ Client | Email | Téléphone | Montant | Échéance | Statut | Dernière relance
 ```
 
 Remplissez ensuite une ligne par facture. Pour la colonne **Statut**, écrivez `À payer` ou `Payée`. Pour **Échéance**, saisissez une vraie date (jj/mm/aaaa). Pour **Téléphone**, écrivez les 10 chiffres sans espace (par exemple `0172527765`).
+
+Voici à quoi ressemble le tableau une fois rempli :
+
+![Exemple de tableau de factures : payée, en retard, à payer](assets/blog/schema-feuille-exemple.svg)
 
 ## 2. Ajouter le code
 

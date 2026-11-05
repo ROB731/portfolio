@@ -6,10 +6,16 @@ categorie: formation
 date: 2026-11-05
 ordre: 1
 message: Bonjour Herman, j'ai suivi votre mini-formation et j'aimerais être accompagné pour : 
+suite: digitaliser-son-entreprise-ivoirrapid
+ouverture: Vous savez maintenant écrire une page web. Reste à comprendre pourquoi une entreprise a intérêt à digitaliser, et ce que cela change vraiment au quotidien. Voici ce que j'ai vu chez IvoirRapid.
 ---
 Cette mini-formation s'adresse à quelqu'un qui n'a **jamais écrit une page web**. Elle reprend les bases que j'enseignais en tant que formateur (HTML, CSS, JavaScript). Il vous faut un ordinateur, un éditeur de texte (le Bloc-notes suffit, **Visual Studio Code** est mieux) et un navigateur. Comptez environ deux heures, avec les exercices. À la fin, vous aurez une page personnelle prête à être mise en ligne.
 
 ![Le parcours en cinq leçons : HTML, CSS, mobile, WhatsApp, JavaScript](assets/blog/schema-formation-parcours.svg)
+
+Une page web repose sur trois couches qui travaillent ensemble : la structure, l'apparence et le mouvement.
+
+![Les trois couches d'une page web : HTML, CSS et JavaScript](assets/blog/schema-html-css-javascript.svg)
 
 ## Leçon 1 : la structure d'une page (HTML)
 
