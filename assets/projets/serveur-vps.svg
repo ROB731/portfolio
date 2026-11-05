@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-label="Configuration serveur VPS">
+<defs><linearGradient id="f" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a1a2e"/><stop offset="1" stop-color="#222240"/></linearGradient>
+<linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6C63FF"/><stop offset="1" stop-color="#FF6584"/></linearGradient></defs>
+<rect width="600" height="400" fill="url(#f)"/>
+<circle cx="520" cy="60" r="150" fill="#6C63FF" opacity=".10"/><circle cx="60" cy="360" r="120" fill="#FF6584" opacity=".08"/>
+<rect x="170" y="60" width="260" height="60" rx="10" fill="#2a2a40" opacity="1"/><circle cx="198" cy="90" r="7" fill="#4CAF50"/><rect x="224" y="84" width="140" height="12" rx="6" fill="#f0f0f5" opacity="0.3"/><rect x="170" y="134" width="260" height="60" rx="10" fill="#2a2a40" opacity="1"/><circle cx="198" cy="164" r="7" fill="#4CAF50"/><rect x="224" y="158" width="140" height="12" rx="6" fill="#f0f0f5" opacity="0.3"/><rect x="170" y="208" width="260" height="60" rx="10" fill="#2a2a40" opacity="1"/><circle cx="198" cy="238" r="7" fill="#febc2e"/><rect x="224" y="232" width="140" height="12" rx="6" fill="#f0f0f5" opacity="0.3"/>
+<text x="36" y="352" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="700" fill="#f0f0f5">Configuration serveur VPS</text>
+<text x="36" y="378" font-family="Inter,Arial,sans-serif" font-size="15" fill="#a0a0b8">Déploiement, sécurité, mise en production</text>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-label="Sonnera">
+<defs><linearGradient id="f" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a1a2e"/><stop offset="1" stop-color="#222240"/></linearGradient>
+<linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6C63FF"/><stop offset="1" stop-color="#FF6584"/></linearGradient></defs>
+<rect width="600" height="400" fill="url(#f)"/>
+<circle cx="520" cy="60" r="150" fill="#6C63FF" opacity=".10"/><circle cx="60" cy="360" r="120" fill="#FF6584" opacity=".08"/>
+<path d="M300 56c-48 0-80 38-80 90v52l-24 40h208l-24-40v-52c0-52-32-90-80-90z" fill="url(#a)"/><circle cx="300" cy="266" r="22" fill="url(#a)"/><path d="M168 120c-14 24-14 52 0 76M432 120c14 24 14 52 0 76M142 98c-24 38-24 80 0 118M458 98c24 38 24 80 0 118" stroke="#6C63FF" stroke-width="7" fill="none" stroke-linecap="round" opacity=".5"/>
+<text x="36" y="352" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="700" fill="#f0f0f5">Sonnera</text>
+<text x="36" y="378" font-family="Inter,Arial,sans-serif" font-size="15" fill="#a0a0b8">Rappels et suivi d'équipe</text>
+</svg>

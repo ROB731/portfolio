@@ -1665,3 +1665,7 @@ ul { list-style: none; }
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Formulaire de contact : message préparé vers WhatsApp */
+.form-note { margin: 0 0 1rem; font-size: .9rem; line-height: 1.5; color: var(--text-secondary); }
+.form-note a { color: var(--accent-light); }
