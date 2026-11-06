@@ -366,6 +366,19 @@ def dessin_gratuit():
     etiquette = rect(790, 420, 150, 54, '#33335a', 27, f'stroke="{VERT}" stroke-width="4"') + texte(865, 458, 'Gratuit', 28, 800, VERT, 'middle')
     return nuage + texte(855, 300, '</>', 54, 800, '#fff', 'middle') + etiquette
 
+def dessin_ip():
+    globe = f'<circle cx="860" cy="290" r="140" fill="none" stroke="url(#a)" stroke-width="10"/><ellipse cx="860" cy="290" rx="60" ry="140" fill="none" stroke="#c9c5ff" stroke-width="5" opacity=".6"/><line x1="720" y1="290" x2="1000" y2="290" stroke="#c9c5ff" stroke-width="5" opacity=".6"/><path d="M740 215h240M740 365h240" stroke="#c9c5ff" stroke-width="4" opacity=".4"/>'
+    noeuds = ''.join(f'<circle cx="{x}" cy="{y}" r="12" fill="{c}"/>' for x, y, c in [(760, 190, ACC2), (975, 235, ACC), (930, 400, ACC2), (800, 380, ACC)])
+    etiquette = rect(720, 470, 280, 62, CARTE, 31, f'stroke="{ACC}" stroke-width="4"') + texte(860, 512, '203.0.113.25', 30, 700, '#c9c5ff', 'middle')
+    return globe + noeuds + etiquette
+
+
+def dessin_laravel():
+    nav = fenetre(620, 190, 360, 280, trait(646, 250, 220, .4) + trait(646, 276, 160, .25) + rect(646, 320, 120, 36, '#33335a', 12))
+    fusee = f'<path d="M1030 120c40 40 56 120 30 200l-60 0c-26-80-10-160 30-200z" fill="url(#a)"/><circle cx="1030" cy="210" r="22" fill="{F1}" stroke="#c9c5ff" stroke-width="5"/><path d="M1000 320l-34 50 44-14zM1060 320l34 50-44-14z" fill="{ACC2}"/><path d="M1020 330c0 40 10 60 10 60s10-20 10-60z" fill="#febc2e"/>'
+    pastille = rect(700, 500, 150, 54, '#33335a', 27, f'stroke="{VERT}" stroke-width="4"') + texte(775, 538, 'En ligne', 26, 800, VERT, 'middle') + coche(880, 527, 20)
+    return nav + fusee + pastille
+
 
 COUVERTURES = [
     ('cout-site-web-abidjan', 'RÉPONSE', ['Combien coûte', 'un site web', 'à Abidjan ?'], dessin_cout),
@@ -387,6 +400,8 @@ COUVERTURES = [
     ('windows-ou-linux', 'INFORMATIQUE AU QUOTIDIEN', ['Windows ou', 'Linux : les vraies', 'différences'], dessin_windows_linux),
     ('pc-compatible-windows-11', 'INFORMATIQUE AU QUOTIDIEN', ['Votre PC peut-il', 'faire tourner', 'Windows 11 ?'], dessin_pc_compat),
     ('hebergement-web-gratuit', 'RÉPONSE', ['Hébergement web', 'et PHP gratuits'], dessin_gratuit),
+    ('adresse-ip-pour-les-nuls', 'INFORMATIQUE AU QUOTIDIEN', ["L'adresse IP", 'expliquée', 'simplement'], dessin_ip),
+    ('mettre-laravel-en-ligne', 'TUTO', ['Mettre un projet', 'Laravel en ligne'], dessin_laravel),
     ('ia-developpeurs-vont-ils-disparaitre', 'RÉPONSE', ['Les développeurs', 'vont-ils', 'disparaître ?'], dessin_ia),
     ('digitaliser-son-entreprise-ivoirrapid', 'POUR LES DIRIGEANTS', ['Pourquoi', 'digitaliser son', 'entreprise ?'], dessin_digital),
 ]
@@ -512,4 +527,19 @@ if __name__ == '__main__':
              'Payant si', [['Des clients vous', 'cherchent'], ['Vous vendez ou', 'prenez des demandes'], ['Vous voulez des', 'e-mails pros'], ['Un arrêt vous', 'ferait perdre de l\'argent']], 'coche', 'point')
     chaine('gratuit-trois-pistes', 'Trois pistes d\'hébergement gratuit selon votre projet',
            [('Site statique', ['GitHub Pages,', 'Netlify']), ('PHP + MySQL', ['InfinityFree,', 'à tester']), ('En local', ['XAMPP, pour', 'apprendre'])], fleches=False)
+
+    chaine('ip-dns', 'Du nom de domaine à l\'adresse IP : on tape un nom, le DNS le traduit, le serveur répond',
+           [(['Vous tapez', 'un nom'], None), (['Le DNS', 'le traduit'], None), (['En adresse', 'IP'], None), (['Le serveur', 'répond'], None)])
+    colonnes('ip-publique-privee', 'Adresse IP publique et adresse IP privée', 'IP publique',
+             [['Visible depuis', 'tout Internet'], ['Donnée par votre', 'fournisseur'], ['Une seule pour', 'toute la maison'], ['Peut changer', 'de temps en temps']],
+             'IP privée', [['Visible seulement', 'chez vous'], ['Donnée par votre', 'box ou routeur'], ['Une par appareil', 'connecté'], ['Souvent du genre', '192.168.x.x']], 'point', 'point')
+    chaine('ip-ports', 'L\'adresse IP désigne la machine, le port désigne le service',
+           [('Adresse IP', ['l\'immeuble']), ('Port', ['la porte']), ('Service', ['site, mail,', 'accès SSH'])])
+    etapes('laravel-etapes', 'Mettre un projet Laravel en ligne en huit étapes',
+           ['Préparer le projet pour la production', 'Choisir l\'hébergement', 'Envoyer les fichiers', 'Installer les dépendances (Composer)', 'Configurer le fichier .env', 'Préparer la base de données', 'Pointer le site vers le dossier public', 'Activer HTTPS et vérifier'])
+    chaine('laravel-trois-voies', 'Trois façons de voir son projet Laravel en ligne',
+           [('Test rapide', ['tunnel', 'temporaire']), ('Mutualisé', ['cPanel, SSH', 'ou FTP']), ('VPS', ['Nginx, PHP-FPM,', 'Composer'])], fleches=False)
+    colonnes('laravel-faire-ne-pas-faire', 'Ce qu\'il faut faire et ne jamais faire en production', 'À faire',
+             [['APP_DEBUG à', 'false'], ['Racine du site =', 'dossier public'], ['Sauvegarder la base', 'avant de migrer'], ['HTTPS activé', 'dès le départ']],
+             'Jamais', [['Mettre .env', 'sur GitHub'], ['Laisser le mode', 'debug actif'], ['Servir le projet', 'depuis sa racine'], ['Modifier le site', 'directement en ligne']], 'coche', 'croix')
     print('schémas ok')

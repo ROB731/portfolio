@@ -87,6 +87,12 @@ Windows est le plus compatible avec les logiciels du commerce. Linux est gratuit
 ### Mon ordinateur peut-il faire tourner Windows 11 ? Et s'il est trop faible ?
 Il faut notamment 4 Go de mémoire, 64 Go de stockage, le démarrage sécurisé et une puce TPM 2.0. Pour une machine trop faible : ChromeOS Flex ou un Linux léger. Voir [Mon PC peut-il faire tourner Windows 11 ?](blog-pc-compatible-windows-11.html).
 
+### C'est quoi une adresse IP, et à quoi sert-elle ?
+C'est le numéro qui permet à un appareil d'être joint sur Internet, comme un numéro de téléphone. Elle peut être publique ou privée, fixe ou changeante. Le DNS relie un nom de domaine à cette adresse. Voir [L'adresse IP expliquée simplement](blog-adresse-ip-pour-les-nuls.html).
+
+### Comment mettre un projet Laravel en ligne ?
+En préparant le projet (sans le fichier .env), en l'envoyant sur un hébergement mutualisé ou un VPS, en installant les dépendances avec Composer, en configurant la base de données et en servant le site depuis le dossier public. Le tutoriel complet est dans [Mettre un projet Laravel en ligne](blog-mettre-laravel-en-ligne.html).
+
 ## Pour travailler avec moi
 
 ### Comment vous contacter ou prendre rendez-vous ?

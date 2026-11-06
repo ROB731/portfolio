@@ -6,8 +6,8 @@ categorie: reponse
 date: 2026-11-05
 ordre: 4
 message: Bonjour Herman, je cherche un hébergement pour mon site ou mon application. Mon besoin : 
-suite: application-web-ou-mobile
-ouverture: Votre site est hébergé. Et si vous voulez une application ? Web ou mobile : voici comment choisir sans vous tromper.
+suite: adresse-ip-pour-les-nuls
+ouverture: Pour pointer votre nom de domaine vers votre hébergement, il faut comprendre ce qu'est une adresse IP. Voici l'essentiel, expliqué simplement et sans jargon.
 ---
 Vous avez un site ou une application, il faut maintenant le mettre quelque part pour que tout le monde puisse y accéder. C'est le rôle de l'**hébergement**. Et là, deux mots reviennent tout le temps : **hébergement mutualisé** et **VPS**. Voici la différence, et surtout comment choisir.
 

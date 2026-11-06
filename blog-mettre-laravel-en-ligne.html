@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mettre un projet Laravel en ligne | Herman Robé</title>
+    <meta name="description" content="Tuto pas à pas pour mettre un projet Laravel en ligne : préparation, hébergement mutualisé ou VPS Ubuntu avec Nginx, base de données, HTTPS et pièges à éviter.">
+    <link rel="canonical" href="https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-mettre-laravel-en-ligne.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-mettre-laravel-en-ligne.html">
+    <meta property="og:title" content="Mettre un projet Laravel en ligne | Herman Robé">
+    <meta property="og:description" content="Tuto pas à pas pour mettre un projet Laravel en ligne : préparation, hébergement mutualisé ou VPS Ubuntu avec Nginx, base de données, HTTPS et pièges à éviter.">
+    <meta property="og:image" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/blog/couverture-mettre-laravel-en-ligne.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:image" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/blog/couverture-mettre-laravel-en-ligne.png">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Herman Robé Portfolio">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="assets/photo-profil.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Comment mettre un projet Laravel en ligne (hébergement mutualisé ou VPS), pas à pas",
+    "description": "Tuto pas à pas pour mettre un projet Laravel en ligne : préparation, hébergement mutualisé ou VPS Ubuntu avec Nginx, base de données, HTTPS et pièges à éviter.",
+    "datePublished": "2026-11-05",
+    "dateModified": "2026-11-05",
+    "inLanguage": "fr",
+    "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-mettre-laravel-en-ligne.html",
+    "mainEntityOfPage": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-mettre-laravel-en-ligne.html",
+    "image": "https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/blog/couverture-mettre-laravel-en-ligne.png",
+    "author": {
+      "@type": "Person",
+      "name": "Herman Robé",
+      "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe",
+      "jobTitle": "Concepteur-Développeur Full-Stack"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Herman Robé",
+      "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe",
+      "jobTitle": "Concepteur-Développeur Full-Stack"
+    },
+    "articleSection": "Tutos",
+    "wordCount": 1539,
+    "audio": {
+      "@type": "AudioObject",
+      "contentUrl": "https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/audio/mettre-laravel-en-ligne.mp3",
+      "encodingFormat": "audio/mpeg",
+      "duration": "PT8M",
+      "inLanguage": "fr"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": "https://sites-sfb.ea-services.net/portfolio-herman-robe/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Comment mettre un projet Laravel en ligne (hébergement mutualisé ou VPS), pas à pas",
+        "item": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-mettre-laravel-en-ligne.html"
+      }
+    ]
+  }
+]
+    </script>
+</head>
+<body class="page-blog">
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo" aria-label="Accueil du portfolio">
+                <span class="logo-bracket">&lt;</span><span class="logo-name">HR</span><span class="logo-bracket"> /&gt;</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projets</a></li>
+                <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-link contact-link">Contact</a></li>
+                <li class="nav-extras">
+                        <a class="btn btn-primary btn-full" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20je%20souhaite%20prendre%20rendez-vous.%20Mes%20disponibilit%C3%A9s%20%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-calendar"/></svg> Prendre rendez-vous</a>
+                        <a class="btn btn-outline btn-full" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg> Écrire sur WhatsApp</a>
+                        <p class="nav-extras-info">Abidjan, Marcory · 01 72 52 77 65</p>
+                    </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+    <article class="post section">
+        <div class="container post-container">
+            <p class="fil-ariane"><a href="index.html">Accueil</a> / <a href="blog.html">Blog</a> / Tutos</p>
+            <span class="post-tag"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-code"/></svg> Tutos</span>
+            <h1 class="post-title">Comment mettre un projet Laravel en ligne (hébergement mutualisé ou VPS), pas à pas</h1>
+            <p class="post-meta">Par Herman Robé · 5 novembre 2026 · 9 min de lecture</p>
+            <figure class="post-hero"><img src="assets/blog/couverture-mettre-laravel-en-ligne.svg" alt="Illustration : Comment mettre un projet Laravel en ligne (hébergement mutualisé ou VPS), pas à pas" width="1200" height="630"></figure>
+            <div class="ecoute" data-ecoute><p class="ecoute-titre"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-headset"/></svg> <strong>Écouter cet article</strong> · environ 8 min</p><audio controls preload="none" src="assets/audio/mettre-laravel-en-ligne.mp3">Votre navigateur ne sait pas lire l'audio.</audio><button type="button" class="ecoute-secours" data-lecture-appareil hidden>Le son ne démarre pas ? Lecture par votre appareil</button></div>
+            <nav class="toc" aria-label="Sommaire"><strong>Dans cet article</strong><ol><li><a href="#trois-facons-de-voir-son-projet-en-ligne">Trois façons de voir son projet en ligne</a></li><li><a href="#les-huit-etapes">Les huit étapes</a></li><li><a href="#etape-1-preparer-le-projet">Étape 1 : préparer le projet</a></li><li><a href="#voie-1-voir-son-projet-tout-de-suite-sans-hebergem">Voie 1 : voir son projet tout de suite, sans hébergement</a></li><li><a href="#voie-2-lhebergement-mutualise-cpanel">Voie 2 : l&#x27;hébergement mutualisé (cPanel)</a></li><li><a href="#voie-3-le-vps-exemple-avec-ubuntu-et-nginx">Voie 3 : le VPS (exemple avec Ubuntu et Nginx)</a></li><li><a href="#verifier-que-tout-fonctionne">Vérifier que tout fonctionne</a></li><li><a href="#les-erreurs-les-plus-frequentes">Les erreurs les plus fréquentes</a></li><li><a href="#mettre-a-jour-ensuite">Mettre à jour ensuite</a></li><li><a href="#et-si-je-ne-veux-pas-gerer-tout-cela">Et si je ne veux pas gérer tout cela ?</a></li></ol></nav>
+            <div class="prose">
+<p>Votre projet Laravel marche très bien sur votre ordinateur. Il faut maintenant le <strong>voir en ligne</strong>, pour le montrer à un client ou le mettre en service. C&#x27;est l&#x27;étape où beaucoup de projets restent bloqués : erreur 500, page blanche, fichiers introuvables. Voici la méthode, avec les trois façons de faire.</p>
+<p>Les commandes viennent de la <a href="https://laravel.com/docs/12.x/deployment" target="_blank" rel="noopener">documentation officielle de déploiement de Laravel</a> (version 12 au moment de l&#x27;écriture) : si vous utilisez une autre version, vérifiez-y le détail.</p>
+<h2 id="trois-facons-de-voir-son-projet-en-ligne">Trois façons de voir son projet en ligne</h2>
+<figure class="post-figure"><img src="assets/blog/schema-laravel-trois-voies.svg" alt="Trois façons de voir son projet Laravel en ligne" width="640" height="230" loading="lazy"><figcaption>Trois façons de voir son projet Laravel en ligne</figcaption></figure>
+<ol><li><strong>Le test rapide</strong>, pour montrer le projet sans l&#x27;héberger : provisoire.</li><li><strong>L&#x27;hébergement mutualisé</strong>, le plus simple et le moins cher.</li><li><strong>Le VPS</strong>, le plus souple, pour une vraie application.</li></ol>
+<h2 id="les-huit-etapes">Les huit étapes</h2>
+<figure class="post-figure"><img src="assets/blog/schema-laravel-etapes.svg" alt="Mettre un projet Laravel en ligne en huit étapes" width="640" height="526" loading="lazy"><figcaption>Mettre un projet Laravel en ligne en huit étapes</figcaption></figure>
+<h2 id="etape-1-preparer-le-projet">Étape 1 : préparer le projet</h2>
+<p>Avant d&#x27;envoyer quoi que ce soit :</p>
+<ul><li><strong>Le fichier <code>.env</code> n&#x27;est jamais envoyé sur GitHub.</strong> Il contient vos mots de passe. Laravel fournit un <code>.env.example</code> à la place : c&#x27;est lui qui est versionné.</li><li><strong>Préparez les fichiers du design</strong> : sur votre ordinateur, lancez <code>npm install &amp;&amp; npm run build</code>. Beaucoup d&#x27;hébergements mutualisés n&#x27;ont pas Node : vous enverrez simplement le dossier <code>public/build</code> produit.</li><li><strong>Vérifiez la version de PHP</strong> que demande votre version de Laravel. Pour Laravel 12, c&#x27;est PHP 8.2 ou plus, avec plusieurs extensions courantes (mbstring, openssl, pdo, xml, curl, etc.).</li><li><strong>Sauvegardez</strong> votre base de données locale si vous voulez la reprendre.</li><li><strong>Mettez le code sur GitHub</strong> (sans le <code>.env</code>) : c&#x27;est la façon la plus propre de l&#x27;envoyer ensuite sur le serveur.</li></ul>
+<h2 id="voie-1-voir-son-projet-tout-de-suite-sans-hebergem">Voie 1 : voir son projet tout de suite, sans hébergement</h2>
+<p>Pour montrer un projet quelques heures à un client, vous pouvez lancer le serveur local et le rendre accessible par un <strong>tunnel</strong> :</p>
+<pre class="code" data-langue="bash"><code>php artisan serve</code></pre>
+<p>Un outil comme <a href="https://ngrok.com" target="_blank" rel="noopener">ngrok</a> ou <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/" target="_blank" rel="noopener">Cloudflare Tunnel</a> crée alors une adresse publique temporaire qui renvoie vers votre ordinateur. C&#x27;est pratique pour une démonstration. Ce n&#x27;est <strong>pas</strong> un hébergement : quand votre ordinateur s&#x27;éteint, le site disparaît.</p>
+<h2 id="voie-2-lhebergement-mutualise-cpanel">Voie 2 : l&#x27;hébergement mutualisé (cPanel)</h2>
+<ol><li><strong>Vérifiez la version de PHP</strong> dans le panneau de l&#x27;hébergeur (souvent « Sélectionner la version PHP »), et activez les extensions demandées.</li><li><strong>Créez la base de données</strong> MySQL, un utilisateur et son mot de passe. Notez les trois.</li><li><strong>Envoyez le projet</strong> : en archive ZIP avec le gestionnaire de fichiers, par FTP, ou avec Git si l&#x27;hébergeur offre l&#x27;accès SSH.</li><li><strong>Installez les dépendances.</strong> Avec un accès SSH : <code>composer install --no-dev --optimize-autoloader</code>. Sans SSH, préparez le dossier <code>vendor</code> sur votre ordinateur avec cette même commande et envoyez-le.</li><li><strong>Créez le fichier <code>.env</code></strong> sur le serveur, avec les informations de la base de données et ces valeurs :</li></ol>
+<pre class="code" data-langue="texte"><code>APP_ENV=production
+APP_DEBUG=false
+APP_URL=https://votre-domaine.com</code></pre>
+<ol><li><strong>Le point le plus important : la racine du site.</strong> Laravel doit être servi <strong>depuis le dossier <code>public</code></strong>. Dans le panneau de l&#x27;hébergeur, cherchez l&#x27;option qui permet de choisir la « racine du document » du domaine, et pointez-la vers <code>public</code>.</li></ol>
+<aside class="callout"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-lightbulb"/></svg><p>Ne déplacez jamais <code>index.php</code> à la racine du projet : cela exposerait vos fichiers de configuration sur Internet, y compris le <code>.env</code>. C&#x27;est un avertissement explicite de la documentation de Laravel.</p></aside>
+<p>Si votre hébergeur ne permet pas de changer la racine, une solution de secours existe : placer <strong>tout le projet dans un dossier au-dessus</strong> du dossier public du site, et ne mettre dans ce dossier public que le contenu de <code>public</code>, en adaptant les deux chemins dans <code>index.php</code>. Elle fonctionne, mais elle est plus fragile : faites-vous aider si vous n&#x27;êtes pas à l&#x27;aise.</p>
+<ol><li><strong>Les commandes de mise en route</strong>, en SSH (ou via l&#x27;outil de commandes de l&#x27;hébergeur) :</li></ol>
+<pre class="code" data-langue="bash"><code>php artisan key:generate
+php artisan migrate --force
+php artisan storage:link
+php artisan optimize</code></pre>
+<ol><li><strong>Activez le HTTPS</strong> : la plupart des hébergeurs offrent un certificat gratuit en un clic.</li></ol>
+<h2 id="voie-3-le-vps-exemple-avec-ubuntu-et-nginx">Voie 3 : le VPS (exemple avec Ubuntu et Nginx)</h2>
+<p>Voici la méthode classique sur un VPS Ubuntu (voir mon article sur le choix de l&#x27;hébergement), accessible en SSH. C&#x27;est celle que recommande la documentation de Laravel, avec Nginx.</p>
+<h3>1. Installer les logiciels</h3>
+<pre class="code" data-langue="bash"><code>sudo apt update
+sudo apt install -y nginx php-fpm php-mysql php-xml php-mbstring php-curl php-zip unzip git mysql-server composer</code></pre>
+<p>Vérifiez la version de PHP installée avec <code>php -v</code> : elle doit respecter le minimum de votre version de Laravel.</p>
+<h3>2. Créer la base de données</h3>
+<pre class="code" data-langue="sql"><code>CREATE DATABASE monappli CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER &#x27;monappli&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;UN_MOT_DE_PASSE_LONG_ET_UNIQUE&#x27;;
+GRANT ALL PRIVILEGES ON monappli.* TO &#x27;monappli&#x27;@&#x27;localhost&#x27;;
+FLUSH PRIVILEGES;</code></pre>
+<h3>3. Récupérer le projet et le préparer</h3>
+<pre class="code" data-langue="bash"><code>cd /var/www
+sudo git clone https://github.com/VOTRE_COMPTE/votre-projet.git monappli
+cd monappli
+sudo composer install --no-dev --optimize-autoloader
+sudo cp .env.example .env
+# puis éditez .env : APP_ENV=production, APP_DEBUG=false, APP_URL, et les DB_*
+sudo php artisan key:generate
+sudo php artisan migrate --force
+sudo php artisan storage:link
+sudo php artisan optimize
+sudo chown -R www-data:www-data storage bootstrap/cache
+sudo chmod -R 775 storage bootstrap/cache</code></pre>
+<p>Les deux dossiers <code>storage</code> et <code>bootstrap/cache</code> doivent être modifiables par le serveur web : c&#x27;est une exigence de Laravel. Pour un usage durable, créez un utilisateur dédié au déploiement plutôt que de tout lancer avec <code>sudo</code>.</p>
+<h3>4. Configurer Nginx</h3>
+<p>Créez le fichier <code>/etc/nginx/sites-available/monappli</code>, d&#x27;après l&#x27;exemple de la documentation de Laravel :</p>
+<pre class="code" data-langue="nginx"><code>server {
+    listen 80;
+    listen [::]:80;
+    server_name votre-domaine.com www.votre-domaine.com;
+    root /var/www/monappli/public;
+
+    add_header X-Frame-Options &quot;SAMEORIGIN&quot;;
+    add_header X-Content-Type-Options &quot;nosniff&quot;;
+
+    index index.php;
+    charset utf-8;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ ^/index\.php(/|$) {
+        fastcgi_pass unix:/var/run/php/php8.3-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        include fastcgi_params;
+        fastcgi_hide_header X-Powered-By;
+    }
+
+    location ~ /\.(?!well-known).* {
+        deny all;
+    }
+}</code></pre>
+<p>Adaptez deux choses : le nom de domaine, et le numéro de version de PHP dans <code>php8.3-fpm.sock</code> (celui que vous a donné <code>php -v</code>). Puis activez le site :</p>
+<pre class="code" data-langue="bash"><code>sudo ln -s /etc/nginx/sites-available/monappli /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl reload nginx</code></pre>
+<h3>5. Pointer le nom de domaine vers le serveur</h3>
+<p>Chez le gestionnaire de votre nom de domaine, créez un enregistrement <strong>A</strong> qui pointe vers l&#x27;adresse IP de votre VPS (voir l&#x27;article sur l&#x27;adresse IP). Attendez la propagation, puis ouvrez votre domaine.</p>
+<h3>6. Activer le HTTPS</h3>
+<pre class="code" data-langue="bash"><code>sudo apt install -y certbot python3-certbot-nginx
+sudo certbot --nginx -d votre-domaine.com -d www.votre-domaine.com</code></pre>
+<p><a href="https://certbot.eff.org" target="_blank" rel="noopener">Certbot</a> obtient un certificat gratuit (Let&#x27;s Encrypt) et configure Nginx. Il se renouvelle ensuite automatiquement.</p>
+<h2 id="verifier-que-tout-fonctionne">Vérifier que tout fonctionne</h2>
+<ul><li><strong>La page d&#x27;accueil</strong> s&#x27;affiche, en HTTPS, sans avertissement.</li><li><strong>Le chemin <code>/up</code></strong> : Laravel inclut une route de santé qui répond avec un code de succès quand l&#x27;application a démarré.</li><li><strong>Les journaux</strong> : en cas de problème, regardez <code>storage/logs/laravel.log</code>. Ne mettez <strong>pas</strong> <code>APP_DEBUG</code> à <code>true</code> pour y voir plus clair : cela exposerait vos informations sensibles.</li></ul>
+<h2 id="les-erreurs-les-plus-frequentes">Les erreurs les plus fréquentes</h2>
+<ul><li><strong>Erreur 500 après l&#x27;envoi.</strong> Les causes habituelles : le <code>.env</code> manque, la clé d&#x27;application n&#x27;est pas générée, les permissions de <code>storage</code> sont mauvaises, ou la version de PHP est trop ancienne. Le journal vous le dit.</li><li><strong>Les routes donnent une erreur 404 sauf l&#x27;accueil.</strong> Avec Nginx, c&#x27;est la ligne <code>try_files</code>. Avec Apache, il faut activer la réécriture d&#x27;adresses (mod_rewrite) et autoriser le fichier <code>.htaccess</code>.</li><li><strong>Les couleurs et le design manquent.</strong> Vous avez oublié <code>npm run build</code>, ou le dossier <code>public/build</code> n&#x27;est pas envoyé.</li><li><strong>Des valeurs du <code>.env</code> qui deviennent « null ».</strong> Après <code>config:cache</code> (inclus dans <code>optimize</code>), Laravel ne lit plus le <code>.env</code> : il faut n&#x27;appeler <code>env()</code> que dans les fichiers du dossier <code>config</code>.</li><li><strong>Mélange HTTP et HTTPS.</strong> Vérifiez <code>APP_URL</code>.</li></ul>
+<figure class="post-figure"><img src="assets/blog/schema-laravel-faire-ne-pas-faire.svg" alt="Ce qu&#x27;il faut faire et ne jamais faire en production" width="640" height="424" loading="lazy"><figcaption>Ce qu&#x27;il faut faire et ne jamais faire en production</figcaption></figure>
+<h2 id="mettre-a-jour-ensuite">Mettre à jour ensuite</h2>
+<p>Chaque fois que vous modifiez le projet, travaillez en local, envoyez sur GitHub, puis sur le serveur :</p>
+<pre class="code" data-langue="bash"><code>git pull
+composer install --no-dev --optimize-autoloader
+php artisan migrate --force
+php artisan optimize</code></pre>
+<p>Sauvegardez la base <strong>avant</strong> chaque migration, et redémarrez vos processus longs (files d&#x27;attente) s&#x27;il y en a.</p>
+<h2 id="et-si-je-ne-veux-pas-gerer-tout-cela">Et si je ne veux pas gérer tout cela ?</h2>
+<p>Des plateformes spécialisées s&#x27;en chargent : <a href="https://forge.laravel.com" target="_blank" rel="noopener">Laravel Forge</a> pour gérer vos propres serveurs sans tout configurer à la main, ou <a href="https://cloud.laravel.com" target="_blank" rel="noopener">Laravel Cloud</a> pour un déploiement entièrement géré. Elles sont payantes : regardez leurs offres actuelles.</p>
+<p>Vous pouvez aussi me confier la mise en ligne : je prépare le serveur, je déploie le projet, je configure le nom de domaine et le HTTPS, et je mets en place les sauvegardes. Envoyez-moi un message sur WhatsApp avec le nom du projet et l&#x27;hébergement choisi.</p>
+            </div>
+            <aside class="suite" aria-labelledby="suite-titre">
+                <p class="suite-kicker" id="suite-titre">À lire ensuite</p>
+                <p class="suite-ouverture">Votre application est en ligne. Mais faut-il aussi une application mobile ? Voici comment choisir entre web et mobile sans vous tromper.</p>
+                <a class="suite-carte" href="blog-application-web-ou-mobile.html"><img src="assets/blog/couverture-application-web-ou-mobile.svg" alt="" width="1200" height="630" loading="lazy"><span class="suite-texte"><strong>Application web ou application mobile : laquelle choisir pour votre entreprise ?</strong><span>Application web, PWA ou application mobile : ce que chacune permet, ce qu&#x27;elle demande en temps et en budget, et cinq questions pour choisir sans vous tromper.</span><em>Lire la suite <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-arrow-right"/></svg></em></span></a>
+            </aside>
+            <aside class="post-cta">
+                <h2>Une question sur ce sujet ?</h2>
+                <p>Écrivez-moi : je réponds sur WhatsApp. Dites-moi où vous en êtes, je vous dirai ce que je ferais à votre place.</p>
+                <a class="btn btn-primary" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20je%20voudrais%20mettre%20mon%20projet%20Laravel%20en%20ligne%20et%20j%27ai%20besoin%20d%27aide.%20Voici%20o%C3%B9%20j%27en%20suis%20%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg> Écrire sur WhatsApp</a>
+            </aside>
+        </div>
+    </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand"><span class="logo-bracket">&lt;</span><span class="logo-name">HR</span><span class="logo-bracket"> /&gt;</span></div>
+                <p class="footer-tagline">Concepteur-Développeur Full-Stack — Abidjan · <a href="https://ea-services.net">EA-SERVICES</a></p>
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="faq.html">Questions</a>
+                    <a href="index.html#projects">Projets</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                <p class="footer-copy">© 2026 Herman Robé. Conçu à Abidjan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="barre-contact" id="barreContact">
+        <a class="btn btn-primary" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20je%20souhaite%20prendre%20rendez-vous.%20Mes%20disponibilit%C3%A9s%20%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-calendar"/></svg> Rendez-vous</a>
+        <a class="btn btn-outline" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20" target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg> WhatsApp</a>
+    </div>
+    <a class="fab-whatsapp" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20" target="_blank" rel="noopener" aria-label="Écrire à Herman sur WhatsApp"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg></a>
+    <script src="js/menu.js" defer></script>
+    <script src="js/blog.js" defer></script>
+</body>
+</html>
