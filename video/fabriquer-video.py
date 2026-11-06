@@ -28,7 +28,7 @@ POLICES = ['/usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf', '/usr/share/fonts/tr
 POLICES_R = ['/usr/share/fonts/truetype/ubuntu/Ubuntu-R.ttf', '/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf', '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf']
 
 PHRASES = [
-    "Je m'appelle Herman Robe.",
+    "Je m'appelle Herman Robé.",
     "Je vis à Abidjan, et je conçois des outils qui travaillent pour vous.",
     "Des applications web et mobiles.",
     "Des automatisations qui font à votre place ce qui vous prend vos soirées.",
@@ -41,11 +41,11 @@ PHRASES = [
     "Alors si vous avez un projet, une idée, ou un problème qui revient toujours : ne le gardez pas pour vous.",
     "Écrivez-moi sur WhatsApp. Je vous réponds, et on avance.",
     "Abonnez-vous à la page Facebook EA services : vous y suivrez mes projets, mes tutos et mes conseils.",
-    "Herman Robe, à Abidjan. Passez à l'action.",
+    "Herman Robé, à Abidjan. Passez à l'action.",
 ]
 # Chaque plan : (phrases couvertes, type, étiquette, images)
 PLANS = [
-    ([0, 1], 'photo', 'Herman Robe', ['assets/photo-profil.jpg']),
+    ([0, 1], 'photo', 'Herman Robé', ['assets/photo-profil.jpg']),
     ([2], 'carte', 'Applications web et mobiles', ['assets/projets/ea-services.svg', 'assets/projets/sonnera.svg']),
     ([3], 'carte', 'Automatisations', ['assets/projets/publipostage.svg']),
     ([4], 'carte', 'Agents d\'intelligence artificielle', ['assets/projets/sfb.svg']),
@@ -112,7 +112,7 @@ def vignette(plan, image):
     if type_ == 'photo':
         photo = arrondi(rendre_image(image, 680), 48)
         img.paste(photo, ((W - 680) // 2, 170), photo)
-        centre(d, 170 + photo.height + 30, 'Herman Robe', police(82))
+        centre(d, 170 + photo.height + 30, 'Herman Robé', police(82))
         centre(d, 170 + photo.height + 134, 'Concepteur-développeur · Abidjan', police(40, False), (190, 190, 215))
     elif type_ == 'carte':
         centre(d, 260, etiquette, police(66 if len(etiquette) < 28 else 56))

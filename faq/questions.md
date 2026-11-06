@@ -49,6 +49,29 @@ Par le HTML, le CSS puis un peu de JavaScript. Une [mini-formation en cinq leço
 ### Faut-il un diplôme pour travailler dans le développement ?
 Un diplôme aide, mais ce qui convainc le plus, ce sont des **projets réels**, pour des personnes réelles, que vous savez expliquer simplement. Construisez-en dès maintenant, même petits, et gardez-en une trace.
 
+## Pour l'informatique du quotidien
+
+### Où télécharger Windows en toute sécurité ?
+Uniquement sur le site de Microsoft. Les copies trouvées ailleurs peuvent être modifiées ou contenir des virus. Les six étapes, avec les pièges à éviter, sont dans [Télécharger et installer Windows correctement](blog-installer-windows-correctement.html).
+
+### Windows 10 est-il encore sûr ?
+Microsoft a arrêté les mises à jour gratuites de Windows 10 le 14 octobre 2025 : un ordinateur qui y reste ne reçoit plus de correctifs de sécurité. Si votre machine est compatible avec Windows 11, passez dessus. Sinon, demandez conseil avant de décider.
+
+### Windows Sécurité suffit-il comme antivirus ?
+Pour un seul ordinateur utilisé avec prudence et bien mis à jour, il fait en général l'essentiel. Une suite payante peut valoir la peine pour plusieurs utilisateurs, des enfants, des opérations bancaires fréquentes ou des données de clients. Détail dans [Quel antivirus choisir ?](blog-antivirus-defender-suffit-il.html).
+
+### Comment savoir si un logiciel est sûr à télécharger ?
+Téléchargez-le uniquement sur le **site officiel de l'éditeur**, jamais sur un site tiers ou depuis un lien reçu par message, et fuyez les versions « crackées ». La liste de ceux que je recommande est dans [Logiciels recommandés selon votre activité](blog-logiciels-recommandes-et-ia.html).
+
+### Quelles sont les bases de la sécurité informatique ?
+Faire les mises à jour, un mot de passe différent par compte, la double vérification, des sauvegardes (règle 3-2-1), se méfier des messages, n'installer que depuis des sources sûres. Les huit réflexes sont dans [cet article](blog-reflexes-securite-informatique.html).
+
+### Peut-on utiliser l'IA pour son travail sans risque ?
+Oui, à condition de ne jamais lui confier de mots de passe, de contrats confidentiels ou de données complètes de clients, de vérifier les chiffres, et de relire avant d'envoyer. L'IA prépare, vous décidez. Voir [Logiciels recommandés et IA](blog-logiciels-recommandes-et-ia.html).
+
+### Quand faut-il confier son ordinateur à un expert ?
+Quand il contient des données importantes sans sauvegarde, quand il sert à votre entreprise, quand des fichiers ont disparu ou sont chiffrés, ou quand le problème revient malgré vos essais. Mieux vaut demander avant d'aggraver la situation.
+
 ## Pour travailler avec moi
 
 ### Comment vous contacter ou prendre rendez-vous ?

@@ -33,6 +33,7 @@ RACINE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 SITE = 'https://sites-sfb.ea-services.net/portfolio-herman-robe/'
 NUMERO = '2250172527765'
 CATS = {
+    'support': ('Informatique au quotidien', 'tools', 'Installer, protéger, choisir ses logiciels : le savoir-faire du support informatique.'),
     'recruteur': ('Pour les recruteurs et clients', 'users', 'Recruter un développeur, choisir un prestataire : les questions de ceux qui cherchent de l\'aide.'),
     'dirigeant': ('Pour les dirigeants', 'user',      'Pourquoi et comment digitaliser une entreprise, expliqué sans jargon.'),
     'reponse':   ('Réponses',        'lightbulb',  'Les questions qu\'on me pose le plus souvent, avec une réponse franche.'),
@@ -174,13 +175,14 @@ PRONONCIATION = [
     (r'\bFCFA\b', 'francs CFA'), (r'\bHTML5?\b', 'H T M L'), (r'\bCSS3?\b', 'C S S'), (r'\bPWA\b', 'P W A'),
     (r'\bSFB\b', 'S F B'), (r'\bPDF\b', 'P D F'), (r'\bURL\b', 'U R L'), (r'\bAPI\b', 'A P I'), (r'\bIA\b', 'I A'),
     (r'\bSEO\b', 'S E O'), (r'EMPLOI\.EA', 'Emploi point E A'), (r'\brobots\.txt\b', 'le fichier robots'),
-    (r'\bnoindex\b', 'no index'), (r'\bsitemap\b', 'plan du site'),
+    (r'\bnoindex\b', 'no index'), (r'\bUSB\b', 'U S B'), (r'\bISO\b', 'I S O'), (r'\bTPM\b', 'T P M'), (r'\bSSD\b', 'S S D'),
+    (r'\bVPN\b', 'V P N'), (r'\bSMS\b', 'S M S'), (r'\bUEFI\b', 'U E F I'), (r'\bAPK\b', 'A P K'), (r'\bBIOS\b', 'B I O S'), (r'\bsitemap\b', 'plan du site'),
 ]
 
 
 def narration(p, corps_md):
     """Texte lu à voix haute : pas de code, pas d'image, sigles épelés."""
-    sortie = [p['titre'] + '.', 'Par Herman Robe.']
+    sortie = [p['titre'] + '.', 'Par Herman Robé.']
     en_code = False
     for l in corps_md.split('\n'):
         if l.startswith('```'):
@@ -243,7 +245,7 @@ def entete(titre, description, canonique, jsonld, og_type='article', og_image=No
     <meta property="og:image" content="{og_image}">
     {dims}<meta name="twitter:image" content="{og_image}">
     <meta property="og:locale" content="fr_FR">
-    <meta property="og:site_name" content="Herman Robe Portfolio">
+    <meta property="og:site_name" content="Herman Robé Portfolio">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" href="assets/photo-profil.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -292,7 +294,7 @@ def pied():
                     <a href="index.html#projects">Projets</a>
                     <a href="index.html#contact">Contact</a>
                 </div>
-                <p class="footer-copy">© 2026 Herman Robe. Conçu à Abidjan.</p>
+                <p class="footer-copy">© 2026 Herman Robé. Conçu à Abidjan.</p>
             </div>
         </div>
     </footer>
@@ -325,8 +327,8 @@ def carte(p):
 def page_article(p, posts):
     nom, ico, _ = CATS[p['categorie']]
     url = f"{SITE}blog-{p['slug']}.html"
-    titre = f"{p['court']} | Herman Robe"
-    auteur = {'@type': 'Person', 'name': 'Herman Robe', 'url': SITE.rstrip('/'), 'jobTitle': 'Concepteur-Développeur Full-Stack'}
+    titre = f"{p['court']} | Herman Robé"
+    auteur = {'@type': 'Person', 'name': 'Herman Robé', 'url': SITE.rstrip('/'), 'jobTitle': 'Concepteur-Développeur Full-Stack'}
     jsonld = [{
         '@context': 'https://schema.org', '@type': 'BlogPosting', 'headline': p['titre'], 'description': p['description'],
         'datePublished': p['date'], 'dateModified': p['date'], 'inLanguage': 'fr', 'url': url,
@@ -368,7 +370,7 @@ def page_article(p, posts):
             <p class="fil-ariane"><a href="index.html">Accueil</a> / <a href="blog.html">Blog</a> / {nom}</p>
             <span class="post-tag">{icone(ico)} {nom}</span>
             <h1 class="post-title">{e(p['titre'])}</h1>
-            <p class="post-meta">Par Herman Robe · {date_fr(p['date'])} · {p['minutes']} min de lecture</p>
+            <p class="post-meta">Par Herman Robé · {date_fr(p['date'])} · {p['minutes']} min de lecture</p>
             {hero}
             {audio}
             {toc}
@@ -393,8 +395,8 @@ def page_liste(posts):
     url = SITE + 'blog.html'
     desc = ('Réponses aux questions des entreprises, tutos avec code à copier, mini-formations et cas pratiques : '
             'sites web, automatisation, WhatsApp, IA, à Abidjan.')
-    jsonld = [{'@context': 'https://schema.org', '@type': 'Blog', 'name': 'Blog de Herman Robe', 'url': url, 'inLanguage': 'fr',
-               'description': desc, 'author': {'@type': 'Person', 'name': 'Herman Robe', 'url': SITE.rstrip('/')},
+    jsonld = [{'@context': 'https://schema.org', '@type': 'Blog', 'name': 'Blog de Herman Robé', 'url': url, 'inLanguage': 'fr',
+               'description': desc, 'author': {'@type': 'Person', 'name': 'Herman Robé', 'url': SITE.rstrip('/')},
                'blogPost': [{'@type': 'BlogPosting', 'headline': p['titre'], 'url': f"{SITE}blog-{p['slug']}.html", 'datePublished': p['date']} for p in posts]}]
     filtres = '<button class="filter-btn active" data-filtre="tous">Tout</button>' + ''.join(
         f'<button class="filter-btn" data-filtre="{k}">{v[0]}</button>' for k, v in CATS.items())
@@ -426,7 +428,7 @@ def page_liste(posts):
     </section>
     </main>
 '''
-    return entete('Blog : réponses, tutos, mini-formations | Herman Robe', desc, url, jsonld, 'website') + corps + pied()
+    return entete('Blog : réponses, tutos, mini-formations | Herman Robé', desc, url, jsonld, 'website') + corps + pied()
 
 
 
@@ -485,7 +487,7 @@ def page_faq():
     </section>
     </main>
 """
-    return entete('Questions fréquentes : recruter, choisir, apprendre | Herman Robe', desc, url, jsonld, 'website') + corps + pied()
+    return entete('Questions fréquentes | Herman Robé', desc, url, jsonld, 'website') + corps + pied()
 
 
 def maj_accueil(posts):

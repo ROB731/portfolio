@@ -6,8 +6,8 @@ categorie: recruteur
 date: 2026-11-05
 ordre: 3
 message: Bonjour Herman, je cherche qui pourrait réaliser mon projet digital. Voici mon besoin : 
-suite: premiere-page-web-5-lecons
-ouverture: Pour bien dialoguer avec celui que vous choisirez, il aide de comprendre comment une page web est faite. Voici une mini-formation de deux heures, sans prérequis.
+suite: installer-windows-correctement
+ouverture: Vous savez maintenant qui peut s'occuper de vos projets. Reste l'ordinateur sur lequel tout tourne : comment installer Windows correctement, sans télécharger n'importe quoi ? Voici le guide pas à pas.
 ---
 Vous avez un projet : un site, une application, une automatisation, un outil pour suivre vos commandes. Vous cherchez quelqu'un pour le faire. Trois options se présentent, et personne ne vous explique honnêtement quand choisir laquelle. Les voici, avec leurs avantages et leurs limites.
 

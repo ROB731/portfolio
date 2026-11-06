@@ -1,4 +1,4 @@
-# Portfolio — Herman Robe
+# Portfolio — Herman Robé
 
 Portfolio statique : HTML, CSS et JavaScript, sans dépendance ni outil de build.
 

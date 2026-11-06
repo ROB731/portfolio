@@ -93,7 +93,7 @@ def couverture(slug, kicker, titre, dessin):
              + rect(70, 80, 40 + len(kicker) * 15, 44, ACC, 22, 'opacity=".25"')
              + texte(92, 111, kicker, 22, 700, '#c9c5ff')
              + texte(70, 250, titre, 60, 800, TXT, interligne=1.18)
-             + texte(70, 540, 'Herman Robe · Abidjan', 26, 500, DOUX)
+             + texte(70, 540, 'Herman Robé · Abidjan', 26, 500, DOUX)
              + dessin + '</svg>\n')
     base = os.path.join(SORTIE, f'couverture-{slug}')
     open(base + '.svg', 'w', encoding='utf-8').write(corps)
@@ -313,6 +313,30 @@ def dessin_choisir():
     balance = f'<path d="M780 120l-90 54M780 120l90 54" stroke="#c9c5ff" stroke-width="5" stroke-linecap="round"/>'
     return cartes + coche(1010, 150, 30)
 
+def dessin_windows():
+    ecran = rect(600, 110, 440, 290, CARTE, 22, f'stroke="{ACC}" stroke-width="5"') + rect(680, 400, 280, 16, CARTE, 8) + rect(740, 416, 160, 14, '#33335a', 7)
+    barre = rect(650, 290, 340, 30, '#33335a', 15) + rect(650, 290, 240, 30, 'url(#a)', 15) + texte(820, 250, 'Installation', 34, 800, TXT, 'middle') + coche(820, 190, 34)
+    cle = rect(1070, 330, 64, 130, '#d8d8ea', 12) + rect(1084, 300, 36, 40, '#9a9ab8', 6) + rect(1090, 380, 24, 40, ACC, 6, 'opacity=".7"')
+    return ecran + barre + cle
+
+
+def dessin_antivirus():
+    bouclier = f'<path d="M830 100L990 160V300C990 390 912 440 830 478 748 440 670 390 670 300V160Z" fill="url(#a)"/>'
+    return bouclier + coche(830, 285, 72, '#ffffff').replace('fill="#ffffff"', 'fill="#ffffff" opacity=".95"').replace('stroke="#fff"', f'stroke="{ACC}"') + f'<circle cx="640" cy="170" r="14" fill="{ACC2}" opacity=".8"/><circle cx="1030" cy="400" r="18" fill="{ACC}" opacity=".6"/>'
+
+
+def dessin_reflexes():
+    cadenas = rect(700, 270, 220, 180, 'url(#a)', 28) + f'<path d="M740 270v-50a70 70 0 0 1 140 0v50" fill="none" stroke="#c9c5ff" stroke-width="22" stroke-linecap="round"/><circle cx="810" cy="352" r="22" fill="{F1}"/><rect x="802" y="358" width="16" height="44" rx="6" fill="{F1}"/>'
+    tel = rect(960, 150, 150, 300, CARTE, 26, f'stroke="{ACC}" stroke-width="4"') + ''.join(rect(980 + i * 34, 270, 28, 40, '#33335a', 8) + f'<circle cx="{994 + i * 34}" cy="290" r="6" fill="#c9c5ff"/>' for i in range(4)) + coche(1035, 205, 20)
+    return cadenas + tel
+
+
+def dessin_logiciels():
+    couleurs = [ACC, ACC2, VERT, '#febc2e', '#33bfff', '#a96bff', ACC2, ACC, VERT]
+    tuiles = ''.join(rect(700 + (i % 3) * 110, 150 + (i // 3) * 110, 96, 96, couleurs[i], 22, 'opacity=".9"') + trait(720 + (i % 3) * 110, 188 + (i // 3) * 110, 56, .5, 10) + trait(720 + (i % 3) * 110, 208 + (i // 3) * 110, 38, .3, 10) for i in range(9))
+    etincelle = f'<path d="M1090 120l14 40 40 14-40 14-14 40-14-40-40-14 40-14z" fill="#fff" opacity=".95"/><path d="M1140 270l8 22 22 8-22 8-8 22-8-22-22-8 22-8z" fill="#c9c5ff"/>'
+    return tuiles + etincelle
+
 
 COUVERTURES = [
     ('cout-site-web-abidjan', 'RÉPONSE', ['Combien coûte', 'un site web', 'à Abidjan ?'], dessin_cout),
@@ -325,6 +349,10 @@ COUVERTURES = [
     ('recruter-un-developpeur', 'POUR LES RECRUTEURS', ['Pourquoi recruter', 'un développeur ?'], dessin_recruteur),
     ('questions-entretien-developpeur', 'POUR LES RECRUTEURS', ['Quelles questions', 'poser en', 'entretien ?'], dessin_entretien),
     ('freelance-agence-ou-salarie', 'POUR LES CLIENTS', ['Freelance,', 'agence ou', 'salarié ?'], dessin_choisir),
+    ('installer-windows-correctement', 'INFORMATIQUE AU QUOTIDIEN', ['Télécharger et', 'installer Windows', 'correctement'], dessin_windows),
+    ('antivirus-defender-suffit-il', 'INFORMATIQUE AU QUOTIDIEN', ['Quel antivirus', 'choisir ?'], dessin_antivirus),
+    ('reflexes-securite-informatique', 'INFORMATIQUE AU QUOTIDIEN', ['8 réflexes de', 'sécurité pour', 'vos appareils'], dessin_reflexes),
+    ('logiciels-recommandes-et-ia', 'INFORMATIQUE AU QUOTIDIEN', ['Les bons logiciels', 'selon votre', 'activité'], dessin_logiciels),
     ('ia-developpeurs-vont-ils-disparaitre', 'RÉPONSE', ['Les développeurs', 'vont-ils', 'disparaître ?'], dessin_ia),
     ('digitaliser-son-entreprise-ivoirrapid', 'POUR LES DIRIGEANTS', ['Pourquoi', 'digitaliser son', 'entreprise ?'], dessin_digital),
 ]
@@ -405,4 +433,24 @@ if __name__ == '__main__':
            [('Freelance', ['souple,', 'rapide']), ('Agence', ['équipe,', 'cadre']), ('Salarié', ['long terme,', 'sur place'])], fleches=False)
     etapes('choix-cinq-questions', 'Cinq questions à poser à n\'importe quel prestataire',
            ['Qui fera le travail, concrètement ?', 'Que livrez-vous, et quand ?', 'Qui possède les accès et le code ?', 'Que se passe-t-il après la livraison ?', 'Comment utilisez-vous l\'IA ?'])
+
+    etapes('windows-etapes', 'Installer Windows en six étapes',
+           ['Sauvegarder vos fichiers', 'Vérifier la compatibilité', 'Télécharger sur le site officiel', 'Créer la clé USB (8 Go minimum)', 'Démarrer sur la clé et installer', 'Mises à jour, pilotes, antivirus'])
+    colonnes('windows-source', 'D\'où vient votre Windows : ce qu\'il faut éviter et ce qui est sûr', 'À éviter',
+             [['Un site inconnu', 'de téléchargement'], ['Un Windows « déjà', 'activé » gratuit'], ['Une clé de licence', 'à prix cassé'], ['Un lien reçu', 'par message']],
+             'Sûr', [['Le site officiel', 'de Microsoft'], ['Une licence d\'un', 'vendeur agréé'], ['Un fichier vérifié', 'avant l\'installation'], ['Une sauvegarde', 'faite avant']], 'croix', 'coche')
+    colonnes('antivirus-suffit', 'Quand Windows Sécurité suffit et quand ajouter une suite de sécurité', 'Ça suffit si',
+             [['Un seul poste,', 'utilisé avec prudence'], ['Peu de logiciels', 'installés'], ['Aucune donnée', 'très sensible'], ['Mises à jour', 'toujours faites']],
+             'Ajoutez une suite si', [['Plusieurs utilisateurs', 'ou des enfants'], ['Opérations bancaires', 'fréquentes'], ['On clique vite', 'sur les liens'], ['Données de clients', 'à protéger']], 'coche', 'point')
+    etapes('antivirus-infection', 'Que faire si vous pensez être infecté, en cinq étapes',
+           ['Couper Internet (Wi-Fi, câble)', 'Lancer une analyse complète', 'Supprimer ce qui est détecté', 'Changer les mots de passe ailleurs', 'Restaurer une sauvegarde saine'])
+    etapes('reflexes-huit', 'Les huit réflexes de sécurité informatique',
+           ['Mises à jour régulières', 'Un mot de passe par compte', 'Double vérification activée', 'Sauvegardes : règle 3-2-1', 'Méfiance face aux messages', 'Applications de sources sûres', 'Wi-Fi public : prudence', 'Compte limité, écran verrouillé'], 'coche')
+    chaine('regle-321', 'La règle 3-2-1 : trois copies, deux supports, une copie ailleurs',
+           [('3 copies', ['de vos données']), ('2 supports', ['différents']), ('1 copie', ['hors du lieu'])], fleches=False)
+    colonnes('ia-utile-interdit', 'Ce qu\'on peut faire avec une IA et ce qu\'il ne faut jamais lui confier', 'Utile avec l\'IA',
+             [['Reformuler un', 'courrier'], ['Résumer un', 'long document'], ['Expliquer une', 'formule Excel'], ['Préparer une', 'réponse client']],
+             'Jamais avec l\'IA', [['Coller un mot', 'de passe'], ['Envoyer les données', 'complètes de clients'], ['Copier un contrat', 'confidentiel'], ['Croire un chiffre', 'sans vérifier']], 'coche', 'croix')
+    etapes('logiciels-cinq-questions', 'Cinq questions avant d\'installer un logiciel',
+           ['Un logiciel gratuit suffit-il ?', 'Vient-il du site officiel ?', 'Mon ordinateur le supporte-t-il ?', 'Est-il mis à jour ?', 'Saurai-je m\'en servir ?'])
     print('schémas ok')

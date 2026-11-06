@@ -10,7 +10,7 @@ Fabriquer ou refaire la vidéo après une modification du texte :
 
 Texte lu, phrase par phrase :
 
-1. Je m'appelle Herman Robe.
+1. Je m'appelle Herman Robé.
 2. Je vis à Abidjan, et je conçois des outils qui travaillent pour vous.
 3. Des applications web et mobiles.
 4. Des automatisations qui font à votre place ce qui vous prend vos soirées.
@@ -23,7 +23,7 @@ Texte lu, phrase par phrase :
 11. Alors si vous avez un projet, une idée, ou un problème qui revient toujours : ne le gardez pas pour vous.
 12. Écrivez-moi sur WhatsApp. Je vous réponds, et on avance.
 13. Abonnez-vous à la page Facebook EA services : vous y suivrez mes projets, mes tutos et mes conseils.
-14. Herman Robe, à Abidjan. Passez à l'action.
+14. Herman Robé, à Abidjan. Passez à l'action.
 
 Affiché : la photo, les illustrations du portfolio (aucune capture de client), le numéro WhatsApp
 et la page Facebook « EA services » (facebook.com/entreprendreaujourdhui).
