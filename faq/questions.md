@@ -46,6 +46,12 @@ Non, mais le métier change : l'IA remplace des tâches, pas la compréhension d
 ### Par où commencer pour apprendre à créer une page web ?
 Par le HTML, le CSS puis un peu de JavaScript. Une [mini-formation en cinq leçons](blog-premiere-page-web-5-lecons.html) vous guide pas à pas, avec un exercice à chaque étape.
 
+### Comment vérifier le code produit par une IA ?
+En six étapes : donner le contexte et la version, demander un petit pas à la fois, relire et comprendre chaque ligne, tester (automatiquement et à la main), vérifier la sécurité et les paquets, puis versionner avec Git et déployer d'abord en test. Voir [S'assurer que l'IA produit du bon code](blog-securiser-le-code-ia.html).
+
+### Peut-on mettre à jour un projet existant avec l'IA sans le casser ?
+Oui, en sauvegardant, en travaillant sur une branche, en demandant le changement minimal, en lançant les tests avant et après, en relisant le `git diff` et en déployant d'abord en test. Pour les versions de framework, une montée à la fois, avec le guide de mise à niveau officiel. Détail dans [le même article](blog-securiser-le-code-ia.html).
+
 ### Faut-il un diplôme pour travailler dans le développement ?
 Un diplôme aide, mais ce qui convainc le plus, ce sont des **projets réels**, pour des personnes réelles, que vous savez expliquer simplement. Construisez-en dès maintenant, même petits, et gardez-en une trace.
 

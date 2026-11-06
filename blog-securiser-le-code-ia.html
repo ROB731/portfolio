@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S&#x27;assurer que l&#x27;IA produit du bon code | Herman Robé</title>
+    <meta name="description" content="Une IA écrit du code qui a l&#x27;air juste, sans l&#x27;être toujours. Six étapes pour le vérifier, le tester, le sécuriser et mettre à jour un projet sans le casser.">
+    <link rel="canonical" href="https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-securiser-le-code-ia.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-securiser-le-code-ia.html">
+    <meta property="og:title" content="S&#x27;assurer que l&#x27;IA produit du bon code | Herman Robé">
+    <meta property="og:description" content="Une IA écrit du code qui a l&#x27;air juste, sans l&#x27;être toujours. Six étapes pour le vérifier, le tester, le sécuriser et mettre à jour un projet sans le casser.">
+    <meta property="og:image" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/blog/couverture-securiser-le-code-ia.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:image" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/blog/couverture-securiser-le-code-ia.png">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Herman Robé Portfolio">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="assets/photo-profil.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Comment s'assurer que l'IA produit du bon code (et mettre à jour un projet sans le casser)",
+    "description": "Une IA écrit du code qui a l'air juste, sans l'être toujours. Six étapes pour le vérifier, le tester, le sécuriser et mettre à jour un projet sans le casser.",
+    "datePublished": "2026-11-05",
+    "dateModified": "2026-11-05",
+    "inLanguage": "fr",
+    "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-securiser-le-code-ia.html",
+    "mainEntityOfPage": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-securiser-le-code-ia.html",
+    "image": "https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/blog/couverture-securiser-le-code-ia.png",
+    "author": {
+      "@type": "Person",
+      "name": "Herman Robé",
+      "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe",
+      "jobTitle": "Concepteur-Développeur Full-Stack"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Herman Robé",
+      "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe",
+      "jobTitle": "Concepteur-Développeur Full-Stack"
+    },
+    "articleSection": "Tutos",
+    "wordCount": 1336,
+    "audio": {
+      "@type": "AudioObject",
+      "contentUrl": "https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/audio/securiser-le-code-ia.mp3",
+      "encodingFormat": "audio/mpeg",
+      "duration": "PT7M",
+      "inLanguage": "fr"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": "https://sites-sfb.ea-services.net/portfolio-herman-robe/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Comment s'assurer que l'IA produit du bon code (et mettre à jour un projet sans le casser)",
+        "item": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-securiser-le-code-ia.html"
+      }
+    ]
+  }
+]
+    </script>
+</head>
+<body class="page-blog">
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo" aria-label="Accueil du portfolio">
+                <span class="logo-bracket">&lt;</span><span class="logo-name">HR</span><span class="logo-bracket"> /&gt;</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projets</a></li>
+                <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-link contact-link">Contact</a></li>
+                <li class="nav-extras">
+                        <a class="btn btn-primary btn-full" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20je%20souhaite%20prendre%20rendez-vous.%20Mes%20disponibilit%C3%A9s%20%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-calendar"/></svg> Prendre rendez-vous</a>
+                        <a class="btn btn-outline btn-full" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg> Écrire sur WhatsApp</a>
+                        <p class="nav-extras-info">Abidjan, Marcory · 01 72 52 77 65</p>
+                    </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+    <article class="post section">
+        <div class="container post-container">
+            <p class="fil-ariane"><a href="index.html">Accueil</a> / <a href="blog.html">Blog</a> / Tutos</p>
+            <span class="post-tag"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-code"/></svg> Tutos</span>
+            <h1 class="post-title">Comment s&#x27;assurer que l&#x27;IA produit du bon code (et mettre à jour un projet sans le casser)</h1>
+            <p class="post-meta">Par Herman Robé · 5 novembre 2026 · 7 min de lecture</p>
+            <figure class="post-hero"><img src="assets/blog/couverture-securiser-le-code-ia.svg" alt="Illustration : Comment s&#x27;assurer que l&#x27;IA produit du bon code (et mettre à jour un projet sans le casser)" width="1200" height="630"></figure>
+            <div class="ecoute" data-ecoute><p class="ecoute-titre"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-headset"/></svg> <strong>Écouter cet article</strong> · environ 7 min</p><audio controls preload="none" src="assets/audio/securiser-le-code-ia.mp3">Votre navigateur ne sait pas lire l'audio.</audio><button type="button" class="ecoute-secours" data-lecture-appareil hidden>Le son ne démarre pas ? Lecture par votre appareil</button></div>
+            <nav class="toc" aria-label="Sommaire"><strong>Dans cet article</strong><ol><li><a href="#ce-qui-peut-mal-tourner">Ce qui peut mal tourner</a></li><li><a href="#la-methode-en-six-etapes">La méthode en six étapes</a></li><li><a href="#1-cadrer-donner-le-contexte-la-version-et-les-limi">1. Cadrer : donner le contexte, la version et les limites</a></li><li><a href="#2-demander-un-petit-pas-a-la-fois">2. Demander un petit pas à la fois</a></li><li><a href="#3-lire-et-comprendre-chaque-ligne">3. Lire et comprendre chaque ligne</a></li><li><a href="#4-tester-automatiquement-et-a-la-main">4. Tester : automatiquement et à la main</a></li><li><a href="#5-verifier-la-securite-et-les-paquets">5. Vérifier la sécurité et les paquets</a></li><li><a href="#6-versionner-puis-deployer-en-test">6. Versionner, puis déployer en test</a></li><li><a href="#mettre-a-jour-un-projet-existant-avec-lia">Mettre à jour un projet existant avec l&#x27;IA</a></li><li><a href="#la-liste-a-passer-avant-de-livrer">La liste à passer avant de livrer</a></li><li><a href="#si-vous-voulez-de-laide">Si vous voulez de l&#x27;aide</a></li></ol></nav>
+            <div class="prose">
+<p>Vous demandez du code à une IA, elle répond en quelques secondes, et le code <strong>a l&#x27;air juste</strong>. Il se lit bien, il est commenté, il marche peut-être même du premier coup. C&#x27;est précisément le danger : <strong>un code qui a l&#x27;air juste n&#x27;est pas un code juste.</strong> Voici comment vous assurer que ce que produit l&#x27;IA est fiable, et comment l&#x27;utiliser pour <strong>mettre à jour un projet existant</strong> sans le casser.</p>
+<p>Je l&#x27;utilise tous les jours dans mon travail, et c&#x27;est ma règle : l&#x27;IA propose, <strong>je vérifie, je teste, puis je livre</strong>. Voici la méthode.</p>
+<h2 id="ce-qui-peut-mal-tourner">Ce qui peut mal tourner</h2>
+<ul><li><strong>Un code qui marche en apparence</strong> mais qui échoue sur un cas particulier : champ vide, nombre négatif, deux utilisateurs en même temps.</li><li><strong>Des fonctions ou des options inventées.</strong> L&#x27;IA peut proposer une fonction qui n&#x27;existe pas, avec assurance.</li><li><strong>Des méthodes d&#x27;une ancienne version.</strong> Elle a appris sur des textes plus anciens que votre version du framework.</li><li><strong>Des failles de sécurité</strong> : une requête mal protégée, un contrôle d&#x27;accès oublié, un mot de passe écrit dans le code.</li><li><strong>Des paquets qui n&#x27;existent pas.</strong> Elle peut recommander une bibliothèque au nom plausible mais inexistant, et des personnes mal intentionnées peuvent publier un paquet piégé sous ce nom.</li><li><strong>Une réécriture trop large.</strong> Vous demandez une petite correction, elle modifie vingt fichiers.</li></ul>
+<h2 id="la-methode-en-six-etapes">La méthode en six étapes</h2>
+<figure class="post-figure"><img src="assets/blog/schema-code-ia-six-etapes.svg" alt="Six étapes pour fiabiliser le code produit par une IA" width="640" height="402" loading="lazy"><figcaption>Six étapes pour fiabiliser le code produit par une IA</figcaption></figure>
+<h2 id="1-cadrer-donner-le-contexte-la-version-et-les-limi">1. Cadrer : donner le contexte, la version et les limites</h2>
+<p>La qualité de la réponse dépend de la qualité de la demande.</p>
+<figure class="post-figure"><img src="assets/blog/schema-code-ia-prompt.svg" alt="Une mauvaise demande et une bonne demande à une IA" width="640" height="424" loading="lazy"><figcaption>Une mauvaise demande et une bonne demande à une IA</figcaption></figure>
+<p>Voici un modèle de demande que je réutilise :</p>
+<pre class="code" data-langue="texte"><code>Contexte : application Laravel 12, PHP 8.3, base MySQL.
+Objectif : ajouter un champ &quot;téléphone&quot; à la table des clients et l&#x27;afficher dans la fiche client.
+Contraintes : ne modifie que les fichiers nécessaires, garde le style existant, n&#x27;ajoute aucune bibliothèque.
+Ce qu&#x27;il ne faut pas toucher : le système d&#x27;authentification.
+Format : montre uniquement les changements, fichier par fichier.
+Ajoute aussi un test et liste les cas limites à vérifier.</code></pre>
+<p>Indiquez toujours <strong>la version</strong> de votre framework et de votre langage. Et <strong>vérifiez dans la documentation officielle</strong> qu&#x27;une méthode proposée existe bien dans votre version.</p>
+<h2 id="2-demander-un-petit-pas-a-la-fois">2. Demander un petit pas à la fois</h2>
+<p>Évitez « fais-moi tout le module de facturation ». Découpez : d&#x27;abord la table, puis le formulaire, puis le calcul, puis l&#x27;affichage. Chaque petit pas se <strong>relit et se teste</strong> facilement. Un gros bloc généré d&#x27;un coup est presque impossible à contrôler.</p>
+<h2 id="3-lire-et-comprendre-chaque-ligne">3. Lire et comprendre chaque ligne</h2>
+<p>Traitez ce code comme celui d&#x27;un stagiaire doué mais pressé. Posez-lui des questions :</p>
+<ul><li>« Explique ce que fait ce code, ligne par ligne. »</li><li>« Quels sont les cas limites et que se passe-t-il pour chacun ? »</li><li>« Qu&#x27;est-ce qui pourrait échouer en production ? »</li><li>« Y a-t-il une façon plus simple de faire ? »</li></ul>
+<p>Si vous ne comprenez pas une partie, <strong>ne la mettez pas dans votre projet.</strong> Un code qu&#x27;on ne comprend pas est un code qu&#x27;on ne saura pas corriger.</p>
+<h2 id="4-tester-automatiquement-et-a-la-main">4. Tester : automatiquement et à la main</h2>
+<ul><li><strong>Les tests automatiques</strong> vérifient que le code fait ce qu&#x27;il doit, et continuent de le vérifier à chaque modification. Pour PHP et Laravel, <a href="https://phpunit.de" target="_blank" rel="noopener">PHPUnit</a> ou <a href="https://pestphp.com" target="_blank" rel="noopener">Pest</a> ; pour JavaScript, <a href="https://vitest.dev" target="_blank" rel="noopener">Vitest</a>. L&#x27;IA peut vous aider à les écrire, mais <strong>relisez-les</strong> : un test trop gentil ne prouve rien.</li><li><strong>Les tests à la main</strong>, avec des cas réels : un champ vide, un texte très long, un caractère accentué, un nombre négatif, un utilisateur sans droits.</li><li><strong>Utilisez des données de test</strong>, pas celles de vos vrais clients.</li></ul>
+<h2 id="5-verifier-la-securite-et-les-paquets">5. Vérifier la sécurité et les paquets</h2>
+<ul><li><strong>Aucun secret</strong> dans le code ni dans la conversation avec l&#x27;IA : pas de mot de passe, pas de clé d&#x27;API réelle. Utilisez des exemples bidons.</li><li><strong>Les entrées des utilisateurs ne sont jamais fiables</strong> : elles doivent être validées, et les requêtes à la base de données doivent passer par l&#x27;ORM ou des requêtes préparées, pas par du texte collé.</li><li><strong>Les droits d&#x27;accès</strong> : vérifiez que chaque action contrôle bien qui a le droit de la faire.</li><li><strong>Chaque paquet recommandé</strong> : vérifiez que le nom est exact, qu&#x27;il vient du dépôt officiel, qu&#x27;il est maintenu et utilisé. Le moindre doute, ne l&#x27;installez pas.</li><li><strong>Auditez vos dépendances</strong> : <code>composer audit</code> pour PHP, <code>npm audit</code> pour JavaScript, signalent les failles connues.</li><li>Pour une vue d&#x27;ensemble des risques courants, la liste <a href="https://owasp.org/www-project-top-ten/" target="_blank" rel="noopener">OWASP Top 10</a> est une bonne référence.</li></ul>
+<h2 id="6-versionner-puis-deployer-en-test">6. Versionner, puis déployer en test</h2>
+<p><a href="https://git-scm.com" target="_blank" rel="noopener">Git</a> est votre filet de sécurité :</p>
+<pre class="code" data-langue="bash"><code>git checkout -b ajout-telephone     # une branche pour ce travail
+git add -A &amp;&amp; git commit -m &quot;Avant modification par l&#x27;IA&quot;
+# ... l&#x27;IA propose des changements, vous les appliquez ...
+git diff                            # relisez TOUT ce qui a changé</code></pre>
+<p>Relisez le <code>git diff</code> ligne par ligne : c&#x27;est la façon la plus sûre de voir tout ce que l&#x27;IA a réellement modifié, y compris ce que vous n&#x27;aviez pas demandé. Faites <strong>de petits commits</strong>, pour pouvoir revenir en arrière facilement. Déployez d&#x27;abord sur un <strong>environnement de test</strong>, et seulement ensuite en production.</p>
+<h2 id="mettre-a-jour-un-projet-existant-avec-lia">Mettre à jour un projet existant avec l&#x27;IA</h2>
+<p>C&#x27;est là que le risque est le plus grand : on ne part pas d&#x27;une page blanche, on modifie quelque chose qui marche déjà.</p>
+<figure class="post-figure"><img src="assets/blog/schema-code-ia-mise-a-jour.svg" alt="Mettre à jour un projet avec l&#x27;IA sans le casser" width="640" height="200" loading="lazy"><figcaption>Mettre à jour un projet avec l&#x27;IA sans le casser</figcaption></figure>
+<ol><li><strong>Sauvegardez</strong> le code et la base de données, et travaillez sur une <strong>branche</strong>.</li><li><strong>Donnez à l&#x27;IA les fichiers concernés</strong>, pas tout le projet, et précisez vos conventions (noms, structure, style).</li><li><strong>Demandez le changement minimal</strong> : « modifie uniquement ce qui est nécessaire, sans reformater le reste ».</li><li><strong>Faites tourner les tests avant et après.</strong> S&#x27;il n&#x27;y en a pas, écrivez-en au moins pour la partie touchée.</li><li><strong>Relisez le <code>git diff</code></strong>, puis testez à la main le parcours complet.</li><li><strong>Déployez en test</strong>, puis en production, en sauvegardant la base <strong>avant</strong> toute migration.</li></ol>
+<h3>Mettre à jour les dépendances ou la version du framework</h3>
+<p>Ne demandez pas à l&#x27;IA de « tout mettre à jour d&#x27;un coup ».</p>
+<ul><li><strong>Une montée de version à la fois</strong>, jamais deux sauts en même temps.</li><li><strong>Lisez le guide de mise à niveau officiel</strong> : par exemple, <a href="https://laravel.com/docs/12.x/upgrade" target="_blank" rel="noopener">celui de Laravel</a> liste les changements à faire. L&#x27;IA peut vous aider à les appliquer, mais la source de vérité, c&#x27;est la documentation officielle.</li><li><strong>Mettez à jour par petits lots</strong>, et lancez les tests entre chaque lot.</li><li>Gardez le formatage cohérent avec un outil automatique comme <a href="https://laravel.com/docs/12.x/pint" target="_blank" rel="noopener">Laravel Pint</a> ou <a href="https://eslint.org" target="_blank" rel="noopener">ESLint</a>, plutôt que de laisser l&#x27;IA reformater tout le code.</li></ul>
+<h2 id="la-liste-a-passer-avant-de-livrer">La liste à passer avant de livrer</h2>
+<ul><li>Je <strong>comprends</strong> chaque partie du code.</li><li>Les <strong>tests</strong> passent, et j&#x27;ai testé à la main les cas d&#x27;erreur.</li><li><strong>Aucun secret</strong> n&#x27;est dans le code.</li><li>Les <strong>paquets</strong> sont vérifiés, et <code>audit</code> ne signale rien de grave.</li><li>J&#x27;ai relu le <strong><code>git diff</code></strong>.</li><li>J&#x27;ai une <strong>sauvegarde</strong> et je peux <strong>revenir en arrière</strong>.</li><li>J&#x27;ai d&#x27;abord essayé en <strong>test</strong>.</li></ul>
+<aside class="callout"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-lightbulb"/></svg><p>L&#x27;IA est un excellent accélérateur et un mauvais responsable. C&#x27;est vous, ou votre développeur, qui répondez de ce qui part en production.</p></aside>
+<h2 id="si-vous-voulez-de-laide">Si vous voulez de l&#x27;aide</h2>
+<p>Vous avez un projet démarré avec une IA et vous n&#x27;êtes pas sûr de sa solidité ? Je peux <strong>relire et sécuriser le code</strong>, ajouter des tests, vérifier les dépendances, et mettre en place une méthode de travail sûre pour la suite. Écrivez-moi sur WhatsApp avec le type de projet et ce qui vous inquiète.</p>
+            </div>
+            <aside class="suite" aria-labelledby="suite-titre">
+                <p class="suite-kicker" id="suite-titre">À lire ensuite</p>
+                <p class="suite-ouverture">Savoir contrôler le travail d&#x27;une IA est devenu une compétence recherchée. Une autre question se pose alors aux entreprises : quand faut-il recruter un développeur dans son équipe ? Voici les signes qui ne trompent pas.</p>
+                <a class="suite-carte" href="blog-recruter-un-developpeur.html"><img src="assets/blog/couverture-recruter-un-developpeur.svg" alt="" width="1200" height="630" loading="lazy"><span class="suite-texte"><strong>Pourquoi recruter un développeur dans votre entreprise ? Les signes qui ne trompent pas</strong><span>Quand une entreprise doit-elle recruter un développeur plutôt que payer un prestataire ? Les signes, ce que ce profil apporte, et quand attendre.</span><em>Lire la suite <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-arrow-right"/></svg></em></span></a>
+            </aside>
+            <aside class="post-cta">
+                <h2>Une question sur ce sujet ?</h2>
+                <p>Écrivez-moi : je réponds sur WhatsApp. Dites-moi où vous en êtes, je vous dirai ce que je ferais à votre place.</p>
+                <a class="btn btn-primary" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20j%27utilise%20l%27IA%20pour%20coder%20et%20je%20voudrais%20que%20quelqu%27un%20relise%20et%20s%C3%A9curise%20mon%20projet.%20Voici%20le%20contexte%20%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg> Écrire sur WhatsApp</a>
+            </aside>
+        </div>
+    </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand"><span class="logo-bracket">&lt;</span><span class="logo-name">HR</span><span class="logo-bracket"> /&gt;</span></div>
+                <p class="footer-tagline">Concepteur-Développeur Full-Stack — Abidjan · <a href="https://ea-services.net">EA-SERVICES</a></p>
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="faq.html">Questions</a>
+                    <a href="index.html#projects">Projets</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                <p class="footer-copy">© 2026 Herman Robé. Conçu à Abidjan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="barre-contact" id="barreContact">
+        <a class="btn btn-primary" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20je%20souhaite%20prendre%20rendez-vous.%20Mes%20disponibilit%C3%A9s%20%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-calendar"/></svg> Rendez-vous</a>
+        <a class="btn btn-outline" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20" target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg> WhatsApp</a>
+    </div>
+    <a class="fab-whatsapp" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20" target="_blank" rel="noopener" aria-label="Écrire à Herman sur WhatsApp"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg></a>
+    <script src="js/menu.js" defer></script>
+    <script src="js/blog.js" defer></script>
+</body>
+</html>

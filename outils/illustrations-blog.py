@@ -406,6 +406,11 @@ def dessin_mutualise():
     tuiles = ''.join(rect(640 + (i % 3) * 120, 160 + (i // 3) * 130, 104, 108, couleurs[i], 20, 'opacity=".92"') + f'<rect x="{668 + (i % 3) * 120}" y="{196 + (i // 3) * 130}" width="48" height="10" rx="5" fill="#fff" opacity=".85"/><rect x="{668 + (i % 3) * 120}" y="{218 + (i // 3) * 130}" width="34" height="10" rx="5" fill="#fff" opacity=".5"/>' for i in range(6))
     return tuiles + coche(1040, 150, 28) + rect(640, 430, 344, 20, '#33335a', 10) + rect(640, 430, 220, 20, 'url(#a)', 10)
 
+def dessin_code_ia():
+    code = fenetre(620, 140, 400, 300, texte(644, 214, 'function total($p) {', 21, 600, '#c9c5ff') + texte(644, 248, '  return $p * 1.18;', 21, 600, TXT) + texte(644, 282, '}', 21, 600, '#c9c5ff') + rect(644, 318, 330, 14, VERT, 7, 'opacity=".55"') + rect(644, 346, 240, 14, ACC2, 7, 'opacity=".55"') + trait(644, 380, 180, .3))
+    loupe = f'<circle cx="1060" cy="420" r="62" fill="{F1}" fill-opacity=".6" stroke="#c9c5ff" stroke-width="11"/><line x1="1104" y1="464" x2="1150" y2="510" stroke="#c9c5ff" stroke-width="13" stroke-linecap="round"/>'
+    return code + loupe + coche(1060, 420, 28)
+
 
 COUVERTURES = [
     ('cout-site-web-abidjan', 'RÉPONSE', ['Combien coûte', 'un site web', 'à Abidjan ?'], dessin_cout),
@@ -433,6 +438,7 @@ COUVERTURES = [
     ('configurer-un-vps-neuf', 'TUTO', ['Configurer un', 'VPS neuf : les', 'premières étapes'], dessin_vps_config),
     ('gerer-son-vps-methodes', 'RÉPONSE', ['Gérer son VPS :', 'à la main ou', 'avec un panneau ?'], dessin_vps_methodes),
     ('mieux-gerer-hebergement-mutualise', 'TUTO', ['Mieux gérer son', 'hébergement', 'mutualisé'], dessin_mutualise),
+    ('securiser-le-code-ia', 'TUTO', ['S\'assurer que', 'l\'IA produit du', 'bon code'], dessin_code_ia),
     ('ia-developpeurs-vont-ils-disparaitre', 'RÉPONSE', ['Les développeurs', 'vont-ils', 'disparaître ?'], dessin_ia),
     ('digitaliser-son-entreprise-ivoirrapid', 'POUR LES DIRIGEANTS', ['Pourquoi', 'digitaliser son', 'entreprise ?'], dessin_digital),
 ]
@@ -594,4 +600,12 @@ if __name__ == '__main__':
            ['Connaître les limites de l\'offre', 'Choisir la bonne version de PHP', 'Sauvegarder, aussi hors du site', 'Forcer le HTTPS', 'Configurer SPF, DKIM et DMARC', 'Tout mettre à jour', 'Limiter les droits des fichiers', 'Mettre en cache', 'Surveiller la disponibilité', 'Garder son domaine à son nom'])
     chaine('spf-dkim-dmarc', 'Trois protections pour que vos e-mails arrivent : SPF, DKIM et DMARC',
            [('SPF', ['qui a le droit', 'd\'envoyer']), ('DKIM', ['signature', 'du message']), ('DMARC', ['que faire en', 'cas d\'échec'])], fleches=False)
+
+    etapes('code-ia-six-etapes', 'Six étapes pour fiabiliser le code produit par une IA',
+           ['Cadrer : contexte, version, contraintes', 'Demander un petit pas à la fois', 'Lire et comprendre chaque ligne', 'Tester : automatique et à la main', 'Vérifier la sécurité et les paquets', 'Versionner, puis déployer en test'])
+    colonnes('code-ia-prompt', 'Une mauvaise demande et une bonne demande à une IA', 'Mauvaise demande',
+             [['« Fais-moi un', 'site complet »'], ['Aucune version', 'indiquée'], ['« Réécris tout »'], ['Aucun test', 'demandé']],
+             'Bonne demande', [['Contexte et', 'objectif précis'], ['Version et outils', 'nommés'], ['Un petit pas à', 'la fois'], ['Tests et cas', 'limites demandés']], 'croix', 'coche')
+    chaine('code-ia-mise-a-jour', 'Mettre à jour un projet avec l\'IA sans le casser',
+           [(['Créer une', 'branche'], None), (['Un lot', 'à la fois'], None), (['Tester avant', 'et après'], None), (['Test, puis', 'en ligne'], None)])
     print('schémas ok')
