@@ -31,7 +31,7 @@ Avant toute chose, copiez vos documents, photos et fichiers importants sur un di
 
 Windows 11 demande un ordinateur assez récent : un processeur 64 bits compatible, au moins 4 Go de mémoire, 64 Go de stockage, un démarrage en mode UEFI avec Secure Boot, et une puce de sécurité TPM 2.0. Microsoft publie la liste des processeurs pris en charge : consultez-la sur son site avant de commencer, car elle évolue.
 
-> Windows 10 n'est plus mis à jour gratuitement depuis le 14 octobre 2025. Un ordinateur qui reste dessus ne reçoit plus de correctifs de sécurité. Si votre machine n'est pas compatible avec Windows 11, demandez conseil avant de décider : remplacer, améliorer ou changer de système.
+> Microsoft a mis fin au support habituel de Windows 10 le 14 octobre 2025. Un programme de mises à jour de sécurité étendues a été proposé pour une durée limitée, dont les conditions et les dates ont changé : vérifiez la situation actuelle sur le site de Microsoft. Sans ce programme, l'ordinateur ne reçoit plus de correctifs. Si votre machine n'est pas compatible avec Windows 11, demandez conseil avant de décider : remplacer, améliorer ou changer de système.
 
 ### 3. Télécharger sur le site officiel
 

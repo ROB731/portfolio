@@ -215,7 +215,7 @@ def chaine(nom, alt, etapes, retour=False, fleches=True):
     for i, (titre, sous) in enumerate(etapes):
         x0 = 20 + i * (w + gap)
         g += rect(x0, 40, w, h_case, CARTE, 16, f'stroke="{ACC if i % 2 == 0 else ACC2}" stroke-width="3"')
-        g += texte(x0 + w / 2, 40 + (58 if sous else 62) - (8 if len(_lignes(titre)) > 1 else 0), _lignes(titre), 26 if n == 3 else 20, 800, TXT, 'middle', 1.2)
+        g += texte(x0 + w / 2, 40 + (58 if sous else 62) - (8 if len(_lignes(titre)) > 1 else 0), _lignes(titre), 24 if n == 3 else 20, 800, TXT, 'middle', 1.2)
         if sous:
             g += texte(x0 + w / 2, 40 + 108, _lignes(sous), 19, 500, DOUX, 'middle', 1.2)
         if i < n - 1 and fleches:
@@ -337,6 +337,35 @@ def dessin_logiciels():
     etincelle = f'<path d="M1090 120l14 40 40 14-40 14-14 40-14-40-40-14 40-14z" fill="#fff" opacity=".95"/><path d="M1140 270l8 22 22 8-22 8-8 22-8-22-22-8 22-8z" fill="#c9c5ff"/>'
     return tuiles + etincelle
 
+def dessin_web_mobile():
+    tel = rect(940, 110, 180, 380, CARTE, 34, f'stroke="{ACC2}" stroke-width="5"') + rect(996, 124, 68, 10, '#44446a', 5) + rect(958, 160, 144, 90, ACC2, 14, 'opacity=".55"') + ''.join(rect(958, 268 + i * 56, 144, 42, '#33335a', 10) for i in range(3)) + coche(1108, 150, 22)
+    nav = fenetre(650, 150, 300, 250, rect(672, 210, 256, 70, ACC, 10, 'opacity=".4"') + trait(672, 304, 210, .5) + trait(672, 328, 160, .3) + rect(672, 356, 100, 30, 'url(#a)', 15))
+    return nav + tel + texte(800, 450, '?', 80, 800, '#c9c5ff', 'middle')
+
+
+def dessin_vps():
+    immeuble = rect(610, 170, 190, 320, CARTE, 14) + ''.join(rect(630 + (i % 3) * 52, 192 + (i // 3) * 58, 40, 38, '#33335a' if (i % 4) else ACC, 8, 'opacity=".9"') for i in range(15))
+    serveur = ''.join(rect(870, 230 + i * 84, 230, 70, CARTE, 14, f'stroke="{ACC if i != 1 else ACC2}" stroke-width="4"') + f'<circle cx="902" cy="{265 + i * 84}" r="9" fill="{VERT}"/>' + trait(930, 258 + i * 84, 130, .45, 12) for i in range(3))
+    return immeuble + serveur + texte(705, 530, 'Mutualisé', 26, 700, TXT, 'middle') + texte(985, 530, 'VPS', 26, 700, TXT, 'middle')
+
+
+def dessin_windows_linux():
+    gauche = fenetre(690, 150, 210, 260, ''.join(rect(722 + (i % 2) * 70, 220 + (i // 2) * 70, 62, 62, [ACC, ACC2, '#33bfff', '#febc2e'][i], 8, 'opacity=".9"') for i in range(4)))
+    droite = fenetre(920, 150, 220, 260, texte(938, 232, '$ sudo apt', 20, 600, VERT) + texte(938, 262, '$ _', 24, 700, TXT))
+    return gauche + droite + texte(795, 460, 'Windows', 28, 700, TXT, 'middle') + texte(1030, 460, 'Linux', 28, 700, TXT, 'middle')
+
+
+def dessin_pc_compat():
+    tour = rect(610, 120, 200, 380, CARTE, 18, f'stroke="{ACC}" stroke-width="4"') + rect(636, 150, 148, 14, '#33335a', 7) + rect(636, 180, 148, 14, '#33335a', 7) + '<circle cx="710" cy="400" r="34" fill="none" stroke="#44446a" stroke-width="6"/><circle cx="710" cy="400" r="10" fill="#44446a"/>'
+    liste = ''.join(coche(890, 160 + i * 70, 22, VERT if i != 3 else '#febc2e') + trait(930, 152 + i * 70, 150 - (i % 2) * 40, .5, 14) for i in range(5))
+    return tour + liste
+
+
+def dessin_gratuit():
+    nuage = f'<g fill="url(#a)"><circle cx="760" cy="300" r="70"/><circle cx="850" cy="250" r="90"/><circle cx="950" cy="305" r="65"/><rect x="740" y="300" width="230" height="70" rx="35"/></g>'
+    etiquette = rect(790, 420, 150, 54, '#33335a', 27, f'stroke="{VERT}" stroke-width="4"') + texte(865, 458, 'Gratuit', 28, 800, VERT, 'middle')
+    return nuage + texte(855, 300, '</>', 54, 800, '#fff', 'middle') + etiquette
+
 
 COUVERTURES = [
     ('cout-site-web-abidjan', 'RÉPONSE', ['Combien coûte', 'un site web', 'à Abidjan ?'], dessin_cout),
@@ -353,6 +382,11 @@ COUVERTURES = [
     ('antivirus-defender-suffit-il', 'INFORMATIQUE AU QUOTIDIEN', ['Quel antivirus', 'choisir ?'], dessin_antivirus),
     ('reflexes-securite-informatique', 'INFORMATIQUE AU QUOTIDIEN', ['8 réflexes de', 'sécurité pour', 'vos appareils'], dessin_reflexes),
     ('logiciels-recommandes-et-ia', 'INFORMATIQUE AU QUOTIDIEN', ['Les bons logiciels', 'selon votre', 'activité'], dessin_logiciels),
+    ('application-web-ou-mobile', 'RÉPONSE', ['Application web', 'ou mobile :', 'laquelle choisir ?'], dessin_web_mobile),
+    ('vps-ou-hebergement-mutualise', 'RÉPONSE', ['VPS ou', 'hébergement', 'mutualisé ?'], dessin_vps),
+    ('windows-ou-linux', 'INFORMATIQUE AU QUOTIDIEN', ['Windows ou', 'Linux : les vraies', 'différences'], dessin_windows_linux),
+    ('pc-compatible-windows-11', 'INFORMATIQUE AU QUOTIDIEN', ['Votre PC peut-il', 'faire tourner', 'Windows 11 ?'], dessin_pc_compat),
+    ('hebergement-web-gratuit', 'RÉPONSE', ['Hébergement web', 'et PHP gratuits'], dessin_gratuit),
     ('ia-developpeurs-vont-ils-disparaitre', 'RÉPONSE', ['Les développeurs', 'vont-ils', 'disparaître ?'], dessin_ia),
     ('digitaliser-son-entreprise-ivoirrapid', 'POUR LES DIRIGEANTS', ['Pourquoi', 'digitaliser son', 'entreprise ?'], dessin_digital),
 ]
@@ -453,4 +487,29 @@ if __name__ == '__main__':
              'Jamais avec l\'IA', [['Coller un mot', 'de passe'], ['Envoyer les données', 'complètes de clients'], ['Copier un contrat', 'confidentiel'], ['Croire un chiffre', 'sans vérifier']], 'coche', 'croix')
     etapes('logiciels-cinq-questions', 'Cinq questions avant d\'installer un logiciel',
            ['Un logiciel gratuit suffit-il ?', 'Vient-il du site officiel ?', 'Mon ordinateur le supporte-t-il ?', 'Est-il mis à jour ?', 'Saurai-je m\'en servir ?'])
+
+    colonnes('web-vs-mobile', 'Application web ou application mobile : ce que chacune apporte', 'App web',
+             [['Rien à télécharger,', 'un simple lien'], ['Une seule version', 'pour tous'], ['Mise à jour', 'immédiate'], ['Moins de fonctions', 'du téléphone']],
+             'App mobile', [['Alarmes, notifications,', 'caméra, GPS'], ['Mieux hors', 'connexion'], ['Boutiques à', 'gérer'], ['Plus long, plus', 'coûteux']], 'point', 'point')
+    etapes('web-mobile-questions', 'Cinq questions pour choisir entre application web et mobile',
+           ['Faut-il l\'alarme ou le GPS en continu ?', 'Tous vos utilisateurs ont-ils Android ?', 'Travaillent-ils sans connexion ?', 'Quel budget, quel délai ?', 'Qui la maintiendra ?'])
+    colonnes('mutualise-vs-vps', 'Hébergement mutualisé ou VPS : les différences', 'Mutualisé',
+             [['Prêt à l\'emploi,', 'peu de réglages'], ['Idéal pour un', 'site vitrine'], ['Prix d\'entrée', 'le plus bas'], ['Peu de contrôle', 'sur le serveur']],
+             'VPS', [['Votre propre', 'serveur virtuel'], ['Pour une application', 'sur mesure'], ['Vous (ou votre', 'hébergeur) gérez'], ['Contrôle complet', 'et évolutif']], 'point', 'point')
+    etapes('hebergement-questions', 'Cinq questions pour choisir son hébergement',
+           ['Site vitrine ou application ?', 'Qui administrera le serveur ?', 'Combien de visiteurs attendus ?', 'Où sont vos visiteurs ?', 'Comment payer l\'hébergeur ?'])
+    colonnes('windows-vs-linux', 'Windows ou Linux : les points forts de chacun', 'Windows',
+             [['Office, Adobe,', 'logiciels pros'], ['Compatible avec', 'presque tout'], ['Très répandu,', 'facile à trouver'], ['Licence payante,', 'plus exigeant']],
+             'Linux', [['Gratuit et', 'très léger'], ['Idéal pour', 'les serveurs'], ['Choix de', 'distributions'], ['Moins de logiciels', 'du commerce']], 'point', 'point')
+    etapes('linux-essai', 'Essayer Linux sans risque en quatre étapes',
+           ['Télécharger sur le site officiel', 'Créer une clé USB', 'Démarrer en « mode essai »', 'Décider, sans rien avoir effacé'])
+    etapes('pc-verifications', 'Cinq vérifications pour savoir si votre PC est compatible Windows 11',
+           ['Processeur 64 bits récent', '4 Go de mémoire au moins', '64 Go de stockage au moins', 'Démarrage UEFI + Secure Boot', 'Puce de sécurité TPM 2.0'])
+    chaine('pc-selon-age', 'Que faire selon l\'âge de votre ordinateur',
+           [(['Compatible'], None), (['Presque', 'compatible'], None), (['Ancien'], None), (['Trop usé'], None)], fleches=False)
+    colonnes('gratuit-ou-payant', 'Quand le gratuit suffit et quand passer au payant', 'Gratuit : OK si',
+             [['Vous apprenez', 'à programmer'], ['Un test ou', 'une maquette'], ['Un portfolio', 'sans enjeu'], ['Un projet d\'école', 'ou personnel']],
+             'Payant si', [['Des clients vous', 'cherchent'], ['Vous vendez ou', 'prenez des demandes'], ['Vous voulez des', 'e-mails pros'], ['Un arrêt vous', 'ferait perdre de l\'argent']], 'coche', 'point')
+    chaine('gratuit-trois-pistes', 'Trois pistes d\'hébergement gratuit selon votre projet',
+           [('Site statique', ['GitHub Pages,', 'Netlify']), ('PHP + MySQL', ['InfinityFree,', 'à tester']), ('En local', ['XAMPP, pour', 'apprendre'])], fleches=False)
     print('schémas ok')

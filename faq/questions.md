@@ -55,7 +55,7 @@ Un diplôme aide, mais ce qui convainc le plus, ce sont des **projets réels**, 
 Uniquement sur le site de Microsoft. Les copies trouvées ailleurs peuvent être modifiées ou contenir des virus. Les six étapes, avec les pièges à éviter, sont dans [Télécharger et installer Windows correctement](blog-installer-windows-correctement.html).
 
 ### Windows 10 est-il encore sûr ?
-Microsoft a arrêté les mises à jour gratuites de Windows 10 le 14 octobre 2025 : un ordinateur qui y reste ne reçoit plus de correctifs de sécurité. Si votre machine est compatible avec Windows 11, passez dessus. Sinon, demandez conseil avant de décider.
+Microsoft a mis fin au support habituel de Windows 10 le 14 octobre 2025. Un programme de mises à jour de sécurité étendues a été proposé pour une durée limitée, mais ses conditions et ses dates ont changé : vérifiez la situation actuelle sur le site de Microsoft. Sans ce programme, l'ordinateur ne reçoit plus de correctifs, ce qui devient risqué. Si votre machine est compatible avec Windows 11, passez dessus ; sinon, lisez [Mon PC peut-il faire tourner Windows 11 ?](blog-pc-compatible-windows-11.html).
 
 ### Windows Sécurité suffit-il comme antivirus ?
 Pour un seul ordinateur utilisé avec prudence et bien mis à jour, il fait en général l'essentiel. Une suite payante peut valoir la peine pour plusieurs utilisateurs, des enfants, des opérations bancaires fréquentes ou des données de clients. Détail dans [Quel antivirus choisir ?](blog-antivirus-defender-suffit-il.html).
@@ -71,6 +71,21 @@ Oui, à condition de ne jamais lui confier de mots de passe, de contrats confide
 
 ### Quand faut-il confier son ordinateur à un expert ?
 Quand il contient des données importantes sans sauvegarde, quand il sert à votre entreprise, quand des fichiers ont disparu ou sont chiffrés, ou quand le problème revient malgré vos essais. Mieux vaut demander avant d'aggraver la situation.
+
+### Application web ou application mobile : laquelle choisir ?
+Commencez presque toujours par une application web ou une PWA : plus rapide, moins chère, elle marche partout. Passez au mobile quand une fonction l'exige (alarmes, GPS en continu, usage prolongé sans connexion). Voir [Application web ou mobile](blog-application-web-ou-mobile.html).
+
+### VPS ou hébergement mutualisé : lequel choisir ?
+Le mutualisé convient à un site vitrine ou WordPress, sans compétences serveur. Un VPS convient à une application sur mesure, avec plus de contrôle et plus de responsabilités. Détail et recommandations dans [VPS ou hébergement mutualisé](blog-vps-ou-hebergement-mutualise.html).
+
+### Existe-t-il un hébergement web gratuit, y compris pour PHP ?
+Oui pour un site statique (GitHub Pages, Netlify, Cloudflare Pages) et, de façon fragile, pour PHP et MySQL. Le gratuit convient pour apprendre ou tester, pas pour une entreprise. Voir [Hébergement web et PHP gratuits](blog-hebergement-web-gratuit.html).
+
+### Quelle différence entre Windows et Linux ?
+Windows est le plus compatible avec les logiciels du commerce. Linux est gratuit, léger et domine les serveurs. On peut essayer Linux sans rien effacer, depuis une clé USB. Lisez [Windows ou Linux](blog-windows-ou-linux.html).
+
+### Mon ordinateur peut-il faire tourner Windows 11 ? Et s'il est trop faible ?
+Il faut notamment 4 Go de mémoire, 64 Go de stockage, le démarrage sécurisé et une puce TPM 2.0. Pour une machine trop faible : ChromeOS Flex ou un Linux léger. Voir [Mon PC peut-il faire tourner Windows 11 ?](blog-pc-compatible-windows-11.html).
 
 ## Pour travailler avec moi
 

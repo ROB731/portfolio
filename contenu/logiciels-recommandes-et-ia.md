@@ -6,8 +6,8 @@ categorie: support
 date: 2026-11-05
 ordre: 4
 message: Bonjour Herman, je voudrais équiper mon ordinateur avec les bons logiciels. Mon activité : 
-suite: premiere-page-web-5-lecons
-ouverture: Vous utilisez des logiciels. Et si vous appreniez à créer le vôtre ? Commencez par comprendre comment une page web est faite : voici une mini-formation de deux heures, sans prérequis.
+suite: windows-ou-linux
+ouverture: Et si, plutôt que Windows, vous essayiez Linux ? Voici les vraies différences entre les deux, sans parti pris, et comment essayer Linux sans rien risquer.
 ---
 « Quel logiciel pour faire ça ? » est la question qui revient le plus quand on équipe un ordinateur. Il existe des milliers de choix, beaucoup de copies dangereuses, et très peu de gens pour vous dire honnêtement ce qui suffit. Voici ma liste de logiciels fiables, **tous disponibles sur le site de leur éditeur**, puis comment les coupler à l'intelligence artificielle sans vous mettre en danger.
 

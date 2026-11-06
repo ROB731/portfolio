@@ -33,9 +33,9 @@ RACINE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 SITE = 'https://sites-sfb.ea-services.net/portfolio-herman-robe/'
 NUMERO = '2250172527765'
 CATS = {
-    'support': ('Informatique au quotidien', 'tools', 'Installer, protéger, choisir ses logiciels : le savoir-faire du support informatique.'),
-    'recruteur': ('Pour les recruteurs et clients', 'users', 'Recruter un développeur, choisir un prestataire : les questions de ceux qui cherchent de l\'aide.'),
     'dirigeant': ('Pour les dirigeants', 'user',      'Pourquoi et comment digitaliser une entreprise, expliqué sans jargon.'),
+    'recruteur': ('Pour les recruteurs et clients', 'users', 'Recruter un développeur, choisir un prestataire : les questions de ceux qui cherchent de l\'aide.'),
+    'support': ('Informatique au quotidien', 'tools', 'Installer, protéger, choisir ses logiciels : le savoir-faire du support informatique.'),
     'reponse':   ('Réponses',        'lightbulb',  'Les questions qu\'on me pose le plus souvent, avec une réponse franche.'),
     'tuto':      ('Tutos',           'code',       'Pas à pas, avec le code à copier et les pièges à éviter.'),
     'formation': ('Mini-formations', 'graduation', 'Un parcours en plusieurs leçons, avec un exercice à chaque étape.'),

@@ -1918,3 +1918,9 @@ ul { list-style: none; }
 .faq-reponse p { margin: 0 0 10px; }
 .faq-reponse p:last-child { margin-bottom: 0; }
 @media (prefers-reduced-motion: reduce) { .faq-item, .faq-item summary::after { transition: none; } }
+
+/* Listes des articles : puces et numéros visibles (la feuille de base les supprime) */
+.prose ul { list-style: disc; }
+.prose ol, .toc ol { list-style: decimal; }
+.prose li::marker, .toc li::marker { color: var(--accent-light); font-weight: 700; }
+.prose li { padding-left: 4px; }
