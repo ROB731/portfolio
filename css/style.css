@@ -1924,3 +1924,9 @@ ul { list-style: none; }
 .prose ol, .toc ol { list-style: decimal; }
 .prose li::marker, .toc li::marker { color: var(--accent-light); font-weight: 700; }
 .prose li { padding-left: 4px; }
+
+/* Tutos sur téléphone : blocs de code plus compacts, moins de défilement latéral */
+@media (max-width: 480px) {
+    .prose pre.code { padding: 34px 12px 14px; margin-left: -4px; margin-right: -4px; }
+    .prose pre.code code { font-size: .76rem; line-height: 1.6; }
+}

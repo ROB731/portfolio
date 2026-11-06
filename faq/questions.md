@@ -93,6 +93,18 @@ C'est le numéro qui permet à un appareil d'être joint sur Internet, comme un 
 ### Comment mettre un projet Laravel en ligne ?
 En préparant le projet (sans le fichier .env), en l'envoyant sur un hébergement mutualisé ou un VPS, en installant les dépendances avec Composer, en configurant la base de données et en servant le site depuis le dossier public. Le tutoriel complet est dans [Mettre un projet Laravel en ligne](blog-mettre-laravel-en-ligne.html).
 
+### Comment mettre en ligne un projet React et Node.js ?
+On compile React en fichiers statiques servis par Nginx, on fait tourner l'API Node.js avec PM2 sur la machine locale, et Nginx transmet les appels `/api` à Node, avec un certificat HTTPS gratuit. Tutoriel complet : [Mettre en ligne un projet React et Node.js](blog-mettre-react-node-en-ligne.html).
+
+### Je viens d'acheter un VPS : par où commencer ?
+Mettre le système à jour, créer un utilisateur normal, se connecter avec une clé SSH, verrouiller l'accès par mot de passe, activer le pare-feu, ajouter fail2ban et prévoir les sauvegardes. Les neuf étapes, avec les commandes, sont dans [Configurer un VPS neuf](blog-configurer-un-vps-neuf.html).
+
+### Faut-il gérer son VPS à la main ou avec un panneau de contrôle ?
+À la main si vous êtes à l'aise en ligne de commande avec peu de projets. Un panneau (HestiaCP, CloudPanel, ISPConfig) si vous hébergez plusieurs sites avec e-mails, à condition de le mettre à jour et de restreindre son accès. Voir [Gérer son VPS](blog-gerer-son-vps-methodes.html).
+
+### Comment bien gérer un hébergement mutualisé ?
+Connaître les limites de l'offre, sauvegarder aussi hors de l'hébergeur, forcer le HTTPS, configurer SPF, DKIM et DMARC, tout mettre à jour, surveiller la disponibilité et garder son nom de domaine à son nom. Les dix pratiques sont dans [Mieux gérer son hébergement mutualisé](blog-mieux-gerer-hebergement-mutualise.html).
+
 ## Pour travailler avec moi
 
 ### Comment vous contacter ou prendre rendez-vous ?

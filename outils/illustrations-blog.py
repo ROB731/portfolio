@@ -379,6 +379,33 @@ def dessin_laravel():
     pastille = rect(700, 500, 150, 54, '#33335a', 27, f'stroke="{VERT}" stroke-width="4"') + texte(775, 538, 'En ligne', 26, 800, VERT, 'middle') + coche(880, 527, 20)
     return nav + fusee + pastille
 
+def dessin_react_node():
+    front = fenetre(640, 130, 260, 230, rect(662, 190, 216, 60, ACC, 10, 'opacity=".45"') + trait(662, 270, 170, .5) + trait(662, 294, 120, .3)) + texte(770, 410, 'React', 28, 700, TXT, 'middle')
+    serveur = ''.join(rect(960, 150 + i * 80, 170, 64, CARTE, 14, f'stroke="{ACC2 if i == 1 else ACC}" stroke-width="4"') + f'<circle cx="990" cy="{182 + i * 80}" r="9" fill="{VERT}"/>' + trait(1014, 175 + i * 80, 80, .45, 12) for i in range(3)) + texte(1045, 450, 'Node.js', 28, 700, TXT, 'middle')
+    return front + fleche(910, 245, 950, 245, ACC2, 5) + serveur
+
+
+def dessin_vps_config():
+    term = fenetre(610, 140, 420, 280, texte(634, 220, '$ ssh deploy@serveur', 22, 600, VERT) + texte(634, 256, '$ sudo ufw enable', 22, 600, TXT) + texte(634, 292, 'Firewall actif', 22, 600, '#c9c5ff') + texte(634, 328, '$ _', 26, 700, TXT))
+    bouclier = '<path d="M1090 160l70 26v70c0 44-34 70-70 88-36-18-70-44-70-88v-70z" fill="url(#a)"/>' + coche(1090, 260, 28, '#ffffff').replace('stroke="#fff"', f'stroke="{ACC}"')
+    return term + bouclier
+
+
+def dessin_vps_methodes():
+    tuiles = [
+        rect(620, 150, 200, 150, CARTE, 18, f'stroke="{ACC}" stroke-width="4"') + texte(720, 245, '>_', 54, 800, '#c9c5ff', 'middle'),
+        rect(850, 150, 200, 150, CARTE, 18, f'stroke="{ACC2}" stroke-width="4"') + ''.join(rect(880 + i * 50, 250 - h, 34, h, ACC2 if i == 1 else ACC, 6) for i, h in enumerate([50, 90, 70])),
+        rect(620, 330, 200, 150, CARTE, 18, f'stroke="{VERT}" stroke-width="4"') + ''.join(rect(660 + (i % 2) * 60, 360 + (i // 2) * 50, 50, 40, ACC if i % 2 else '#33bfff', 8) for i in range(4)),
+        rect(850, 330, 200, 150, CARTE, 18, f'stroke="{ACC}" stroke-width="4"') + f'<circle cx="900" cy="440" r="14" fill="{ACC}"/><circle cx="900" cy="372" r="14" fill="{ACC}"/><circle cx="990" cy="400" r="14" fill="{ACC2}"/><path d="M900 386V426M900 400c0 0 60 0 76 0" stroke="#c9c5ff" stroke-width="6" fill="none"/>',
+    ]
+    return '<g transform="translate(60 0)">' + ''.join(tuiles) + '</g>'
+
+
+def dessin_mutualise():
+    couleurs = [ACC, ACC2, VERT, '#febc2e', '#33bfff', '#a96bff']
+    tuiles = ''.join(rect(640 + (i % 3) * 120, 160 + (i // 3) * 130, 104, 108, couleurs[i], 20, 'opacity=".92"') + f'<rect x="{668 + (i % 3) * 120}" y="{196 + (i // 3) * 130}" width="48" height="10" rx="5" fill="#fff" opacity=".85"/><rect x="{668 + (i % 3) * 120}" y="{218 + (i // 3) * 130}" width="34" height="10" rx="5" fill="#fff" opacity=".5"/>' for i in range(6))
+    return tuiles + coche(1040, 150, 28) + rect(640, 430, 344, 20, '#33335a', 10) + rect(640, 430, 220, 20, 'url(#a)', 10)
+
 
 COUVERTURES = [
     ('cout-site-web-abidjan', 'RÉPONSE', ['Combien coûte', 'un site web', 'à Abidjan ?'], dessin_cout),
@@ -402,6 +429,10 @@ COUVERTURES = [
     ('hebergement-web-gratuit', 'RÉPONSE', ['Hébergement web', 'et PHP gratuits'], dessin_gratuit),
     ('adresse-ip-pour-les-nuls', 'INFORMATIQUE AU QUOTIDIEN', ["L'adresse IP", 'expliquée', 'simplement'], dessin_ip),
     ('mettre-laravel-en-ligne', 'TUTO', ['Mettre un projet', 'Laravel en ligne'], dessin_laravel),
+    ('mettre-react-node-en-ligne', 'TUTO', ['Mettre un projet', 'React et Node.js', 'en ligne'], dessin_react_node),
+    ('configurer-un-vps-neuf', 'TUTO', ['Configurer un', 'VPS neuf : les', 'premières étapes'], dessin_vps_config),
+    ('gerer-son-vps-methodes', 'RÉPONSE', ['Gérer son VPS :', 'à la main ou', 'avec un panneau ?'], dessin_vps_methodes),
+    ('mieux-gerer-hebergement-mutualise', 'TUTO', ['Mieux gérer son', 'hébergement', 'mutualisé'], dessin_mutualise),
     ('ia-developpeurs-vont-ils-disparaitre', 'RÉPONSE', ['Les développeurs', 'vont-ils', 'disparaître ?'], dessin_ia),
     ('digitaliser-son-entreprise-ivoirrapid', 'POUR LES DIRIGEANTS', ['Pourquoi', 'digitaliser son', 'entreprise ?'], dessin_digital),
 ]
@@ -542,4 +573,25 @@ if __name__ == '__main__':
     colonnes('laravel-faire-ne-pas-faire', 'Ce qu\'il faut faire et ne jamais faire en production', 'À faire',
              [['APP_DEBUG à', 'false'], ['Racine du site =', 'dossier public'], ['Sauvegarder la base', 'avant de migrer'], ['HTTPS activé', 'dès le départ']],
              'Jamais', [['Mettre .env', 'sur GitHub'], ['Laisser le mode', 'debug actif'], ['Servir le projet', 'depuis sa racine'], ['Modifier le site', 'directement en ligne']], 'coche', 'croix')
+
+    chaine('react-node-architecture', 'Comment un projet React et Node.js tourne sur un serveur : Nginx reçoit tout, sert React et transmet l\'API à Node',
+           [('Nginx', ['reçoit tout,', 'HTTPS']), ('React', ['fichiers', 'statiques']), ('Node (PM2)', ['API sur', 'localhost'])], fleches=False)
+    etapes('react-node-etapes', 'Mettre un projet React et Node.js en ligne en huit étapes',
+           ['Préparer le front et l\'API', 'Installer Node, Nginx et Git', 'Lancer l\'API avec PM2', 'Compiler React (npm run build)', 'Configurer Nginx (statique + /api)', 'Pointer le domaine (DNS)', 'Activer le HTTPS (Certbot)', 'Vérifier : journaux et 3 tests'])
+    colonnes('react-env-publiques-secretes', 'Variables publiques côté React et variables secrètes côté Node', 'Dans React',
+             [['Visibles par', 'tous les visiteurs'], ['Adresse de', 'l\'API'], ['Fixées à la', 'compilation'], ['Jamais de', 'mot de passe']],
+             'Dans Node', [['Jamais envoyées', 'au navigateur'], ['Mots de passe de', 'la base, clés'], ['Lues au', 'démarrage'], ['Fichier .env,', 'hors de Git']], 'point', 'point')
+    etapes('vps-premiers-pas', 'Configurer un VPS neuf en neuf étapes',
+           ['Se connecter en SSH', 'Mettre à jour le système', 'Créer un utilisateur sudo', 'Installer sa clé SSH', 'Verrouiller l\'accès SSH', 'Activer le pare-feu (UFW)', 'Ajouter fail2ban', 'Mises à jour de sécurité auto', 'Planifier les sauvegardes'])
+    colonnes('vps-bonnes-mauvaises-pratiques', 'Les bons réflexes et les erreurs sur un VPS neuf', 'À faire',
+             [['Tester la 2e connexion', 'avant de fermer'], ['Clé SSH, pas de', 'mot de passe'], ['Ouvrir 22, 80, 443', 'seulement'], ['Sauvegarder hors', 'du serveur']],
+             'À éviter', [['Travailler en', 'root tous les jours'], ['Mot de passe simple', 'sur le serveur'], ['Ouvrir tous', 'les ports'], ['Ne jamais faire', 'les mises à jour']], 'coche', 'croix')
+    chaine('vps-quatre-methodes', 'Quatre façons de gérer un VPS : à la main, panneau de contrôle, Docker, plateforme Git',
+           [(['À la main'], None), (['Panneau', 'de contrôle'], None), (['Docker'], None), (['Plateforme', 'Git'], None)], fleches=False)
+    etapes('vps-choix-methode', 'Cinq questions pour choisir comment gérer son VPS',
+           ['Avez-vous des bases Linux ?', 'Hébergez-vous plusieurs sites ?', 'Faut-il des e-mails sur le serveur ?', 'Voulez-vous déployer depuis Git ?', 'Qui fera les mises à jour ?'])
+    etapes('mutualise-checklist', 'Dix bonnes pratiques pour son hébergement mutualisé',
+           ['Connaître les limites de l\'offre', 'Choisir la bonne version de PHP', 'Sauvegarder, aussi hors du site', 'Forcer le HTTPS', 'Configurer SPF, DKIM et DMARC', 'Tout mettre à jour', 'Limiter les droits des fichiers', 'Mettre en cache', 'Surveiller la disponibilité', 'Garder son domaine à son nom'])
+    chaine('spf-dkim-dmarc', 'Trois protections pour que vos e-mails arrivent : SPF, DKIM et DMARC',
+           [('SPF', ['qui a le droit', 'd\'envoyer']), ('DKIM', ['signature', 'du message']), ('DMARC', ['que faire en', 'cas d\'échec'])], fleches=False)
     print('schémas ok')

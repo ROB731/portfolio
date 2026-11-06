@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mieux gérer son hébergement mutualisé | Herman Robé</title>
+    <meta name="description" content="Limites de l&#x27;offre, sauvegardes, HTTPS, e-mails (SPF, DKIM, DMARC), sécurité, cache, surveillance : dix bonnes pratiques pour votre hébergement mutualisé.">
+    <link rel="canonical" href="https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-mieux-gerer-hebergement-mutualise.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-mieux-gerer-hebergement-mutualise.html">
+    <meta property="og:title" content="Mieux gérer son hébergement mutualisé | Herman Robé">
+    <meta property="og:description" content="Limites de l&#x27;offre, sauvegardes, HTTPS, e-mails (SPF, DKIM, DMARC), sécurité, cache, surveillance : dix bonnes pratiques pour votre hébergement mutualisé.">
+    <meta property="og:image" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/blog/couverture-mieux-gerer-hebergement-mutualise.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:image" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/blog/couverture-mieux-gerer-hebergement-mutualise.png">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Herman Robé Portfolio">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="assets/photo-profil.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Mieux gérer son hébergement mutualisé : dix bonnes pratiques qui évitent les ennuis",
+    "description": "Limites de l'offre, sauvegardes, HTTPS, e-mails (SPF, DKIM, DMARC), sécurité, cache, surveillance : dix bonnes pratiques pour votre hébergement mutualisé.",
+    "datePublished": "2026-11-05",
+    "dateModified": "2026-11-05",
+    "inLanguage": "fr",
+    "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-mieux-gerer-hebergement-mutualise.html",
+    "mainEntityOfPage": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-mieux-gerer-hebergement-mutualise.html",
+    "image": "https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/blog/couverture-mieux-gerer-hebergement-mutualise.png",
+    "author": {
+      "@type": "Person",
+      "name": "Herman Robé",
+      "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe",
+      "jobTitle": "Concepteur-Développeur Full-Stack"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Herman Robé",
+      "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe",
+      "jobTitle": "Concepteur-Développeur Full-Stack"
+    },
+    "articleSection": "Tutos",
+    "wordCount": 1007,
+    "audio": {
+      "@type": "AudioObject",
+      "contentUrl": "https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/audio/mieux-gerer-hebergement-mutualise.mp3",
+      "encodingFormat": "audio/mpeg",
+      "duration": "PT6M",
+      "inLanguage": "fr"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": "https://sites-sfb.ea-services.net/portfolio-herman-robe/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Mieux gérer son hébergement mutualisé : dix bonnes pratiques qui évitent les ennuis",
+        "item": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-mieux-gerer-hebergement-mutualise.html"
+      }
+    ]
+  }
+]
+    </script>
+</head>
+<body class="page-blog">
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo" aria-label="Accueil du portfolio">
+                <span class="logo-bracket">&lt;</span><span class="logo-name">HR</span><span class="logo-bracket"> /&gt;</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projets</a></li>
+                <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-link contact-link">Contact</a></li>
+                <li class="nav-extras">
+                        <a class="btn btn-primary btn-full" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20je%20souhaite%20prendre%20rendez-vous.%20Mes%20disponibilit%C3%A9s%20%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-calendar"/></svg> Prendre rendez-vous</a>
+                        <a class="btn btn-outline btn-full" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg> Écrire sur WhatsApp</a>
+                        <p class="nav-extras-info">Abidjan, Marcory · 01 72 52 77 65</p>
+                    </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+    <article class="post section">
+        <div class="container post-container">
+            <p class="fil-ariane"><a href="index.html">Accueil</a> / <a href="blog.html">Blog</a> / Tutos</p>
+            <span class="post-tag"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-code"/></svg> Tutos</span>
+            <h1 class="post-title">Mieux gérer son hébergement mutualisé : dix bonnes pratiques qui évitent les ennuis</h1>
+            <p class="post-meta">Par Herman Robé · 5 novembre 2026 · 6 min de lecture</p>
+            <figure class="post-hero"><img src="assets/blog/couverture-mieux-gerer-hebergement-mutualise.svg" alt="Illustration : Mieux gérer son hébergement mutualisé : dix bonnes pratiques qui évitent les ennuis" width="1200" height="630"></figure>
+            <div class="ecoute" data-ecoute><p class="ecoute-titre"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-headset"/></svg> <strong>Écouter cet article</strong> · environ 6 min</p><audio controls preload="none" src="assets/audio/mieux-gerer-hebergement-mutualise.mp3">Votre navigateur ne sait pas lire l'audio.</audio><button type="button" class="ecoute-secours" data-lecture-appareil hidden>Le son ne démarre pas ? Lecture par votre appareil</button></div>
+            <nav class="toc" aria-label="Sommaire"><strong>Dans cet article</strong><ol><li><a href="#1-connaitre-les-limites-de-votre-offre">1. Connaître les limites de votre offre</a></li><li><a href="#2-choisir-la-bonne-version-de-php">2. Choisir la bonne version de PHP</a></li><li><a href="#3-sauvegarder-aussi-hors-de-lhebergement">3. Sauvegarder, aussi hors de l&#x27;hébergement</a></li><li><a href="#4-forcer-le-https">4. Forcer le HTTPS</a></li><li><a href="#5-configurer-spf-dkim-et-dmarc-pour-vos-e-mails">5. Configurer SPF, DKIM et DMARC pour vos e-mails</a></li><li><a href="#6-tout-mettre-a-jour">6. Tout mettre à jour</a></li><li><a href="#7-limiter-les-droits-des-fichiers">7. Limiter les droits des fichiers</a></li><li><a href="#8-mettre-en-cache">8. Mettre en cache</a></li><li><a href="#9-surveiller-la-disponibilite">9. Surveiller la disponibilité</a></li><li><a href="#10-garder-son-nom-de-domaine-a-son-nom">10. Garder son nom de domaine à son nom</a></li><li><a href="#et-les-taches-planifiees">Et les tâches planifiées ?</a></li><li><a href="#quand-quitter-le-mutualise">Quand quitter le mutualisé</a></li></ol></nav>
+            <div class="prose">
+<p>Un hébergement mutualisé est simple à prendre en main : on vous donne un panneau (souvent cPanel), vous y déposez votre site, et c&#x27;est en ligne. Mais <strong>simple ne veut pas dire sans entretien</strong>. Beaucoup de sites tombent en panne, sont piratés ou perdent leurs e-mails pour des raisons qu&#x27;on aurait évitées avec dix habitudes. Les voici.</p>
+<figure class="post-figure"><img src="assets/blog/schema-mutualise-checklist.svg" alt="Dix bonnes pratiques pour son hébergement mutualisé" width="640" height="650" loading="lazy"><figcaption>Dix bonnes pratiques pour son hébergement mutualisé</figcaption></figure>
+<h2 id="1-connaitre-les-limites-de-votre-offre">1. Connaître les limites de votre offre</h2>
+<p>« Illimité » ne l&#x27;est jamais vraiment. Dans le panneau, regardez ce que votre offre prévoit : <strong>l&#x27;espace disque</strong>, le nombre de <strong>fichiers</strong> (les « inodes »), la <strong>mémoire et le processeur</strong> accordés, le nombre de <strong>processus simultanés</strong>. Quand un site dépasse ces limites, il devient lent ou affiche des erreurs. Consultez ces compteurs de temps en temps.</p>
+<h2 id="2-choisir-la-bonne-version-de-php">2. Choisir la bonne version de PHP</h2>
+<p>Si votre site tourne sous PHP, choisissez dans le panneau (souvent « Sélectionner la version PHP ») une version <strong>récente et encore maintenue</strong>. Une vieille version ne reçoit plus de correctifs de sécurité et ralentit votre site. Avant de changer, <strong>sauvegardez</strong> et testez : certains vieux plugins ou scripts ne suivent pas.</p>
+<h2 id="3-sauvegarder-aussi-hors-de-lhebergement">3. Sauvegarder, aussi hors de l&#x27;hébergement</h2>
+<p>Beaucoup d&#x27;hébergeurs font des sauvegardes automatiques, mais elles sont chez eux, et leur conservation varie. Prenez l&#x27;habitude de <strong>télécharger une copie complète</strong> (fichiers et base de données) sur votre ordinateur ou dans un autre service, au moins une fois par mois, et avant toute modification importante. Et <strong>essayez de restaurer</strong> une fois : c&#x27;est la seule façon d&#x27;être sûr que ça marche.</p>
+<h2 id="4-forcer-le-https">4. Forcer le HTTPS</h2>
+<p>Activez le certificat gratuit proposé par l&#x27;hébergeur (souvent « AutoSSL » ou « Let&#x27;s Encrypt »), puis redirigez tout le trafic vers HTTPS. Sur un serveur Apache, dans le fichier <code>.htaccess</code> à la racine du site :</p>
+<pre class="code" data-langue="apache"><code>RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]</code></pre>
+<h2 id="5-configurer-spf-dkim-et-dmarc-pour-vos-e-mails">5. Configurer SPF, DKIM et DMARC pour vos e-mails</h2>
+<p>Si vous avez des adresses professionnelles sur votre domaine, ces trois réglages évitent que vos messages <strong>finissent dans les courriers indésirables</strong>, ou qu&#x27;on envoie de faux messages en votre nom.</p>
+<figure class="post-figure"><img src="assets/blog/schema-spf-dkim-dmarc.svg" alt="Trois protections pour que vos e-mails arrivent : SPF, DKIM et DMARC" width="640" height="230" loading="lazy"><figcaption>Trois protections pour que vos e-mails arrivent : SPF, DKIM et DMARC</figcaption></figure>
+<ul><li><strong>SPF</strong> indique qui a le droit d&#x27;envoyer des messages au nom de votre domaine.</li><li><strong>DKIM</strong> ajoute une signature qui prouve que le message n&#x27;a pas été modifié.</li><li><strong>DMARC</strong> dit aux boîtes de réception quoi faire quand les deux premiers échouent.</li></ul>
+<p>Ce sont des enregistrements à ajouter dans la zone DNS de votre domaine. Votre hébergeur indique en général les valeurs à saisir. Vous pouvez vérifier le résultat avec <a href="https://mxtoolbox.com" target="_blank" rel="noopener">MXToolbox</a>.</p>
+<h2 id="6-tout-mettre-a-jour">6. Tout mettre à jour</h2>
+<p>Si vous utilisez WordPress ou un autre système de gestion de contenu : mettez à jour <strong>le cœur, les thèmes et les extensions</strong>. La majorité des sites piratés le sont par une extension oubliée. <strong>Supprimez</strong> les extensions et les thèmes que vous n&#x27;utilisez plus, et téléchargez-les uniquement depuis leurs sources officielles.</p>
+<h2 id="7-limiter-les-droits-des-fichiers">7. Limiter les droits des fichiers</h2>
+<p>Chaque fichier a des droits d&#x27;accès. Une règle courante : <strong>755 pour les dossiers et 644 pour les fichiers</strong>. Ne laissez <strong>jamais</strong> un dossier en <strong>777</strong> : cela donne le droit d&#x27;écrire à n&#x27;importe qui. Protégez aussi les fichiers sensibles (fichiers de configuration, sauvegardes) et ne laissez pas traîner d&#x27;archives du site dans un dossier public.</p>
+<p>Pensez aussi aux <strong>mots de passe</strong> : un mot de passe long et unique pour le panneau, pour la base de données et pour chaque adresse e-mail, avec la double vérification si le panneau la propose.</p>
+<h2 id="8-mettre-en-cache">8. Mettre en cache</h2>
+<p>Le cache fait gagner beaucoup de vitesse. Si votre hébergeur utilise <strong>LiteSpeed</strong>, une extension de cache dédiée est souvent disponible pour WordPress. Vous pouvez aussi placer <a href="https://www.cloudflare.com" target="_blank" rel="noopener">Cloudflare</a>, qui a une offre gratuite, devant votre site. <strong>Compressez vos images</strong> avant de les mettre en ligne : c&#x27;est le gain le plus facile.</p>
+<h2 id="9-surveiller-la-disponibilite">9. Surveiller la disponibilité</h2>
+<p>Ne comptez pas sur vos clients pour vous dire que le site est en panne. Un service de surveillance comme <a href="https://uptimerobot.com" target="_blank" rel="noopener">UptimeRobot</a>, qui propose une offre gratuite (vérifiez ses conditions actuelles), contrôle votre site à intervalles réguliers et vous prévient par e-mail ou message. Pensez aussi à regarder de temps en temps le <strong>journal des erreurs</strong> dans le panneau : il révèle des problèmes avant qu&#x27;ils ne se voient.</p>
+<h2 id="10-garder-son-nom-de-domaine-a-son-nom">10. Garder son nom de domaine à son nom</h2>
+<p>Le nom de domaine est <strong>votre actif le plus important</strong>. Vérifiez qu&#x27;il est enregistré <strong>à votre nom</strong>, avec une adresse e-mail de contact que vous lisez, avec <strong>le renouvellement automatique</strong> activé, et idéalement chez un gestionnaire <strong>distinct</strong> de l&#x27;hébergeur : si vous changez d&#x27;hébergement, vous gardez la main. Avant une migration, baissez la durée de mise en cache (TTL) de vos enregistrements DNS pour que le changement s&#x27;applique vite.</p>
+<h2 id="et-les-taches-planifiees">Et les tâches planifiées ?</h2>
+<p>Pour qu&#x27;une action se répète toute seule (envoyer des rappels, nettoyer des fichiers, lancer le planificateur de Laravel), utilisez les <strong>tâches cron</strong> du panneau. Pour Laravel, par exemple, la tâche consiste à lancer chaque minute la commande de planification du projet.</p>
+<h2 id="quand-quitter-le-mutualise">Quand quitter le mutualisé</h2>
+<p>Pensez à un VPS si votre site est <strong>régulièrement lent</strong>, si vous <strong>atteignez les limites</strong> de l&#x27;offre, si vous avez besoin de <strong>Node.js, de Python</strong> ou de logiciels que l&#x27;hébergeur ne permet pas, ou si vous hébergez <strong>plusieurs projets</strong> importants. On en parle dans l&#x27;article sur le choix entre mutualisé et VPS.</p>
+<aside class="callout"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-lightbulb"/></svg><p>Un hébergement mutualisé bien entretenu est suffisant pour la grande majorité des sites d&#x27;entreprise. Ce qui coûte cher, ce n&#x27;est pas l&#x27;hébergement : c&#x27;est la panne qu&#x27;on n&#x27;avait pas vue venir.</p></aside>
+<p>Besoin d&#x27;un audit de votre hébergement, d&#x27;une migration, ou de mettre en place sauvegardes et surveillance ? Écrivez-moi sur WhatsApp avec l&#x27;adresse de votre site : je regarde ce qui est à améliorer et je vous dis ce qui est vraiment utile.</p>
+            </div>
+            <aside class="suite" aria-labelledby="suite-titre">
+                <p class="suite-kicker" id="suite-titre">À lire ensuite</p>
+                <p class="suite-ouverture">Votre site est bien hébergé. Et si vous voulez une application ? Web ou mobile : voici comment choisir sans vous tromper.</p>
+                <a class="suite-carte" href="blog-application-web-ou-mobile.html"><img src="assets/blog/couverture-application-web-ou-mobile.svg" alt="" width="1200" height="630" loading="lazy"><span class="suite-texte"><strong>Application web ou application mobile : laquelle choisir pour votre entreprise ?</strong><span>Application web, PWA ou application mobile : ce que chacune permet, ce qu&#x27;elle demande en temps et en budget, et cinq questions pour choisir sans vous tromper.</span><em>Lire la suite <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-arrow-right"/></svg></em></span></a>
+            </aside>
+            <aside class="post-cta">
+                <h2>Une question sur ce sujet ?</h2>
+                <p>Écrivez-moi : je réponds sur WhatsApp. Dites-moi où vous en êtes, je vous dirai ce que je ferais à votre place.</p>
+                <a class="btn btn-primary" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20j%27ai%20un%20h%C3%A9bergement%20mutualis%C3%A9%20et%20je%20voudrais%20mieux%20le%20g%C3%A9rer.%20Mon%20site%20%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg> Écrire sur WhatsApp</a>
+            </aside>
+        </div>
+    </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand"><span class="logo-bracket">&lt;</span><span class="logo-name">HR</span><span class="logo-bracket"> /&gt;</span></div>
+                <p class="footer-tagline">Concepteur-Développeur Full-Stack — Abidjan · <a href="https://ea-services.net">EA-SERVICES</a></p>
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="faq.html">Questions</a>
+                    <a href="index.html#projects">Projets</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                <p class="footer-copy">© 2026 Herman Robé. Conçu à Abidjan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="barre-contact" id="barreContact">
+        <a class="btn btn-primary" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20je%20souhaite%20prendre%20rendez-vous.%20Mes%20disponibilit%C3%A9s%20%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-calendar"/></svg> Rendez-vous</a>
+        <a class="btn btn-outline" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20" target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg> WhatsApp</a>
+    </div>
+    <a class="fab-whatsapp" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20" target="_blank" rel="noopener" aria-label="Écrire à Herman sur WhatsApp"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg></a>
+    <script src="js/menu.js" defer></script>
+    <script src="js/blog.js" defer></script>
+</body>
+</html>

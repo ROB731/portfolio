@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gérer son VPS : à la main ou avec un panneau | Herman Robé</title>
+    <meta name="description" content="Quatre façons de gérer un VPS : à la main, panneau de contrôle (Hestia, CloudPanel, ISPConfig), Docker ou plateforme Git. Avantages, risques et choix.">
+    <link rel="canonical" href="https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-gerer-son-vps-methodes.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-gerer-son-vps-methodes.html">
+    <meta property="og:title" content="Gérer son VPS : à la main ou avec un panneau | Herman Robé">
+    <meta property="og:description" content="Quatre façons de gérer un VPS : à la main, panneau de contrôle (Hestia, CloudPanel, ISPConfig), Docker ou plateforme Git. Avantages, risques et choix.">
+    <meta property="og:image" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/blog/couverture-gerer-son-vps-methodes.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:image" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/blog/couverture-gerer-son-vps-methodes.png">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Herman Robé Portfolio">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="assets/photo-profil.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Gérer son VPS : à la main, avec un panneau de contrôle, avec Docker ou une plateforme ?",
+    "description": "Quatre façons de gérer un VPS : à la main, panneau de contrôle (Hestia, CloudPanel, ISPConfig), Docker ou plateforme Git. Avantages, risques et choix.",
+    "datePublished": "2026-11-05",
+    "dateModified": "2026-11-05",
+    "inLanguage": "fr",
+    "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-gerer-son-vps-methodes.html",
+    "mainEntityOfPage": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-gerer-son-vps-methodes.html",
+    "image": "https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/blog/couverture-gerer-son-vps-methodes.png",
+    "author": {
+      "@type": "Person",
+      "name": "Herman Robé",
+      "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe",
+      "jobTitle": "Concepteur-Développeur Full-Stack"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Herman Robé",
+      "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe",
+      "jobTitle": "Concepteur-Développeur Full-Stack"
+    },
+    "articleSection": "Réponses",
+    "wordCount": 875,
+    "audio": {
+      "@type": "AudioObject",
+      "contentUrl": "https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/audio/gerer-son-vps-methodes.mp3",
+      "encodingFormat": "audio/mpeg",
+      "duration": "PT5M",
+      "inLanguage": "fr"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": "https://sites-sfb.ea-services.net/portfolio-herman-robe/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Gérer son VPS : à la main, avec un panneau de contrôle, avec Docker ou une plateforme ?",
+        "item": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-gerer-son-vps-methodes.html"
+      }
+    ]
+  }
+]
+    </script>
+</head>
+<body class="page-blog">
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo" aria-label="Accueil du portfolio">
+                <span class="logo-bracket">&lt;</span><span class="logo-name">HR</span><span class="logo-bracket"> /&gt;</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projets</a></li>
+                <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-link contact-link">Contact</a></li>
+                <li class="nav-extras">
+                        <a class="btn btn-primary btn-full" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20je%20souhaite%20prendre%20rendez-vous.%20Mes%20disponibilit%C3%A9s%20%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-calendar"/></svg> Prendre rendez-vous</a>
+                        <a class="btn btn-outline btn-full" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg> Écrire sur WhatsApp</a>
+                        <p class="nav-extras-info">Abidjan, Marcory · 01 72 52 77 65</p>
+                    </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+    <article class="post section">
+        <div class="container post-container">
+            <p class="fil-ariane"><a href="index.html">Accueil</a> / <a href="blog.html">Blog</a> / Réponses</p>
+            <span class="post-tag"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-lightbulb"/></svg> Réponses</span>
+            <h1 class="post-title">Gérer son VPS : à la main, avec un panneau de contrôle, avec Docker ou une plateforme ?</h1>
+            <p class="post-meta">Par Herman Robé · 5 novembre 2026 · 5 min de lecture</p>
+            <figure class="post-hero"><img src="assets/blog/couverture-gerer-son-vps-methodes.svg" alt="Illustration : Gérer son VPS : à la main, avec un panneau de contrôle, avec Docker ou une plateforme ?" width="1200" height="630"></figure>
+            <div class="ecoute" data-ecoute><p class="ecoute-titre"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-headset"/></svg> <strong>Écouter cet article</strong> · environ 5 min</p><audio controls preload="none" src="assets/audio/gerer-son-vps-methodes.mp3">Votre navigateur ne sait pas lire l'audio.</audio><button type="button" class="ecoute-secours" data-lecture-appareil hidden>Le son ne démarre pas ? Lecture par votre appareil</button></div>
+            <nav class="toc" aria-label="Sommaire"><strong>Dans cet article</strong><ol><li><a href="#1-a-la-main-la-ligne-de-commande">1. À la main : la ligne de commande</a></li><li><a href="#2-un-panneau-de-controle-une-interface-web-pour-le">2. Un panneau de contrôle : une interface web pour le serveur</a></li><li><a href="#3-docker-des-conteneurs-reproductibles">3. Docker : des conteneurs reproductibles</a></li><li><a href="#4-une-plateforme-de-deploiement-git-qui-deploie-to">4. Une plateforme de déploiement : Git qui déploie tout seul</a></li><li><a href="#cinq-questions-pour-choisir">Cinq questions pour choisir</a></li><li><a href="#mon-conseil">Mon conseil</a></li></ol></nav>
+            <div class="prose">
+<p>Votre VPS est configuré et sécurisé. Maintenant, <strong>comment allez-vous l&#x27;utiliser au quotidien</strong> ? Installer un site, créer une base de données, ajouter une adresse e-mail, déployer une application : il existe plusieurs façons de faire, et le bon choix dépend de vous, pas du serveur.</p>
+<figure class="post-figure"><img src="assets/blog/schema-vps-quatre-methodes.svg" alt="Quatre façons de gérer un VPS" width="640" height="200" loading="lazy"><figcaption>Quatre façons de gérer un VPS</figcaption></figure>
+<h2 id="1-a-la-main-la-ligne-de-commande">1. À la main : la ligne de commande</h2>
+<p>Vous installez vous-même chaque élément (Nginx ou Apache, PHP, base de données, Node.js) et vous les configurez avec des fichiers. C&#x27;est l&#x27;approche des tutos précédents (Laravel, React et Node.js).</p>
+<p><strong>Pour :</strong> contrôle total, serveur léger (rien d&#x27;inutile), vous comprenez ce qui tourne, aucune licence.</p>
+<p><strong>Contre :</strong> il faut des bases de Linux, et tout est à votre charge : mises à jour, sécurité, sauvegardes.</p>
+<p><strong>À choisir si :</strong> vous êtes développeur ou à l&#x27;aise en ligne de commande, avec peu de projets à héberger. C&#x27;est ce que je fais sur mes propres serveurs : à la main, sans panneau.</p>
+<h2 id="2-un-panneau-de-controle-une-interface-web-pour-le">2. Un panneau de contrôle : une interface web pour le serveur</h2>
+<p>Un panneau de contrôle ressemble à ce que vous connaissez de l&#x27;hébergement mutualisé : vous créez un site, une base de données, une adresse e-mail et un certificat HTTPS <strong>en quelques clics</strong>, sans ligne de commande.</p>
+<p>Il existe des panneaux <strong>gratuits</strong> : <a href="https://hestiacp.com" target="_blank" rel="noopener">HestiaCP</a>, <a href="https://www.cloudpanel.io" target="_blank" rel="noopener">CloudPanel</a>, <a href="https://www.ispconfig.org" target="_blank" rel="noopener">ISPConfig</a>, <a href="https://www.virtualmin.com" target="_blank" rel="noopener">Virtualmin</a>. Les panneaux les plus connus du grand public, cPanel et Plesk, sont <strong>payants</strong> (licence).</p>
+<p><strong>Pour :</strong> pratique pour héberger <strong>plusieurs sites</strong>, y compris pour des clients, avec des adresses e-mail, sans tout configurer à la main.</p>
+<p><strong>Contre, et c&#x27;est important :</strong></p>
+<ul><li>Le panneau <strong>consomme des ressources</strong> : il demande un VPS un peu plus costaud.</li><li>Il <strong>agrandit la surface d&#x27;attaque</strong> : c&#x27;est un logiciel de plus, exposé sur Internet, avec un accès d&#x27;administration qui donne les clés du serveur. Des failles critiques ont déjà touché des panneaux répandus, dont CyberPanel en 2024, d&#x27;après les alertes publiées à l&#x27;époque.</li><li><strong>C&#x27;est à vous de le mettre à jour.</strong> Un panneau installé et jamais mis à jour devient un danger.</li></ul>
+<p><strong>Les règles si vous en prenez un :</strong></p>
+<ol><li>Choisissez un projet <strong>activement maintenu</strong>, avec une page d&#x27;avis de sécurité, et regardez les failles passées et la rapidité des corrections.</li><li><strong>Installez-le sur un serveur neuf</strong>, en suivant la procédure officielle du projet, jamais sur un serveur qui contient déjà des données.</li><li><strong>Restreignez l&#x27;accès au panneau</strong> (par adresse IP si possible) et activez la double vérification.</li><li><strong>Mettez-le à jour régulièrement.</strong></li></ol>
+<h2 id="3-docker-des-conteneurs-reproductibles">3. Docker : des conteneurs reproductibles</h2>
+<p><a href="https://docs.docker.com/engine/install/ubuntu/" target="_blank" rel="noopener">Docker</a> fait tourner chaque application dans un « conteneur » isolé, avec tout ce dont elle a besoin. On décrit l&#x27;ensemble dans un fichier (Docker Compose), et on peut refaire la même installation sur un autre serveur.</p>
+<p><strong>Pour :</strong> installations <strong>reproductibles</strong>, applications isolées les unes des autres, mises à jour de versions plus simples, très répandu chez les développeurs.</p>
+<p><strong>Contre :</strong> une courbe d&#x27;apprentissage, et une configuration réseau et de sécurité à comprendre. Mal configuré, Docker peut ouvrir des ports sans que vous le sachiez.</p>
+<p><strong>À choisir si :</strong> vous avez plusieurs applications avec des versions différentes, ou vous voulez pouvoir déménager facilement.</p>
+<h2 id="4-une-plateforme-de-deploiement-git-qui-deploie-to">4. Une plateforme de déploiement : Git qui déploie tout seul</h2>
+<p>Des outils comme <a href="https://coolify.io" target="_blank" rel="noopener">Coolify</a> ou <a href="https://caprover.com" target="_blank" rel="noopener">CapRover</a> transforment votre VPS en <strong>mini-plateforme</strong> : vous envoyez votre code sur GitHub, et l&#x27;application est compilée et mise en ligne automatiquement, avec le HTTPS. L&#x27;idée ressemble à ce que proposent des services comme Vercel ou Heroku, mais sur votre propre serveur.</p>
+<p><strong>Pour :</strong> idéal pour un développeur avec <strong>plusieurs applications</strong> à déployer souvent.</p>
+<p><strong>Contre :</strong> vous dépendez de l&#x27;outil, et le serveur reste de votre responsabilité.</p>
+<h2 id="cinq-questions-pour-choisir">Cinq questions pour choisir</h2>
+<figure class="post-figure"><img src="assets/blog/schema-vps-choix-methode.svg" alt="Cinq questions pour choisir comment gérer son VPS" width="640" height="340" loading="lazy"><figcaption>Cinq questions pour choisir comment gérer son VPS</figcaption></figure>
+<ol><li><strong>Avez-vous des bases en Linux ?</strong> Non : un panneau ou une plateforme facilitent, ou prenez un VPS géré.</li><li><strong>Hébergez-vous plusieurs sites ?</strong> Oui, surtout pour des clients : un panneau.</li><li><strong>Faut-il des e-mails sur le serveur ?</strong> Si oui, un panneau simplifie beaucoup. Sinon, il vaut souvent mieux utiliser un service d&#x27;e-mail spécialisé.</li><li><strong>Voulez-vous déployer depuis Git ?</strong> Oui : une plateforme de déploiement, ou Docker.</li><li><strong>Qui fera les mises à jour ?</strong> C&#x27;est la question la plus importante. Quelle que soit la méthode, quelqu&#x27;un doit s&#x27;en occuper.</li></ol>
+<h2 id="mon-conseil">Mon conseil</h2>
+<ul><li><strong>Un développeur avec un à trois projets :</strong> la ligne de commande, éventuellement avec Docker.</li><li><strong>Plusieurs sites de clients, avec e-mails :</strong> un panneau gratuit et maintenu, bien sécurisé.</li><li><strong>Beaucoup d&#x27;applications déployées souvent :</strong> une plateforme comme Coolify ou CapRover.</li><li><strong>Aucune compétence technique :</strong> un hébergement mutualisé, ou un VPS <strong>géré</strong> par l&#x27;hébergeur ou un prestataire.</li></ul>
+<aside class="callout"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-lightbulb"/></svg><p>Aucune méthode ne dispense de mettre à jour, de sauvegarder et de surveiller. Un panneau ne rend pas un serveur sûr, il déplace simplement l&#x27;endroit où l&#x27;on doit faire attention.</p></aside>
+<p>Besoin de choisir, d&#x27;installer ou de sécuriser ? Dites-moi votre projet sur WhatsApp : je vous recommande la méthode adaptée, et je peux m&#x27;occuper de la mise en place et du suivi.</p>
+            </div>
+            <aside class="suite" aria-labelledby="suite-titre">
+                <p class="suite-kicker" id="suite-titre">À lire ensuite</p>
+                <p class="suite-ouverture">Et si vous êtes en hébergement mutualisé, sans serveur à gérer ? Voici comment en tirer le meilleur : dix bonnes pratiques pour le gérer au quotidien.</p>
+                <a class="suite-carte" href="blog-mieux-gerer-hebergement-mutualise.html"><img src="assets/blog/couverture-mieux-gerer-hebergement-mutualise.svg" alt="" width="1200" height="630" loading="lazy"><span class="suite-texte"><strong>Mieux gérer son hébergement mutualisé : dix bonnes pratiques qui évitent les ennuis</strong><span>Limites de l&#x27;offre, sauvegardes, HTTPS, e-mails (SPF, DKIM, DMARC), sécurité, cache, surveillance : dix bonnes pratiques pour votre hébergement mutualisé.</span><em>Lire la suite <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-arrow-right"/></svg></em></span></a>
+            </aside>
+            <aside class="post-cta">
+                <h2>Une question sur ce sujet ?</h2>
+                <p>Écrivez-moi : je réponds sur WhatsApp. Dites-moi où vous en êtes, je vous dirai ce que je ferais à votre place.</p>
+                <a class="btn btn-primary" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20je%20dois%20choisir%20comment%20g%C3%A9rer%20mon%20VPS.%20Mon%20besoin%20%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg> Écrire sur WhatsApp</a>
+            </aside>
+        </div>
+    </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand"><span class="logo-bracket">&lt;</span><span class="logo-name">HR</span><span class="logo-bracket"> /&gt;</span></div>
+                <p class="footer-tagline">Concepteur-Développeur Full-Stack — Abidjan · <a href="https://ea-services.net">EA-SERVICES</a></p>
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="faq.html">Questions</a>
+                    <a href="index.html#projects">Projets</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                <p class="footer-copy">© 2026 Herman Robé. Conçu à Abidjan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="barre-contact" id="barreContact">
+        <a class="btn btn-primary" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20je%20souhaite%20prendre%20rendez-vous.%20Mes%20disponibilit%C3%A9s%20%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-calendar"/></svg> Rendez-vous</a>
+        <a class="btn btn-outline" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20" target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg> WhatsApp</a>
+    </div>
+    <a class="fab-whatsapp" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20" target="_blank" rel="noopener" aria-label="Écrire à Herman sur WhatsApp"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg></a>
+    <script src="js/menu.js" defer></script>
+    <script src="js/blog.js" defer></script>
+</body>
+</html>

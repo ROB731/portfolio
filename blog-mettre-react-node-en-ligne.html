@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mettre en ligne un projet React et Node.js | Herman Robé</title>
+    <meta name="description" content="Tuto pas à pas pour mettre en ligne un projet React et Node.js sur un VPS Ubuntu : compilation, PM2, Nginx, nom de domaine, HTTPS et erreurs fréquentes.">
+    <link rel="canonical" href="https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-mettre-react-node-en-ligne.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-mettre-react-node-en-ligne.html">
+    <meta property="og:title" content="Mettre en ligne un projet React et Node.js | Herman Robé">
+    <meta property="og:description" content="Tuto pas à pas pour mettre en ligne un projet React et Node.js sur un VPS Ubuntu : compilation, PM2, Nginx, nom de domaine, HTTPS et erreurs fréquentes.">
+    <meta property="og:image" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/blog/couverture-mettre-react-node-en-ligne.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:image" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/blog/couverture-mettre-react-node-en-ligne.png">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Herman Robé Portfolio">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="assets/photo-profil.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Comment mettre en ligne un projet React et Node.js sur un VPS (Nginx, PM2, HTTPS)",
+    "description": "Tuto pas à pas pour mettre en ligne un projet React et Node.js sur un VPS Ubuntu : compilation, PM2, Nginx, nom de domaine, HTTPS et erreurs fréquentes.",
+    "datePublished": "2026-11-05",
+    "dateModified": "2026-11-05",
+    "inLanguage": "fr",
+    "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-mettre-react-node-en-ligne.html",
+    "mainEntityOfPage": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-mettre-react-node-en-ligne.html",
+    "image": "https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/blog/couverture-mettre-react-node-en-ligne.png",
+    "author": {
+      "@type": "Person",
+      "name": "Herman Robé",
+      "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe",
+      "jobTitle": "Concepteur-Développeur Full-Stack"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Herman Robé",
+      "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe",
+      "jobTitle": "Concepteur-Développeur Full-Stack"
+    },
+    "articleSection": "Tutos",
+    "wordCount": 1235,
+    "audio": {
+      "@type": "AudioObject",
+      "contentUrl": "https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/audio/mettre-react-node-en-ligne.mp3",
+      "encodingFormat": "audio/mpeg",
+      "duration": "PT7M",
+      "inLanguage": "fr"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": "https://sites-sfb.ea-services.net/portfolio-herman-robe/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Comment mettre en ligne un projet React et Node.js sur un VPS (Nginx, PM2, HTTPS)",
+        "item": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-mettre-react-node-en-ligne.html"
+      }
+    ]
+  }
+]
+    </script>
+</head>
+<body class="page-blog">
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo" aria-label="Accueil du portfolio">
+                <span class="logo-bracket">&lt;</span><span class="logo-name">HR</span><span class="logo-bracket"> /&gt;</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projets</a></li>
+                <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-link contact-link">Contact</a></li>
+                <li class="nav-extras">
+                        <a class="btn btn-primary btn-full" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20je%20souhaite%20prendre%20rendez-vous.%20Mes%20disponibilit%C3%A9s%20%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-calendar"/></svg> Prendre rendez-vous</a>
+                        <a class="btn btn-outline btn-full" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg> Écrire sur WhatsApp</a>
+                        <p class="nav-extras-info">Abidjan, Marcory · 01 72 52 77 65</p>
+                    </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+    <article class="post section">
+        <div class="container post-container">
+            <p class="fil-ariane"><a href="index.html">Accueil</a> / <a href="blog.html">Blog</a> / Tutos</p>
+            <span class="post-tag"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-code"/></svg> Tutos</span>
+            <h1 class="post-title">Comment mettre en ligne un projet React et Node.js sur un VPS (Nginx, PM2, HTTPS)</h1>
+            <p class="post-meta">Par Herman Robé · 5 novembre 2026 · 7 min de lecture</p>
+            <figure class="post-hero"><img src="assets/blog/couverture-mettre-react-node-en-ligne.svg" alt="Illustration : Comment mettre en ligne un projet React et Node.js sur un VPS (Nginx, PM2, HTTPS)" width="1200" height="630"></figure>
+            <div class="ecoute" data-ecoute><p class="ecoute-titre"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-headset"/></svg> <strong>Écouter cet article</strong> · environ 7 min</p><audio controls preload="none" src="assets/audio/mettre-react-node-en-ligne.mp3">Votre navigateur ne sait pas lire l'audio.</audio><button type="button" class="ecoute-secours" data-lecture-appareil hidden>Le son ne démarre pas ? Lecture par votre appareil</button></div>
+            <nav class="toc" aria-label="Sommaire"><strong>Dans cet article</strong><ol><li><a href="#comment-ca-marche-en-une-image">Comment ça marche, en une image</a></li><li><a href="#les-huit-etapes">Les huit étapes</a></li><li><a href="#etape-1-preparer-les-deux-projets">Étape 1 : préparer les deux projets</a></li><li><a href="#etape-2-installer-node-js-nginx-et-git">Étape 2 : installer Node.js, Nginx et Git</a></li><li><a href="#etape-3-lancer-lapi-avec-pm2">Étape 3 : lancer l&#x27;API avec PM2</a></li><li><a href="#etape-4-compiler-react">Étape 4 : compiler React</a></li><li><a href="#etape-5-configurer-nginx">Étape 5 : configurer Nginx</a></li><li><a href="#etape-6-le-nom-de-domaine">Étape 6 : le nom de domaine</a></li><li><a href="#etape-7-le-https">Étape 7 : le HTTPS</a></li><li><a href="#etape-8-verifier">Étape 8 : vérifier</a></li><li><a href="#les-erreurs-les-plus-frequentes">Les erreurs les plus fréquentes</a></li><li><a href="#mettre-a-jour-ensuite">Mettre à jour ensuite</a></li><li><a href="#une-variante-separer-le-front-et-lapi">Une variante : séparer le front et l&#x27;API</a></li></ol></nav>
+            <div class="prose">
+<p>Votre application React et votre API Node.js marchent sur votre ordinateur. Il faut maintenant qu&#x27;elles marchent <strong>sur Internet</strong>, pour de vrais utilisateurs. Voici la méthode que je recommande, sur un VPS Ubuntu, avec Nginx pour l&#x27;entrée, PM2 pour garder l&#x27;API en vie, et un certificat HTTPS gratuit.</p>
+<p>Si vous n&#x27;avez pas encore de serveur, lisez d&#x27;abord l&#x27;article sur le choix de l&#x27;hébergement. Si le serveur est neuf, l&#x27;article suivant explique comment le configurer.</p>
+<h2 id="comment-ca-marche-en-une-image">Comment ça marche, en une image</h2>
+<figure class="post-figure"><img src="assets/blog/schema-react-node-architecture.svg" alt="Comment un projet React et Node.js tourne sur un serveur" width="640" height="230" loading="lazy"><figcaption>Comment un projet React et Node.js tourne sur un serveur</figcaption></figure>
+<ul><li><strong>React</strong> est compilé en <strong>fichiers statiques</strong> (HTML, CSS, JavaScript). Ils n&#x27;ont pas besoin de Node pour être servis : Nginx les envoie directement.</li><li><strong>Node.js</strong> fait tourner votre <strong>API</strong>. Il n&#x27;est pas visible depuis Internet : il écoute seulement sur la machine elle-même.</li><li><strong>Nginx</strong> est la porte d&#x27;entrée : il reçoit toutes les demandes, sert React, et transmet à Node celles qui commencent par <code>/api</code>.</li><li><strong>PM2</strong> relance Node s&#x27;il plante ou si le serveur redémarre.</li></ul>
+<h2 id="les-huit-etapes">Les huit étapes</h2>
+<figure class="post-figure"><img src="assets/blog/schema-react-node-etapes.svg" alt="Mettre un projet React et Node.js en ligne en huit étapes" width="640" height="526" loading="lazy"><figcaption>Mettre un projet React et Node.js en ligne en huit étapes</figcaption></figure>
+<h2 id="etape-1-preparer-les-deux-projets">Étape 1 : préparer les deux projets</h2>
+<p><strong>Les variables d&#x27;environnement : la règle qui évite les fuites.</strong></p>
+<figure class="post-figure"><img src="assets/blog/schema-react-env-publiques-secretes.svg" alt="Variables publiques côté React et variables secrètes côté Node" width="640" height="424" loading="lazy"><figcaption>Variables publiques côté React et variables secrètes côté Node</figcaption></figure>
+<p>Tout ce que vous mettez dans React est <strong>envoyé au navigateur</strong> et donc visible par n&#x27;importe qui. Avec Vite, seules les variables dont le nom commence par <code>VITE_</code> sont incluses dans le code, et elles sont <strong>fixées au moment de la compilation</strong>. N&#x27;y mettez jamais de mot de passe ni de clé secrète. Les secrets vivent dans le fichier <code>.env</code> de l&#x27;API, qui n&#x27;est <strong>jamais</strong> envoyé sur GitHub.</p>
+<p><strong>L&#x27;adresse de l&#x27;API :</strong> dans React, appelez l&#x27;API avec un chemin relatif, par exemple <code>/api/commandes</code>, et pas <code>http://localhost:3000/api/commandes</code>. Ainsi, le même code marche en local et en ligne, et vous évitez les problèmes de CORS.</p>
+<p><strong>Côté Node</strong>, faites écouter l&#x27;API <strong>uniquement sur la machine locale</strong> :</p>
+<pre class="code" data-langue="javascript"><code>app.listen(process.env.PORT || 3000, &#x27;127.0.0.1&#x27;);</code></pre>
+<p>Elle n&#x27;est ainsi pas accessible directement depuis Internet : seul Nginx peut lui parler.</p>
+<h2 id="etape-2-installer-node-js-nginx-et-git">Étape 2 : installer Node.js, Nginx et Git</h2>
+<pre class="code" data-langue="bash"><code>sudo apt update
+sudo apt install -y nginx git curl</code></pre>
+<p>Pour Node.js, le plus pratique est <strong>nvm</strong>, qui permet de choisir la version. Suivez la commande d&#x27;installation affichée sur <a href="https://github.com/nvm-sh/nvm" target="_blank" rel="noopener">la page officielle de nvm</a>, rouvrez le terminal, puis :</p>
+<pre class="code" data-langue="bash"><code>nvm install --lts
+node -v
+npm -v</code></pre>
+<p>La version « LTS » est celle qui reçoit des mises à jour de sécurité sur la durée : c&#x27;est celle qu&#x27;il faut sur un serveur.</p>
+<h2 id="etape-3-lancer-lapi-avec-pm2">Étape 3 : lancer l&#x27;API avec PM2</h2>
+<pre class="code" data-langue="bash"><code>sudo mkdir -p /var/www/monappli
+sudo chown $USER:$USER /var/www/monappli
+cd /var/www/monappli
+git clone https://github.com/VOTRE_COMPTE/votre-api.git api
+cd api
+npm ci --omit=dev
+nano .env</code></pre>
+<p>Dans <code>.env</code>, mettez les variables de production (port, base de données, clés). Testez à la main, puis arrêtez avec <code>Ctrl+C</code> :</p>
+<pre class="code" data-langue="bash"><code>node server.js</code></pre>
+<p>Puis confiez-la à <a href="https://pm2.keymetrics.io" target="_blank" rel="noopener">PM2</a> :</p>
+<pre class="code" data-langue="bash"><code>npm install -g pm2
+pm2 start server.js --name monapi
+pm2 save
+pm2 startup</code></pre>
+<p>La dernière commande affiche <strong>une ligne à copier-coller</strong> : elle permet à PM2 de relancer l&#x27;API au redémarrage du serveur. Pour surveiller :</p>
+<pre class="code" data-langue="bash"><code>pm2 status
+pm2 logs monapi</code></pre>
+<h2 id="etape-4-compiler-react">Étape 4 : compiler React</h2>
+<pre class="code" data-langue="bash"><code>cd /var/www/monappli
+git clone https://github.com/VOTRE_COMPTE/votre-front.git front
+cd front
+npm ci
+npm run build</code></pre>
+<p>Avec Vite, la compilation produit un dossier <strong><code>dist</code></strong>. Selon l&#x27;outil, il peut s&#x27;appeler <code>build</code>. Sur un petit VPS, la compilation peut manquer de mémoire : dans ce cas, compilez sur votre ordinateur et envoyez le dossier avec <code>scp</code>.</p>
+<h2 id="etape-5-configurer-nginx">Étape 5 : configurer Nginx</h2>
+<p>Créez <code>/etc/nginx/sites-available/monappli</code> :</p>
+<pre class="code" data-langue="nginx"><code>server {
+    listen 80;
+    listen [::]:80;
+    server_name votre-domaine.com www.votre-domaine.com;
+
+    root /var/www/monappli/front/dist;
+    index index.html;
+
+    location / {
+        try_files $uri /index.html;
+    }
+
+    location /api/ {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}</code></pre>
+<p>Deux détails qui comptent :</p>
+<ul><li><strong><code>try_files $uri /index.html;</code></strong> permet à React de gérer ses propres pages. Sans cette ligne, actualiser la page sur <code>/commandes</code> donne une erreur 404.</li><li><strong>Le préfixe <code>/api</code></strong> est transmis tel quel à Node, donc vos routes d&#x27;API doivent commencer par <code>/api</code>. Si ce n&#x27;est pas le cas, écrivez <code>proxy_pass http://127.0.0.1:3000/;</code> avec la barre oblique finale.</li></ul>
+<p>Activez le site :</p>
+<pre class="code" data-langue="bash"><code>sudo ln -s /etc/nginx/sites-available/monappli /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl reload nginx</code></pre>
+<h2 id="etape-6-le-nom-de-domaine">Étape 6 : le nom de domaine</h2>
+<p>Chez le gestionnaire de votre domaine, créez un enregistrement <strong>A</strong> qui pointe vers l&#x27;adresse IP du VPS (voir l&#x27;article sur l&#x27;adresse IP), puis attendez la propagation.</p>
+<h2 id="etape-7-le-https">Étape 7 : le HTTPS</h2>
+<pre class="code" data-langue="bash"><code>sudo apt install -y certbot python3-certbot-nginx
+sudo certbot --nginx -d votre-domaine.com -d www.votre-domaine.com</code></pre>
+<p><a href="https://certbot.eff.org" target="_blank" rel="noopener">Certbot</a> obtient un certificat gratuit et configure Nginx. Le renouvellement est automatique.</p>
+<h2 id="etape-8-verifier">Étape 8 : vérifier</h2>
+<ul><li>Ouvrez <code>https://votre-domaine.com</code> : React s&#x27;affiche.</li><li>Ouvrez une page profonde (<code>/commandes</code>) puis <strong>actualisez</strong> : elle doit rester affichée.</li><li>Testez un appel d&#x27;API depuis l&#x27;application.</li><li>Si quelque chose ne marche pas : <code>pm2 logs monapi</code> pour l&#x27;API, <code>sudo tail -f /var/log/nginx/error.log</code> pour Nginx.</li></ul>
+<p>Côté pare-feu, seuls les ports <strong>22</strong> (SSH), <strong>80</strong> et <strong>443</strong> doivent être ouverts. Le port de Node (3000) ne doit <strong>pas</strong> l&#x27;être.</p>
+<h2 id="les-erreurs-les-plus-frequentes">Les erreurs les plus fréquentes</h2>
+<ul><li><strong>502 Bad Gateway</strong> : Nginx n&#x27;arrive pas à joindre Node. L&#x27;API est arrêtée (regardez <code>pm2 status</code>), ou le port ne correspond pas.</li><li><strong>404 en actualisant une page</strong> : il manque <code>try_files $uri /index.html;</code>.</li><li><strong>Une variable vaut <code>undefined</code> dans React</strong> : son nom ne commence pas par <code>VITE_</code>, ou vous n&#x27;avez pas recompilé après l&#x27;avoir changée.</li><li><strong>Erreur de CORS</strong> : vous appelez l&#x27;API par une autre adresse. Utilisez un chemin relatif <code>/api/...</code>.</li><li><strong>Contenu mixte</strong> (HTTP et HTTPS) : vérifiez que l&#x27;adresse de l&#x27;API n&#x27;est pas écrite en <code>http://</code>.</li><li><strong>L&#x27;API s&#x27;arrête après la déconnexion SSH</strong> : elle n&#x27;est pas sous PM2, ou <code>pm2 save</code> n&#x27;a pas été fait.</li></ul>
+<h2 id="mettre-a-jour-ensuite">Mettre à jour ensuite</h2>
+<pre class="code" data-langue="bash"><code>cd /var/www/monappli/api
+git pull
+npm ci --omit=dev
+pm2 restart monapi
+
+cd ../front
+git pull
+npm ci
+npm run build</code></pre>
+<p>Pour React, il n&#x27;y a rien à redémarrer : Nginx sert les nouveaux fichiers.</p>
+<h2 id="une-variante-separer-le-front-et-lapi">Une variante : séparer le front et l&#x27;API</h2>
+<p>Vous pouvez aussi héberger <strong>uniquement l&#x27;API</strong> sur le VPS, et mettre <strong>React sur un service d&#x27;hébergement statique</strong> (Netlify, Cloudflare Pages ou Vercel, qui ont des offres gratuites). Dans ce cas, l&#x27;API doit autoriser l&#x27;adresse du front par une règle CORS. C&#x27;est pratique pour les mises à jour automatiques à chaque envoi sur GitHub.</p>
+<p>Si vous préférez me confier la mise en ligne, je prépare le serveur, je déploie vos deux projets, je configure le domaine, le HTTPS, les sauvegardes et la supervision. Écrivez-moi sur WhatsApp avec le nom du projet.</p>
+            </div>
+            <aside class="suite" aria-labelledby="suite-titre">
+                <p class="suite-kicker" id="suite-titre">À lire ensuite</p>
+                <p class="suite-ouverture">Tout cela suppose un serveur prêt à l&#x27;emploi. Vous venez d&#x27;acheter un VPS ? Voici comment le configurer correctement et le sécuriser, étape par étape.</p>
+                <a class="suite-carte" href="blog-configurer-un-vps-neuf.html"><img src="assets/blog/couverture-configurer-un-vps-neuf.svg" alt="" width="1200" height="630" loading="lazy"><span class="suite-texte"><strong>Je viens d&#x27;acheter un VPS : comment le configurer et le sécuriser, étape par étape</strong><span>Un VPS Ubuntu tout neuf à sécuriser : connexion SSH, utilisateur, clé SSH, pare-feu, fail2ban, mises à jour automatiques et sauvegardes, avec les commandes.</span><em>Lire la suite <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-arrow-right"/></svg></em></span></a>
+            </aside>
+            <aside class="post-cta">
+                <h2>Une question sur ce sujet ?</h2>
+                <p>Écrivez-moi : je réponds sur WhatsApp. Dites-moi où vous en êtes, je vous dirai ce que je ferais à votre place.</p>
+                <a class="btn btn-primary" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20je%20voudrais%20mettre%20en%20ligne%20mon%20projet%20React%20et%20Node.js%20et%20j%27ai%20besoin%20d%27aide.%20Voici%20o%C3%B9%20j%27en%20suis%20%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg> Écrire sur WhatsApp</a>
+            </aside>
+        </div>
+    </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand"><span class="logo-bracket">&lt;</span><span class="logo-name">HR</span><span class="logo-bracket"> /&gt;</span></div>
+                <p class="footer-tagline">Concepteur-Développeur Full-Stack — Abidjan · <a href="https://ea-services.net">EA-SERVICES</a></p>
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="faq.html">Questions</a>
+                    <a href="index.html#projects">Projets</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                <p class="footer-copy">© 2026 Herman Robé. Conçu à Abidjan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="barre-contact" id="barreContact">
+        <a class="btn btn-primary" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20je%20souhaite%20prendre%20rendez-vous.%20Mes%20disponibilit%C3%A9s%20%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-calendar"/></svg> Rendez-vous</a>
+        <a class="btn btn-outline" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20" target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg> WhatsApp</a>
+    </div>
+    <a class="fab-whatsapp" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20" target="_blank" rel="noopener" aria-label="Écrire à Herman sur WhatsApp"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg></a>
+    <script src="js/menu.js" defer></script>
+    <script src="js/blog.js" defer></script>
+</body>
+</html>

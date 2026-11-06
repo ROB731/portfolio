@@ -6,8 +6,8 @@ categorie: tuto
 date: 2026-11-05
 ordre: 3
 message: Bonjour Herman, je voudrais mettre mon projet Laravel en ligne et j'ai besoin d'aide. Voici où j'en suis : 
-suite: application-web-ou-mobile
-ouverture: Votre application est en ligne. Mais faut-il aussi une application mobile ? Voici comment choisir entre web et mobile sans vous tromper.
+suite: mettre-react-node-en-ligne
+ouverture: Laravel n'est pas la seule technologie. Voici maintenant comment mettre en ligne un projet React et Node.js, avec Nginx, PM2 et le HTTPS, sur un VPS Ubuntu.
 ---
 Votre projet Laravel marche très bien sur votre ordinateur. Il faut maintenant le **voir en ligne**, pour le montrer à un client ou le mettre en service. C'est l'étape où beaucoup de projets restent bloqués : erreur 500, page blanche, fichiers introuvables. Voici la méthode, avec les trois façons de faire.
 

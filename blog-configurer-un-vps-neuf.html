@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurer un VPS neuf : les premières étapes | Herman Robé</title>
+    <meta name="description" content="Un VPS Ubuntu tout neuf à sécuriser : connexion SSH, utilisateur, clé SSH, pare-feu, fail2ban, mises à jour automatiques et sauvegardes, avec les commandes.">
+    <link rel="canonical" href="https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-configurer-un-vps-neuf.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-configurer-un-vps-neuf.html">
+    <meta property="og:title" content="Configurer un VPS neuf : les premières étapes | Herman Robé">
+    <meta property="og:description" content="Un VPS Ubuntu tout neuf à sécuriser : connexion SSH, utilisateur, clé SSH, pare-feu, fail2ban, mises à jour automatiques et sauvegardes, avec les commandes.">
+    <meta property="og:image" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/blog/couverture-configurer-un-vps-neuf.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:image" content="https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/blog/couverture-configurer-un-vps-neuf.png">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Herman Robé Portfolio">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="assets/photo-profil.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Je viens d'acheter un VPS : comment le configurer et le sécuriser, étape par étape",
+    "description": "Un VPS Ubuntu tout neuf à sécuriser : connexion SSH, utilisateur, clé SSH, pare-feu, fail2ban, mises à jour automatiques et sauvegardes, avec les commandes.",
+    "datePublished": "2026-11-05",
+    "dateModified": "2026-11-05",
+    "inLanguage": "fr",
+    "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-configurer-un-vps-neuf.html",
+    "mainEntityOfPage": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-configurer-un-vps-neuf.html",
+    "image": "https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/blog/couverture-configurer-un-vps-neuf.png",
+    "author": {
+      "@type": "Person",
+      "name": "Herman Robé",
+      "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe",
+      "jobTitle": "Concepteur-Développeur Full-Stack"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Herman Robé",
+      "url": "https://sites-sfb.ea-services.net/portfolio-herman-robe",
+      "jobTitle": "Concepteur-Développeur Full-Stack"
+    },
+    "articleSection": "Tutos",
+    "wordCount": 838,
+    "audio": {
+      "@type": "AudioObject",
+      "contentUrl": "https://sites-sfb.ea-services.net/portfolio-herman-robe/assets/audio/configurer-un-vps-neuf.mp3",
+      "encodingFormat": "audio/mpeg",
+      "duration": "PT5M",
+      "inLanguage": "fr"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": "https://sites-sfb.ea-services.net/portfolio-herman-robe/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Je viens d'acheter un VPS : comment le configurer et le sécuriser, étape par étape",
+        "item": "https://sites-sfb.ea-services.net/portfolio-herman-robe/blog-configurer-un-vps-neuf.html"
+      }
+    ]
+  }
+]
+    </script>
+</head>
+<body class="page-blog">
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo" aria-label="Accueil du portfolio">
+                <span class="logo-bracket">&lt;</span><span class="logo-name">HR</span><span class="logo-bracket"> /&gt;</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projets</a></li>
+                <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-link contact-link">Contact</a></li>
+                <li class="nav-extras">
+                        <a class="btn btn-primary btn-full" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20je%20souhaite%20prendre%20rendez-vous.%20Mes%20disponibilit%C3%A9s%20%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-calendar"/></svg> Prendre rendez-vous</a>
+                        <a class="btn btn-outline btn-full" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg> Écrire sur WhatsApp</a>
+                        <p class="nav-extras-info">Abidjan, Marcory · 01 72 52 77 65</p>
+                    </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+    <article class="post section">
+        <div class="container post-container">
+            <p class="fil-ariane"><a href="index.html">Accueil</a> / <a href="blog.html">Blog</a> / Tutos</p>
+            <span class="post-tag"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-code"/></svg> Tutos</span>
+            <h1 class="post-title">Je viens d&#x27;acheter un VPS : comment le configurer et le sécuriser, étape par étape</h1>
+            <p class="post-meta">Par Herman Robé · 5 novembre 2026 · 5 min de lecture</p>
+            <figure class="post-hero"><img src="assets/blog/couverture-configurer-un-vps-neuf.svg" alt="Illustration : Je viens d&#x27;acheter un VPS : comment le configurer et le sécuriser, étape par étape" width="1200" height="630"></figure>
+            <div class="ecoute" data-ecoute><p class="ecoute-titre"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-headset"/></svg> <strong>Écouter cet article</strong> · environ 5 min</p><audio controls preload="none" src="assets/audio/configurer-un-vps-neuf.mp3">Votre navigateur ne sait pas lire l'audio.</audio><button type="button" class="ecoute-secours" data-lecture-appareil hidden>Le son ne démarre pas ? Lecture par votre appareil</button></div>
+            <nav class="toc" aria-label="Sommaire"><strong>Dans cet article</strong><ol><li><a href="#1-se-connecter-en-ssh">1. Se connecter en SSH</a></li><li><a href="#2-mettre-a-jour-le-systeme">2. Mettre à jour le système</a></li><li><a href="#3-creer-un-utilisateur-normal">3. Créer un utilisateur normal</a></li><li><a href="#4-se-connecter-avec-une-cle-ssh">4. Se connecter avec une clé SSH</a></li><li><a href="#5-verrouiller-lacces-ssh">5. Verrouiller l&#x27;accès SSH</a></li><li><a href="#6-activer-le-pare-feu">6. Activer le pare-feu</a></li><li><a href="#7-ajouter-fail2ban">7. Ajouter fail2ban</a></li><li><a href="#8-les-mises-a-jour-de-securite-automatiques">8. Les mises à jour de sécurité automatiques</a></li><li><a href="#9-quelques-reglages-utiles">9. Quelques réglages utiles</a></li><li><a href="#les-sauvegardes-a-prevoir-des-le-premier-jour">Les sauvegardes : à prévoir dès le premier jour</a></li><li><a href="#et-ensuite">Et ensuite ?</a></li></ol></nav>
+            <div class="prose">
+<p>Vous venez d&#x27;acheter un VPS. L&#x27;hébergeur vous envoie une adresse IP, un utilisateur (souvent <code>root</code>) et un mot de passe. <strong>Ce serveur est déjà visible sur Internet</strong>, et des robots vont commencer à tester son accès dans les minutes qui suivent. Voici comment le préparer correctement avant d&#x27;y mettre quoi que ce soit.</p>
+<p>Ce tuto suppose un VPS <strong>Ubuntu</strong> (par exemple une version LTS récente). Je prends <code>203.0.113.25</code> comme adresse d&#x27;exemple : remplacez-la par la vôtre.</p>
+<figure class="post-figure"><img src="assets/blog/schema-vps-premiers-pas.svg" alt="Configurer un VPS neuf en neuf étapes" width="640" height="588" loading="lazy"><figcaption>Configurer un VPS neuf en neuf étapes</figcaption></figure>
+<h2 id="1-se-connecter-en-ssh">1. Se connecter en SSH</h2>
+<p>SSH est le moyen de contrôler le serveur à distance. Sous Windows 10 et 11, ouvrez PowerShell ; sous Linux et Mac, le terminal. (Si vous préférez une interface, <a href="https://www.putty.org" target="_blank" rel="noopener">PuTTY</a> existe.)</p>
+<pre class="code" data-langue="bash"><code>ssh root@203.0.113.25</code></pre>
+<p>À la première connexion, le terminal vous demande de confirmer l&#x27;identité du serveur : répondez <code>yes</code>, puis saisissez le mot de passe reçu.</p>
+<h2 id="2-mettre-a-jour-le-systeme">2. Mettre à jour le système</h2>
+<pre class="code" data-langue="bash"><code>apt update &amp;&amp; apt upgrade -y</code></pre>
+<p>Si la mise à jour installe un nouveau noyau, redémarrez avec <code>reboot</code>, puis reconnectez-vous.</p>
+<h2 id="3-creer-un-utilisateur-normal">3. Créer un utilisateur normal</h2>
+<p>Travailler en <code>root</code> tous les jours est dangereux : une faute de frappe peut tout détruire. Créez un utilisateur qui a le droit d&#x27;administrer, mais seulement quand il le demande :</p>
+<pre class="code" data-langue="bash"><code>adduser deploy
+usermod -aG sudo deploy</code></pre>
+<h2 id="4-se-connecter-avec-une-cle-ssh">4. Se connecter avec une clé SSH</h2>
+<p>Une clé SSH est bien plus solide qu&#x27;un mot de passe. <strong>Sur votre ordinateur</strong> (pas sur le serveur) :</p>
+<pre class="code" data-langue="bash"><code>ssh-keygen -t ed25519 -C &quot;mon-ordinateur&quot;</code></pre>
+<p>Cela crée deux fichiers : une clé privée (à ne <strong>jamais</strong> partager) et une clé publique, avec l&#x27;extension <code>.pub</code>. Envoyez la clé publique au serveur :</p>
+<pre class="code" data-langue="bash"><code>ssh-copy-id deploy@203.0.113.25</code></pre>
+<p>Sous Windows, si <code>ssh-copy-id</code> n&#x27;existe pas, connectez-vous en <code>deploy</code> avec son mot de passe et créez le fichier à la main :</p>
+<pre class="code" data-langue="bash"><code>mkdir -p ~/.ssh &amp;&amp; chmod 700 ~/.ssh
+nano ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys</code></pre>
+<p>Collez-y le contenu de votre fichier <code>.pub</code>.</p>
+<h2 id="5-verrouiller-lacces-ssh">5. Verrouiller l&#x27;accès SSH</h2>
+<aside class="callout"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-lightbulb"/></svg><p><strong>Avant tout : ne fermez pas la session actuelle.</strong> Ouvrez un <strong>second</strong> terminal et vérifiez que <code>ssh deploy@203.0.113.25</code> fonctionne avec votre clé. Si vous verrouillez avant de tester, vous pouvez vous enfermer dehors.</p></aside>
+<p>Une fois le test réussi, modifiez la configuration SSH :</p>
+<pre class="code" data-langue="bash"><code>sudo nano /etc/ssh/sshd_config</code></pre>
+<p>Réglez ces deux lignes :</p>
+<pre class="code" data-langue="texte"><code>PermitRootLogin no
+PasswordAuthentication no</code></pre>
+<p>Puis testez la syntaxe et relancez :</p>
+<pre class="code" data-langue="bash"><code>sudo sshd -t
+sudo systemctl restart ssh</code></pre>
+<p>Rouvrez un nouveau terminal pour vérifier que vous entrez toujours. Si vous êtes bloqué, la plupart des hébergeurs offrent une <strong>console</strong> dans leur interface web ou un mode de secours.</p>
+<h2 id="6-activer-le-pare-feu">6. Activer le pare-feu</h2>
+<p>Le pare-feu ne laisse passer que ce qui est nécessaire. Avec UFW, <strong>autorisez SSH avant d&#x27;activer</strong>, sinon vous coupez votre propre accès :</p>
+<pre class="code" data-langue="bash"><code>sudo ufw allow OpenSSH
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw enable
+sudo ufw status</code></pre>
+<p>Ouvrez 80 et 443 seulement si le serveur doit servir des sites. Certains hébergeurs ajoutent aussi un pare-feu dans leur interface : utilisez-le en plus.</p>
+<h2 id="7-ajouter-fail2ban">7. Ajouter fail2ban</h2>
+<p><a href="https://www.fail2ban.org" target="_blank" rel="noopener">fail2ban</a> bannit pour un temps les adresses qui essaient plusieurs fois de se connecter en vain. Sur Ubuntu, la protection de SSH est généralement active par défaut :</p>
+<pre class="code" data-langue="bash"><code>sudo apt install -y fail2ban
+sudo systemctl status fail2ban</code></pre>
+<h2 id="8-les-mises-a-jour-de-securite-automatiques">8. Les mises à jour de sécurité automatiques</h2>
+<pre class="code" data-langue="bash"><code>sudo apt install -y unattended-upgrades
+sudo dpkg-reconfigure --priority=low unattended-upgrades</code></pre>
+<p>Le serveur installe lui-même les correctifs de sécurité. Il faudra quand même faire de temps en temps une mise à jour complète et redémarrer.</p>
+<h2 id="9-quelques-reglages-utiles">9. Quelques réglages utiles</h2>
+<pre class="code" data-langue="bash"><code>sudo timedatectl set-timezone Africa/Abidjan
+df -h
+free -h</code></pre>
+<p>La première commande règle le fuseau horaire. Les deux autres montrent l&#x27;espace disque et la mémoire : prenez l&#x27;habitude de les regarder.</p>
+<h2 id="les-sauvegardes-a-prevoir-des-le-premier-jour">Les sauvegardes : à prévoir dès le premier jour</h2>
+<p>Les <strong>instantanés</strong> (snapshots) proposés par l&#x27;hébergeur sont pratiques, mais ils sont <strong>chez le même fournisseur</strong>. Ce n&#x27;est pas une vraie sauvegarde. Prévoyez aussi :</p>
+<ul><li>une <strong>copie régulière de vos données</strong> (bases de données, fichiers envoyés par vos utilisateurs) sur <strong>un autre serveur ou un autre service</strong> ;</li><li>un <strong>test de restauration</strong> de temps en temps : une sauvegarde qu&#x27;on n&#x27;a jamais restaurée est une hypothèse.</li></ul>
+<figure class="post-figure"><img src="assets/blog/schema-vps-bonnes-mauvaises-pratiques.svg" alt="Les bons réflexes et les erreurs sur un VPS neuf" width="640" height="424" loading="lazy"><figcaption>Les bons réflexes et les erreurs sur un VPS neuf</figcaption></figure>
+<h2 id="et-ensuite">Et ensuite ?</h2>
+<p>Votre serveur est propre et sécurisé. Il reste à y installer ce qu&#x27;il vous faut : un site PHP, une application Laravel, un projet React et Node.js. Les articles précédents expliquent chacun de ces cas. L&#x27;article suivant compare les <strong>façons de gérer</strong> un VPS : à la main, avec un panneau de contrôle ou avec Docker.</p>
+<p>Si vous préférez ne pas le faire vous-même, je peux <strong>configurer et sécuriser votre VPS</strong> : écrivez-moi sur WhatsApp en précisant votre hébergeur.</p>
+            </div>
+            <aside class="suite" aria-labelledby="suite-titre">
+                <p class="suite-kicker" id="suite-titre">À lire ensuite</p>
+                <p class="suite-ouverture">Votre VPS est sécurisé. Faut-il le gérer à la main, avec un panneau de contrôle, ou avec Docker ? Voici les différentes façons de faire, et laquelle choisir.</p>
+                <a class="suite-carte" href="blog-gerer-son-vps-methodes.html"><img src="assets/blog/couverture-gerer-son-vps-methodes.svg" alt="" width="1200" height="630" loading="lazy"><span class="suite-texte"><strong>Gérer son VPS : à la main, avec un panneau de contrôle, avec Docker ou une plateforme ?</strong><span>Quatre façons de gérer un VPS : à la main, panneau de contrôle (Hestia, CloudPanel, ISPConfig), Docker ou plateforme Git. Avantages, risques et choix.</span><em>Lire la suite <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-arrow-right"/></svg></em></span></a>
+            </aside>
+            <aside class="post-cta">
+                <h2>Une question sur ce sujet ?</h2>
+                <p>Écrivez-moi : je réponds sur WhatsApp. Dites-moi où vous en êtes, je vous dirai ce que je ferais à votre place.</p>
+                <a class="btn btn-primary" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20je%20viens%20d%27acheter%20un%20VPS%20et%20j%27aimerais%20qu%27il%20soit%20bien%20configur%C3%A9%20et%20s%C3%A9curis%C3%A9.%20Voici%20mon%20h%C3%A9bergeur%20%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg> Écrire sur WhatsApp</a>
+            </aside>
+        </div>
+    </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand"><span class="logo-bracket">&lt;</span><span class="logo-name">HR</span><span class="logo-bracket"> /&gt;</span></div>
+                <p class="footer-tagline">Concepteur-Développeur Full-Stack — Abidjan · <a href="https://ea-services.net">EA-SERVICES</a></p>
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="faq.html">Questions</a>
+                    <a href="index.html#projects">Projets</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                <p class="footer-copy">© 2026 Herman Robé. Conçu à Abidjan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="barre-contact" id="barreContact">
+        <a class="btn btn-primary" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20je%20souhaite%20prendre%20rendez-vous.%20Mes%20disponibilit%C3%A9s%20%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-calendar"/></svg> Rendez-vous</a>
+        <a class="btn btn-outline" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20" target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg> WhatsApp</a>
+    </div>
+    <a class="fab-whatsapp" href="https://wa.me/2250172527765?text=Bonjour%20Herman%2C%20" target="_blank" rel="noopener" aria-label="Écrire à Herman sur WhatsApp"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"/></svg></a>
+    <script src="js/menu.js" defer></script>
+    <script src="js/blog.js" defer></script>
+</body>
+</html>
