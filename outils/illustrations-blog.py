@@ -176,6 +176,14 @@ def _lignes(v):
     return [v] if isinstance(v, str) else list(v)
 
 
+def _pastille(genre, cx, cy, droite=False):
+    if genre == 'coche':
+        return coche(cx, cy, 14)
+    if genre == 'croix':
+        return croix(cx, cy, 14)
+    return f'<circle cx="{cx}" cy="{cy}" r="9" fill="{ACC2 if droite else "#8a8aa5"}"/>'
+
+
 def colonnes(nom, alt, titre_g, items_g, titre_d, items_d, ico_g='point', ico_d='coche'):
     """Deux cartes côte à côte : « avant / après » ou « l'un / l'autre »."""
     n = max(len(items_g), len(items_d))
@@ -186,18 +194,18 @@ def colonnes(nom, alt, titre_g, items_g, titre_d, items_d, ico_g='point', ico_d=
         y = 90 + i * 78
         if i < len(items_g):
             g += rect(28, y, 273, 66, '#33335a', 12)
-            g += (f'<circle cx="52" cy="{y + 33}" r="9" fill="#8a8aa5"/>' if ico_g == 'point' else croix(52, y + 33, 14))
+            g += _pastille(ico_g, 52, y + 33)
             L = _lignes(items_g[i])
             g += texte(74, y + (39 if len(L) == 1 else 29), L, 20, 600, TXT, interligne=1.2)
         if i < len(items_d):
             g += rect(339, y, 273, 66, '#33335a', 12)
-            g += (coche(364, y + 33, 14) if ico_d == 'coche' else f'<circle cx="364" cy="{y + 33}" r="9" fill="{ACC2}"/>')
+            g += _pastille(ico_d, 364, y + 33, droite=True)
             L = _lignes(items_d[i])
             g += texte(388, y + (39 if len(L) == 1 else 29), L, 20, 600, TXT, interligne=1.2)
     schema(nom, 640, h, g, alt)
 
 
-def chaine(nom, alt, etapes, retour=False):
+def chaine(nom, alt, etapes, retour=False, fleches=True):
     """3 ou 4 cases reliées par des flèches ; titre (et sous-titre si 3 cases) ; flèche de retour optionnelle."""
     n = len(etapes)
     gap = 26
@@ -207,10 +215,10 @@ def chaine(nom, alt, etapes, retour=False):
     for i, (titre, sous) in enumerate(etapes):
         x0 = 20 + i * (w + gap)
         g += rect(x0, 40, w, h_case, CARTE, 16, f'stroke="{ACC if i % 2 == 0 else ACC2}" stroke-width="3"')
-        g += texte(x0 + w / 2, 40 + (58 if sous else 62) - (8 if len(_lignes(titre)) > 1 else 0), _lignes(titre), 26 if n == 3 else 22, 800, TXT, 'middle', 1.2)
+        g += texte(x0 + w / 2, 40 + (58 if sous else 62) - (8 if len(_lignes(titre)) > 1 else 0), _lignes(titre), 26 if n == 3 else 20, 800, TXT, 'middle', 1.2)
         if sous:
             g += texte(x0 + w / 2, 40 + 108, _lignes(sous), 19, 500, DOUX, 'middle', 1.2)
-        if i < n - 1:
+        if i < n - 1 and fleches:
             g += fleche(x0 + w + 3, 40 + h_case / 2, x0 + w + gap - 3, 40 + h_case / 2, ACC, 4)
     hauteur = 40 + h_case + 40
     if retour:
@@ -287,6 +295,24 @@ def dessin_digital():
     barres = ''.join(rect(960 + i * 40, 520 - h, 28, h, ACC2 if i == 2 else ACC, 6) for i, h in enumerate([30, 60, 100]))
     return papiers + fleche(792, 360, 868, 320, ACC2, 6) + tel + barres
 
+def dessin_recruteur():
+    pers = lambda cx, cy, c: f'<circle cx="{cx}" cy="{cy}" r="34" fill="{c}"/><path d="M{cx - 62} {cy + 120}c0-52 28-80 62-80s62 28 62 80z" fill="{c}"/>'
+    loupe = f'<circle cx="1010" cy="250" r="72" fill="none" stroke="#c9c5ff" stroke-width="12"/><line x1="1062" y1="302" x2="1110" y2="350" stroke="#c9c5ff" stroke-width="14" stroke-linecap="round"/>'
+    return (pers(700, 230, CARTE.replace('2a2a40', '3a3a66')) + pers(830, 200, 'url(#a)') + pers(960, 230, CARTE.replace('2a2a40', '3a3a66'))
+            + coche(830, 380, 30) + rect(660, 430, 380, 14, TXT, 7, 'opacity=".25"') + loupe.replace('1010', '1090').replace('1062', '1140').replace('1110', '1180').replace('350"', '372"'))
+
+
+def dessin_entretien():
+    q = rect(640, 120, 330, 150, CARTE, 26, f'stroke="{ACC}" stroke-width="4"') + f'<path d="M700 268l-16 44 52-34z" fill="{CARTE}" stroke="{ACC}" stroke-width="4" stroke-linejoin="round"/>' + texte(805, 215, '?', 100, 800, '#c9c5ff', 'middle')
+    r = rect(760, 330, 340, 170, VERT, 26) + f'<path d="M1040 498l18 46-54-36z" fill="{VERT}"/>' + trait(796, 372, 260, .85, 14) + trait(796, 404, 220, .6, 14) + trait(796, 436, 180, .45, 14) + coche(1070, 345, 24)
+    return q + r
+
+
+def dessin_choisir():
+    cartes = ''.join(rect(610 + i * 160, 170 + (i % 2) * 40, 148, 250, CARTE, 18, f'stroke="{c}" stroke-width="4"') + f'<circle cx="{684 + i * 160}" cy="{240 + (i % 2) * 40}" r="30" fill="{c}"/>' + trait(634 + i * 160, 306 + (i % 2) * 40, 100, .5, 12) + trait(634 + i * 160, 334 + (i % 2) * 40, 70, .3, 12) for i, c in enumerate([ACC, ACC2, VERT]))
+    balance = f'<path d="M780 120l-90 54M780 120l90 54" stroke="#c9c5ff" stroke-width="5" stroke-linecap="round"/>'
+    return cartes + coche(1010, 150, 30)
+
 
 COUVERTURES = [
     ('cout-site-web-abidjan', 'RÉPONSE', ['Combien coûte', 'un site web', 'à Abidjan ?'], dessin_cout),
@@ -296,6 +322,9 @@ COUVERTURES = [
     ('commandes-whatsapp-google-sheets', 'TUTO', ['Commandes', 'WhatsApp sans', 'rien perdre'], dessin_commandes),
     ('premiere-page-web-5-lecons', 'MINI-FORMATION', ['Première page', 'web en', '5 leçons'], dessin_formation),
     ('cas-retrait-cheques-pwa', 'CAS PRATIQUE', ['Suivre un', 'retrait de', 'chèque'], dessin_cas),
+    ('recruter-un-developpeur', 'POUR LES RECRUTEURS', ['Pourquoi recruter', 'un développeur ?'], dessin_recruteur),
+    ('questions-entretien-developpeur', 'POUR LES RECRUTEURS', ['Quelles questions', 'poser en', 'entretien ?'], dessin_entretien),
+    ('freelance-agence-ou-salarie', 'POUR LES CLIENTS', ['Freelance,', 'agence ou', 'salarié ?'], dessin_choisir),
     ('ia-developpeurs-vont-ils-disparaitre', 'RÉPONSE', ['Les développeurs', 'vont-ils', 'disparaître ?'], dessin_ia),
     ('digitaliser-son-entreprise-ivoirrapid', 'POUR LES DIRIGEANTS', ['Pourquoi', 'digitaliser son', 'entreprise ?'], dessin_digital),
 ]
@@ -361,4 +390,19 @@ if __name__ == '__main__':
     outils_whatsapp()
     feuille_exemple()
     couches_web()
+
+    colonnes('recruter-quand', 'Les signes qu\'il est temps de recruter et les cas où il vaut mieux attendre', 'Il est temps',
+             [['Les mêmes tâches', 'chaque semaine'], ['Outils dispersés,', 'pas de vue d\'ensemble'], ['Dépendance à un', 'seul prestataire'], ['Un besoin qui', 'ne s\'arrête jamais']],
+             'Mieux vaut attendre', [['Un besoin ponctuel', 'et bien défini'], ['Aucun flux de', 'travail défini'], ['Budget pour un', 'seul projet'], ['Personne pour', 'encadrer']], 'coche', 'point')
+    chaine('recruter-etapes', 'Du besoin à l\'intégration : un besoin clair, un profil adapté, un test réel, une intégration progressive',
+           [(['Un besoin', 'clair'], None), (['Un profil', 'adapté'], None), (['Un test', 'réel'], None), (['Arrivée', 'progressive'], None)])
+    chaine('entretien-etapes', 'Les quatre temps d\'un bon entretien',
+           [(['Le parcours', 'du candidat'], None), (['Un cas', 'concret'], None), (['Un petit', 'exercice'], None), (['Parler', 'd\'équipe'], None)])
+    colonnes('entretien-reponses', 'Une bonne réponse et une réponse à creuser', 'Bonne réponse',
+             [['Donne un exemple', 'précis et vécu'], ['Explique ses choix', 'et leurs limites'], ['Admet ce qu\'il', 'ne sait pas'], ['Parle de l\'utilisateur,', 'pas que du code']],
+             'À creuser', [['Des réponses', 'toutes théoriques'], ['Ne cite jamais', 'une erreur'], ['Tout est la faute', 'des autres'], ['Ne sait pas dire', 'pourquoi ce choix']], 'coche', 'croix')
+    chaine('choix-trois-options', 'Trois façons de faire : le freelance, l\'agence, le salarié',
+           [('Freelance', ['souple,', 'rapide']), ('Agence', ['équipe,', 'cadre']), ('Salarié', ['long terme,', 'sur place'])], fleches=False)
+    etapes('choix-cinq-questions', 'Cinq questions à poser à n\'importe quel prestataire',
+           ['Qui fera le travail, concrètement ?', 'Que livrez-vous, et quand ?', 'Qui possède les accès et le code ?', 'Que se passe-t-il après la livraison ?', 'Comment utilisez-vous l\'IA ?'])
     print('schémas ok')

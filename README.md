@@ -59,5 +59,7 @@ python3 outils/publier-sfb.py          # publie tous les fichiers du site dans S
 Chaque article peut déclarer `suite:` (article suivant) et `ouverture:` (la phrase qui y mène) : le bloc
 « À lire ensuite » en est tiré. Le lecteur audio lit le fichier MP3 et propose, en secours, la voix de l'appareil.
 
-Cinq catégories : pour les dirigeants, réponses, tutos, mini-formations, cas pratiques. Règles : pas de prix ni de chiffre
+Six catégories : pour les dirigeants, pour les recruteurs et clients, réponses, tutos, mini-formations, cas pratiques.
+
+La page `faq.html` est générée depuis `faq/questions.md` (« ## rubrique », « ### question », puis la réponse) et porte les données structurées FAQPage. Règles : pas de prix ni de chiffre
 inventés, pas de résultat de client sans accord, un cas pratique tiré d'un vrai projet le dit.

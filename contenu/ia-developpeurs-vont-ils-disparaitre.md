@@ -6,8 +6,8 @@ categorie: reponse
 date: 2026-11-05
 ordre: 0
 message: Bonjour Herman, j'ai lu votre article sur l'IA et les développeurs. Ma question : 
-suite: premiere-page-web-5-lecons
-ouverture: Si l'IA ne remplace pas ceux qui comprennent les bases, alors les bases comptent plus que jamais. Voici la mini-formation que je donnerais à un débutant pour les acquérir en deux heures.
+suite: recruter-un-developpeur
+ouverture: Si l'IA ne remplace pas ceux qui comprennent et vérifient, une autre question se pose aux entreprises : quand faut-il recruter un développeur dans son équipe ? Voici les signes qui ne trompent pas.
 ---
 Vous avez sûrement vu les vidéos : une phrase écrite à l'IA, et en quelques secondes, une application complète apparaît à l'écran. La question vient alors toute seule, chez les étudiants, chez les parents, chez les chefs d'entreprise : **à quoi bon payer un développeur, s'il suffit de demander à une machine ?**
 

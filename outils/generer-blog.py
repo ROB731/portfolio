@@ -33,6 +33,7 @@ RACINE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 SITE = 'https://sites-sfb.ea-services.net/portfolio-herman-robe/'
 NUMERO = '2250172527765'
 CATS = {
+    'recruteur': ('Pour les recruteurs et clients', 'users', 'Recruter un développeur, choisir un prestataire : les questions de ceux qui cherchent de l\'aide.'),
     'dirigeant': ('Pour les dirigeants', 'user',      'Pourquoi et comment digitaliser une entreprise, expliqué sans jargon.'),
     'reponse':   ('Réponses',        'lightbulb',  'Les questions qu\'on me pose le plus souvent, avec une réponse franche.'),
     'tuto':      ('Tutos',           'code',       'Pas à pas, avec le code à copier et les pièges à éviter.'),
@@ -287,6 +288,7 @@ def pied():
                 <div class="footer-links">
                     <a href="index.html">Accueil</a>
                     <a href="blog.html">Blog</a>
+                    <a href="faq.html">Questions</a>
                     <a href="index.html#projects">Projets</a>
                     <a href="index.html#contact">Contact</a>
                 </div>
@@ -412,7 +414,7 @@ def page_liste(posts):
         <div class="container">
             <span class="section-tag">Blog</span>
             <h1 class="post-title">Réponses, tutos et mini-formations</h1>
-            <p class="blog-intro">Ce qu'on me demande le plus, expliqué simplement : sites web, automatisation, WhatsApp, IA. Avec du code à copier quand c'est utile, et des cas pratiques tirés de vrais projets.</p>
+            <p class="blog-intro">Ce qu'on me demande le plus, expliqué simplement : sites web, automatisation, WhatsApp, IA, recrutement. Avec du code à copier quand c'est utile, et des cas pratiques tirés de vrais projets. Une question précise ? <a href="faq.html">Voir les questions fréquentes</a>.</p>
             <div class="projects-filter" role="group" aria-label="Filtrer par catégorie">{filtres}</div>
 {blocs}
             <aside class="post-cta">
@@ -427,6 +429,65 @@ def page_liste(posts):
     return entete('Blog : réponses, tutos, mini-formations | Herman Robe', desc, url, jsonld, 'website') + corps + pied()
 
 
+
+def lire_faq():
+    """faq/questions.md : « ## Rubrique », « ### Question », puis la réponse en texte simple."""
+    chemin = os.path.join(RACINE, 'faq', 'questions.md')
+    rubriques, rub, q = [], None, None
+    for l in open(chemin, encoding='utf-8').read().split('\n'):
+        if l.startswith('## '):
+            rub = {'titre': l[3:].strip(), 'questions': []}
+            rubriques.append(rub)
+            q = None
+        elif l.startswith('### '):
+            q = {'q': l[4:].strip(), 'md': []}
+            rub['questions'].append(q)
+        elif q is not None:
+            q['md'].append(l)
+    for r in rubriques:
+        for q in r['questions']:
+            q['md'] = '\n'.join(q['md']).strip()
+            q['html'] = convertir(q['md'])[0]
+            q['texte'] = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', q['html'])).strip()
+    return rubriques
+
+
+def page_faq():
+    url = SITE + 'faq.html'
+    rubriques = lire_faq()
+    desc = ('Réponses courtes aux questions des recruteurs, des chefs d\'entreprise et de ceux qui veulent apprendre : '
+            'recruter un développeur, choisir un prestataire, site web, IA.')
+    toutes = [q for r in rubriques for q in r['questions']]
+    jsonld = [{'@context': 'https://schema.org', '@type': 'FAQPage', 'inLanguage': 'fr', 'url': url,
+               'mainEntity': [{'@type': 'Question', 'name': q['q'], 'acceptedAnswer': {'@type': 'Answer', 'text': q['texte']}} for q in toutes]},
+              {'@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': [
+                  {'@type': 'ListItem', 'position': 1, 'name': 'Accueil', 'item': SITE},
+                  {'@type': 'ListItem', 'position': 2, 'name': 'Questions fréquentes', 'item': url}]}]
+    lien_question = wa("Bonjour Herman, j'ai une question : ")
+    blocs = ''
+    for r in rubriques:
+        items = ''.join(f'<details class="faq-item"><summary>{e(q["q"])}</summary><div class="faq-reponse prose">{q["html"]}</div></details>' for q in r['questions'])
+        blocs += f'<section class="faq-rubrique"><h2>{e(r["titre"])}</h2>{items}</section>'
+    corps = f"""
+    <main>
+    <section class="blog-hero section">
+        <div class="container post-container">
+            <span class="section-tag">Questions fréquentes</span>
+            <h1 class="post-title">Les questions qu'on me pose le plus souvent</h1>
+            <p class="blog-intro">Vous cherchez un développeur, un prestataire ou de l'aide pour votre entreprise ? Voici des réponses courtes et franches. Pour aller plus loin, chaque réponse renvoie vers un article.</p>
+            {blocs}
+            <aside class="post-cta">
+                <h2>Votre question n'est pas là ?</h2>
+                <p>Posez-la-moi sur WhatsApp. Si elle revient souvent, elle sera ajoutée ici.</p>
+                <a class="btn btn-primary" href="{lien_question}" target="_blank" rel="noopener">{icone('whatsapp')} Poser ma question</a>
+            </aside>
+        </div>
+    </section>
+    </main>
+"""
+    return entete('Questions fréquentes : recruter, choisir, apprendre | Herman Robe', desc, url, jsonld, 'website') + corps + pied()
+
+
 def maj_accueil(posts):
     chemin = os.path.join(RACINE, 'index.html')
     h = open(chemin, encoding='utf-8').read()
@@ -439,7 +500,7 @@ def maj_accueil(posts):
                 <div class="section-divider"></div>
             </div>
             <div class="post-grid">{''.join(carte(p) for p in posts[:3])}</div>
-            <p class="blog-voir"><a class="btn btn-outline" href="blog.html">Voir tous les articles {icone('arrow-right')}</a></p>
+            <p class="blog-voir"><a class="btn btn-outline" href="blog.html">Voir tous les articles {icone('arrow-right')}</a> <a class="btn btn-outline" href="faq.html">Questions fréquentes</a></p>
         </div>
     </section>
     <!-- BLOG:FIN -->'''
@@ -463,6 +524,7 @@ def main():
     for p in posts:
         open(os.path.join(RACINE, f"blog-{p['slug']}.html"), 'w', encoding='utf-8').write(page_article(p, posts))
     open(os.path.join(RACINE, 'blog.html'), 'w', encoding='utf-8').write(page_liste(posts))
+    open(os.path.join(RACINE, 'faq.html'), 'w', encoding='utf-8').write(page_faq())
     maj_accueil(posts)
     for p in posts:
         print(f"{p['categorie']:9} {p['minutes']:2} min  {p['court']}")
