@@ -21,6 +21,15 @@
         }
     }
 
+    // Barre de contact (téléphone) : on la cache devant la section Contact, où elle ferait doublon
+    var barreContact = document.getElementById('barreContact');
+    var contact = document.getElementById('contact');
+    if (barreContact && contact && 'IntersectionObserver' in window) {
+        new IntersectionObserver(function (es) {
+            barreContact.classList.toggle('barre-cachee', es[0].isIntersecting);
+        }, { threshold: 0.15 }).observe(contact);
+    }
+
     // Barre de progression : où en est le lecteur dans la page
     var barre = document.createElement('div');
     barre.className = 'progression';

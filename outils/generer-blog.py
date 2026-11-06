@@ -295,6 +295,10 @@ def pied():
         </div>
     </footer>
 
+    <div class="barre-contact" id="barreContact">
+        <a class="btn btn-primary" href="{wa('Bonjour Herman, je souhaite prendre rendez-vous. Mes disponibilités : ')}" target="_blank" rel="noopener">{icone('calendar')} Rendez-vous</a>
+        <a class="btn btn-outline" href="{wa('Bonjour Herman, ')}" target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp">{icone('whatsapp')} WhatsApp</a>
+    </div>
     <a class="fab-whatsapp" href="{wa('Bonjour Herman, ')}" target="_blank" rel="noopener" aria-label="Écrire à Herman sur WhatsApp">{icone('whatsapp')}</a>
     <script src="js/menu.js" defer></script>
     <script src="js/blog.js" defer></script>
